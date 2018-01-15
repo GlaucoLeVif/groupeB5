@@ -7,13 +7,14 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 import be.helha.groupeB5.entities.Membre;
+import be.helha.sessionejb.GestionMembreEJB;
 
 @Named
 @RequestScoped
 public class MembreController {
 
 	@EJB
-//	private GestionMembreEJB gestionMembreEJB;
+	private GestionMembreEJB gestionMembreEJB;
 	private String login, mdp, mail, prenom, nom, rue, ville, pays, nationalite, numeroGSM;
 	private Date dateN;
 	private int numRue, cp;
@@ -21,12 +22,19 @@ public class MembreController {
 	
 	public MembreController() {}
 	
-/*	
+	
 	public Membre doAjouterMembre() {
 		Membre m = new Membre(login, mdp, mail, prenom, nom, rue, ville, pays, nationalite, numeroGSM, dateN, numRue, cp, isAdmin);
-		return gestionMembreEJB.ajouterMembre(m);
+		return gestionMembreEJB.addMembre(m);
 	}
-*/	
+	
+	public Membre doModifierMembre() {
+		return null;
+	}
+	
+	public Membre doSupprimerMembre() {
+		return null;
+	}
 	
 	
 	public String getLogin() {

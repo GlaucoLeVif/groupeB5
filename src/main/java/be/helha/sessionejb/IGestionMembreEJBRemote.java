@@ -10,7 +10,14 @@ import be.helha.groupeB5.entities.Membre;
 public interface IGestionMembreEJBRemote {
 	List<Membre> selectAll();
 	
+	Membre addMembre(Membre m);
 	
-	Membre addMembre(Membre p);
+	Membre UpdateMembre(Membre m);
+	
+	Membre deleteMembre(Membre m);
+	
+	
+	
+	
 }
 
