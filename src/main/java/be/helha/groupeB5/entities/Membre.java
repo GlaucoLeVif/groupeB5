@@ -1,9 +1,19 @@
 package be.helha.groupeB5.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Membre {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Membre implements Serializable {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer idMembre;
 	private String login, mdp, mail, prenom, nom, rue, ville, pays, nationalite, numeroGSM;
 	private Date dateN;
 	private int numRue, cp;
