@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
 @Entity
 public class Membre implements Serializable {
 	
@@ -153,4 +154,21 @@ public class Membre implements Serializable {
 	public void setAdmin(boolean isAdmin) {
 		this.isAdmin = isAdmin;
 	}
+	
+
+	public boolean equals(Object o)
+	{
+		if(o instanceof Membre){
+			Membre m = (Membre) o;
+			return this.login.equals(m.login);
+		}
+		return false;
+	}
+	
+	
+	
+	public String toString() {
+		return idMembre+ " : "+login+" | "+mdp;
+	}
+	
 }

@@ -28,5 +28,13 @@ public class DAOMembreLocalBean {
 		return m;
 	}
 	
+	public Membre modifierMembre(Membre m) {
+		return m;
+	}
+	
+	public Membre supprimerMembre(Membre m) {
+		return m;
+	}
+	
 	
 }
