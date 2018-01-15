@@ -12,9 +12,25 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 		HELLO VICTOR
 		
 		<h:form>
-			<h:inputText value="#{nextControl.nom}"></h:inputText>
-			<h:commandButton value="Next" action="#{nextControl.doNext()}"></h:commandButton>
+	 		Login : <h:inputText value="#{membreController.login}"></h:inputText>				<BR />
+	 		Password : <h:inputText value="#{membreController.mdp}"></h:inputText>				<BR />
+	 		Mail : <h:inputText value="#{membreController.mail}"></h:inputText>					<BR />
+	 		Nom : <h:inputText value="#{membreController.nom}"></h:inputText>					<BR />
+	 		Prénom : <h:inputText value="#{membreController.prenom}"></h:inputText>				<BR />
+	 		Rue : <h:inputText value="#{membreController.rue}"></h:inputText>					<BR />
+	 		Numéro : <h:inputText value="#{membreController.numRue}"></h:inputText>				<BR />
+	 		Ville : <h:inputText value="#{membreController.ville}"></h:inputText>				<BR />
+	 		Code postal : <h:inputText value="#{membreController.cp}"></h:inputText>			<BR />
+	 		Pays : <h:inputText value="#{membreController.pays}"></h:inputText>					<BR />
+	 		Nationalité : <h:inputText value="#{membreController.nationalite}"></h:inputText>	<BR />
+	 		Numéro GSM : <h:inputText value="#{membreController.numeroGSM}"></h:inputText>		<BR />
+	 		
+			<BR /><BR /><BR />
+			
+			<h:commandButton value="Save" action="#{membreController.doAjouterMembre()}"></h:commandButton>
 		</h:form>
+		
+		
 	</h:body>
 	
 </html>

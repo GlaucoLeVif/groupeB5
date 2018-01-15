@@ -7,7 +7,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 import be.helha.groupeB5.entities.Membre;
-import be.helha.sessionejb.GestionMembreEJB;
+import be.helha.groupeB5.sessionejb.GestionMembreEJB;
 
 @Named
 @RequestScoped

@@ -24,7 +24,23 @@ public class GestionMembreEJB implements IGestionMembreEJBRemote{
 
 	@Override
 	public Membre addMembre(Membre m) {
-		dao.ajouterMembre(m);
-		return m;
+		return dao.ajouterMembre(m);
 	}
+
+	@Override
+	public Membre UpdateMembre(Membre m) {
+		return dao.modifierMembre(m);
+	}
+
+	@Override
+	public Membre deleteMembre(Membre m) {
+		return dao.supprimerMembre(m);
+	}
+	
+	
+	
+	
+	
+	
+	
 }
