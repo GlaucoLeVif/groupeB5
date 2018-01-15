@@ -10,7 +10,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Membre implements Serializable {
-	
+	//ola
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idMembre;
