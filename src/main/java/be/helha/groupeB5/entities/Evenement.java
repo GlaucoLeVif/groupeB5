@@ -1,9 +1,19 @@
 package be.helha.groupeB5.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Evenement {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+
+@Entity
+public class Evenement implements Serializable {
+
+	@Id
+	@GeneratedValue
+	private Integer idEv;
 	private String titre, resume, urlImage;
 	private double objectif, recolte;
 	private Date dateEv;
@@ -16,6 +26,13 @@ public class Evenement {
 		this.objectif = objectif;
 		this.recolte = recolte;
 		this.dateEv = dateEv;
+	}
+	
+	public Integer getIdEv() {
+		return idEv;
+	}
+	public void setIdEv(Integer id) {
+		this.idEv = id;
 	}
 
 	public String getTitre() {
@@ -64,6 +81,22 @@ public class Evenement {
 
 	public void setDateEv(Date dateEv) {
 		this.dateEv = dateEv;
+	}
+	
+
+	public boolean equals(Object o)
+	{
+		if(o instanceof Evenement){
+			Evenement e = (Evenement) o;
+			return this.idEv.equals(e.idEv) ;
+		}
+		return false;
+	}
+	
+	
+	
+	public String toString() {
+		return idEv + " : "+titre+" | "+resume;
 	}
 	
 	
