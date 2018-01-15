@@ -1,4 +1,4 @@
-package be.helha.sessionejb;
+package be.helha.groupeB5.sessionejb;
 
 import java.util.List;
 
