@@ -7,5 +7,5 @@ public class Evenement {
 	private String titre, resume, urlImage;
 	private double objectif, recolte;
 	private Date dateEv;
-	
+	//allo
 }
