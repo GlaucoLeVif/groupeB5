@@ -8,7 +8,7 @@ public class Membre {
 	private Date dateN;
 	private int numRue, cp;
 	private boolean isAdmin;
-	
+	//salut
 	public Membre(String login, String mdp, String mail, String prenom, String nom, String rue, String ville,
 			String pays, String nationalite, String numeroGSM, Date dateN, int numRue, int cp, boolean isAdmin) {
 		super();
