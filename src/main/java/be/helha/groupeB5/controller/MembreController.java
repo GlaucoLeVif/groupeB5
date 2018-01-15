@@ -1,6 +1,7 @@
 package be.helha.groupeB5.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
@@ -18,13 +19,15 @@ public class MembreController {
 	private String login, mdp, mail, prenom, nom, rue, ville, pays, nationalite, numeroGSM;
 	private Date dateN;
 	private int numRue, cp;
-	private boolean isAdmin;
 	
 	public MembreController() {}
 	
+	public List<Membre> doAfficherMembre() {
+		return gestionMembreEJB.selectAll();
+	}
 	
 	public Membre doAjouterMembre() {
-		Membre m = new Membre(login, mdp, mail, prenom, nom, rue, ville, pays, nationalite, numeroGSM, dateN, numRue, cp, isAdmin);
+		Membre m = new Membre(login, mdp, mail, prenom, nom, rue, ville, pays, nationalite, numeroGSM, dateN, numRue, cp, false);
 		return gestionMembreEJB.addMembre(m);
 	}
 	
@@ -127,11 +130,6 @@ public class MembreController {
 	public void setCp(int cp) {
 		this.cp = cp;
 	}
-
-	public boolean isAdmin() {
-		return isAdmin;
-	}
-	public void setAdmin(boolean isAdmin) {
-		this.isAdmin = isAdmin;
-	}
+	
+	
 }

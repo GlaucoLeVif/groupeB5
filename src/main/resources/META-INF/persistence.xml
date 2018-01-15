@@ -15,7 +15,6 @@
 	<persistence-unit name="groupeB5" transaction-type="RESOURCE_LOCAL">
 				
 		<class>be.helha.groupeB5.entities.Membre</class>
-		<class>be.helha.groupeB5.entities.Evenement</class>		
 				
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 	

@@ -30,6 +30,68 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 			<h:commandButton value="Save" action="#{membreController.doAjouterMembre()}"></h:commandButton>
 		</h:form>
 		
+		<BR /><BR /><BR />
+	 	#{membreController.doAfficherMembre()}
+		<BR /><BR /><BR />
+		
+	 	<h:dataTable value = "#{membreController.doAfficherMembre()}" var = "membre">
+	 		<!--
+		   <h:column>
+		      <f:facet name = "header">LOGIN</f:facet>
+		      #{membre.idMembre}
+		   </h:column>
+		    -->
+		   <h:column>
+		      <f:facet name = "header">LOGIN</f:facet>
+		      #{membre.login}
+		   </h:column>
+		   
+		   <h:column>
+		      <f:facet name = "header">PASSWORD</f:facet>
+		      #{membre.mdp}
+		   </h:column>
+		   
+		   <h:column>
+		      <f:facet name = "header">MAIL</f:facet>
+		      #{membre.mail}
+		   </h:column>
+		   
+		   <h:column>
+		      <f:facet name = "header">PRENOM</f:facet>
+		      #{membre.prenom}
+		   </h:column>
+		   
+		   <h:column>
+		      <f:facet name = "header">NOM</f:facet>
+		      #{membre.nom}
+		   </h:column>
+		   
+		   <h:column>
+		      <f:facet name = "header">RUE</f:facet>
+		      #{membre.rue}
+		   </h:column>
+		   
+		   <h:column>
+		      <f:facet name = "header">VILLE</f:facet>
+		      #{membre.ville}
+		   </h:column>
+		   
+		   <h:column>
+		      <f:facet name = "header">PAYS</f:facet>
+		      #{membre.pays}
+		   </h:column>
+		   
+		   <h:column>
+		      <f:facet name = "header">NATIONALITE</f:facet>
+		      #{membre.nationalite}
+		   </h:column>
+		 <!--   
+		   <h:column>
+		      <f:facet name = "header">NUMGSM</f:facet>
+		      #{membre.numGSM}
+		   </h:column>
+		  -->  
+		</h:dataTable>
 		
 	</h:body>
 	

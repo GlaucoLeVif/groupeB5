@@ -164,11 +164,17 @@ public class Membre implements Serializable {
 		}
 		return false;
 	}
-	
-	
-	
+
+	@Override
 	public String toString() {
-		return idMembre+ " : "+login+" | "+mdp;
+		return "Membre [idMembre=" + idMembre + ", login=" + login + ", mdp=" + mdp + ", mail=" + mail + ", prenom="
+				+ prenom + ", nom=" + nom + ", rue=" + rue + ", ville=" + ville + ", pays=" + pays + ", nationalite="
+				+ nationalite + ", numeroGSM=" + numeroGSM + ", dateN=" + dateN + ", numRue=" + numRue + ", cp=" + cp
+				+ ", isAdmin=" + isAdmin + "]";
 	}
+	
+	
+	
+	
 	
 }

@@ -35,7 +35,7 @@ public class DAOMembreLocalBean {
 	}
 	
 	public boolean isExistingMembre(String login) {
-		String str = "SELECT m.id FROM Membre m where m.login =:login";
+		String str = "SELECT m.idMembre FROM Membre m where m.login =:login";
 		Query queryProprio = em.createQuery(str);
 		queryProprio.setParameter("login", login);
 		
@@ -50,7 +50,7 @@ public class DAOMembreLocalBean {
 	}
 	
 	public Membre supprimerMembre(Membre m) {
-		String str="Delete FROM Membre u WHERE u.login=:login";
+		String str="Delete FROM Membre m WHERE m.login=:login";
 		Query qAdr = em.createQuery(str);
 		qAdr.setParameter("login",m.getLogin());
 		qAdr.executeUpdate();
