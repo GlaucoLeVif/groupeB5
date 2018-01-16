@@ -16,9 +16,9 @@ public class Evenement implements Serializable {
 	private Integer idEv;
 	private String titre, resume, urlImage;
 	private double objectif, recolte;
-	private Date dateEv;
+	private java.sql.Date dateEv;
 	
-	public Evenement(String titre, String resume, String urlImage, double objectif, double recolte, Date dateEv) {
+	public Evenement(String titre, String resume, String urlImage, double objectif, double recolte, java.sql.Date dateEv) {
 		super();
 		this.titre = titre;
 		this.resume = resume;
@@ -27,6 +27,8 @@ public class Evenement implements Serializable {
 		this.recolte = recolte;
 		this.dateEv = dateEv;
 	}
+	
+	public Evenement() {}
 	
 	public Integer getIdEv() {
 		return idEv;
@@ -79,7 +81,7 @@ public class Evenement implements Serializable {
 		return dateEv;
 	}
 
-	public void setDateEv(Date dateEv) {
+	public void setDateEv(java.sql.Date dateEv) {
 		this.dateEv = dateEv;
 	}
 	
@@ -92,12 +94,16 @@ public class Evenement implements Serializable {
 		}
 		return false;
 	}
-	
-	
-	
+
+	@Override
 	public String toString() {
-		return idEv + " : "+titre+" | "+resume;
+		return "Evenement [idEv=" + idEv + ", titre=" + titre + ", resume=" + resume + ", urlImage=" + urlImage
+				+ ", objectif=" + objectif + ", recolte=" + recolte + ", dateEv=" + dateEv + "]";
 	}
+	
+	
+	
+	
 	
 	
 }

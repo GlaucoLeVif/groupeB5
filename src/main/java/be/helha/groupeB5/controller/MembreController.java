@@ -137,6 +137,12 @@ public class MembreController {
 	public void setCp(int cp) {
 		this.cp = cp;
 	}
+	public Membre getMembre() {
+		return membre;
+	}
+	public void setMembre(Membre membre) {
+		this.membre = membre;
+	}
 	
 	
 }

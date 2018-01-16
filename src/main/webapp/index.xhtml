@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:b="http://bootsfaces.net/ui"
 xmlns:f="http://java.sun.com/jsf/core"
 xmlns:h="http://java.sun.com/jsf/html"
-xmlns:jsf="http://xmlns.jcp.org/jsf">
+xmlns:jsf="http://xmlns.jcp.org/jsf"
+>
 
 	<h:head>
 		<title>index WebApp</title>
+		<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
 	</h:head>
 	
 	<h:body>
 	<h1>Utilisateurs</h1>
+		button
+		<b:button value="Left" />
+		button
+		
+		
 		<h:form>
 	 		Login : <h:inputText value="#{membreController.login}"></h:inputText>				<BR />
 	 		Password : <h:inputText value="#{membreController.mdp}"></h:inputText>				<BR />
@@ -92,9 +102,7 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 		   </h:column>
 		  
 		  <h:column>
-				<f:facet name="header">
-					<h:outputText value=DETAILS/>
-				</f:facet>
+				<f:facet name="header">DETAILS</f:facet>
 					<h:form>
 						<h:commandButton value="Accéder" action="#{membreController.doDetails(membre)}"></h:commandButton>
 					</h:form>
