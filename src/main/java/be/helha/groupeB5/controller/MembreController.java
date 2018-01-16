@@ -19,6 +19,7 @@ public class MembreController {
 	private String login, mdp, mail, prenom, nom, rue, ville, pays, nationalite, numGSM;
 	private Date dateN;
 	private int numRue, cp;
+	private Membre membre = new Membre();
 	
 	public MembreController() {}
 	
@@ -34,11 +35,16 @@ public class MembreController {
 	public Membre doModifierMembre() {
 		return null;
 	}
-	/*
-	public Membre doSupprimerMembre() {
+	
+	public Membre doSupprimerMembre(Membre m) {
 		return gestionMembreEJB.deleteMembre(m);
 	}
-	*/
+	
+	public String doDetails(Membre m)
+	{
+		membre = m;
+		return "detailsMembre.xhtml";
+	}
 	
 	public String getLogin() {
 		return login;

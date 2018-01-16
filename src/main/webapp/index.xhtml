@@ -9,8 +9,7 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 	</h:head>
 	
 	<h:body>
-		HELLO VICTOR
-		
+	<h1>Utilisateurs</h1>
 		<h:form>
 	 		Login : <h:inputText value="#{membreController.login}"></h:inputText>				<BR />
 	 		Password : <h:inputText value="#{membreController.mdp}"></h:inputText>				<BR />
@@ -23,7 +22,7 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 	 		Code postal : <h:inputText value="#{membreController.cp}"></h:inputText>			<BR />
 	 		Pays : <h:inputText value="#{membreController.pays}"></h:inputText>					<BR />
 	 		Nationalité : <h:inputText value="#{membreController.nationalite}"></h:inputText>	<BR />
-	 		Numéro GSM : <h:inputText value="#{membreController.numGSM}"></h:inputText>		<BR />
+	 		Numéro GSM : <h:inputText value="#{membreController.numGSM}"></h:inputText>			<BR />
 	 		
 			<BR /><BR /><BR />
 			
@@ -31,6 +30,7 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 		</h:form>
 		
 		<BR /><BR /><BR />
+		<h1>Listes</h1>
 	 	#{membreController.doAfficherMembre()}
 		<BR /><BR /><BR />
 		
@@ -91,6 +91,24 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 		      #{membre.numGSM}
 		   </h:column>
 		  
+		  <h:column>
+				<f:facet name="header">
+					<h:outputText value=DETAILS/>
+				</f:facet>
+					<h:form>
+						<h:commandButton value="Accéder" action="#{membreController.doDetails(membre)}"></h:commandButton>
+					</h:form>
+			</h:column>
+			
+		   	<h:column>
+				<f:facet name="header">
+					<h:outputText value="DELETE"/>
+				</f:facet>
+				<h:form>		
+				<h:commandButton value="X" action="#{membreController.deleteMembre(membre)}"></h:commandButton>
+				</h:form>	
+			</h:column>
+			
 		</h:dataTable>
 		
 	</h:body>
