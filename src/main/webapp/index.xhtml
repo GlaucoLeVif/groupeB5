@@ -3,7 +3,6 @@
 xmlns:b="http://bootsfaces.net/ui"
 xmlns:f="http://java.sun.com/jsf/core"
 xmlns:h="http://java.sun.com/jsf/html"
-xmlns:jsf="http://xmlns.jcp.org/jsf"
 >
 
 	<h:head>
@@ -11,7 +10,6 @@ xmlns:jsf="http://xmlns.jcp.org/jsf"
 	</h:head>
 	
 	<h:body>
-<<<<<<< HEAD
 	<b:navBar brand="Project name" brandHref="index.xhtml" fixed="top" inverse="true">
             <b:navbarLinks>
                 <b:navLink value="Inscription" href="inscription.xhtml"></b:navLink>
@@ -19,121 +17,6 @@ xmlns:jsf="http://xmlns.jcp.org/jsf"
                 <b:navLink value="Contact" href="#contact"></b:navLink>
             </b:navbarLinks>
         </b:navBar>
-
-=======
-		<h1>Utilisateurs</h1>
-		button
-		<b:button value="Left" />
-		button
->>>>>>> branch 'master' of https://github.com/GlaucoLeVif/groupeB5
-		
-		
-<<<<<<< HEAD
-=======
-		<h:form>
-	 		Login : <h:inputText value="#{membreController.login}"></h:inputText>				<BR />
-	 		Password : <h:inputText value="#{membreController.mdp}"></h:inputText>				<BR />
-	 		Mail : <h:inputText value="#{membreController.mail}"></h:inputText>					<BR />
-	 		Nom : <h:inputText value="#{membreController.nom}"></h:inputText>					<BR />
-	 		Prénom : <h:inputText value="#{membreController.prenom}"></h:inputText>				<BR />
-	 		Rue : <h:inputText value="#{membreController.rue}"></h:inputText>					<BR />
-	 		Numéro : <h:inputText value="#{membreController.numRue}"></h:inputText>				<BR />
-	 		Ville : <h:inputText value="#{membreController.ville}"></h:inputText>				<BR />
-	 		Code postal : <h:inputText value="#{membreController.cp}"></h:inputText>			<BR />
-	 		Pays : <h:inputText value="#{membreController.pays}"></h:inputText>					<BR />
-	 		Nationalité : <h:inputText value="#{membreController.nationalite}"></h:inputText>	<BR />
-	 		Numéro GSM : <h:inputText value="#{membreController.numGSM}"></h:inputText>			<BR />
-	 		
-			<BR /><BR /><BR />
-			
-			<h:commandButton value="Save" action="#{membreController.doAjouterMembre()}"></h:commandButton>
-		</h:form>
-		
-		<BR /><BR /><BR />
-		<h1>Listes</h1>
-	 	#{membreController.doAfficherMembre()}
-		<BR /><BR /><BR />
-		
-	 	<h:dataTable value = "#{membreController.doAfficherMembre()}" var = "membre">
-	 		
-		   <h:column>
-		      <f:facet name = "header">LOGIN</f:facet>
-		      #{membre.idMembre}
-		   </h:column>
-		    
-		   <h:column>
-		      <f:facet name = "header">LOGIN</f:facet>
-		      #{membre.login}
-		   </h:column>
-		   
-		   <h:column>
-		      <f:facet name = "header">PASSWORD</f:facet>
-		      #{membre.mdp}
-		   </h:column>
-		   
-		   <h:column>
-		      <f:facet name = "header">MAIL</f:facet>
-		      #{membre.mail}
-		   </h:column>
-		   
-		   <h:column>
-		      <f:facet name = "header">PRENOM</f:facet>
-		      #{membre.prenom}
-		   </h:column>
-		   
-		   <h:column>
-		      <f:facet name = "header">NOM</f:facet>
-		      #{membre.nom}
-		   </h:column>
-		   
-		   <h:column>
-		      <f:facet name = "header">RUE</f:facet>
-		      #{membre.rue}
-		   </h:column>
-		   
-		   <h:column>
-		      <f:facet name = "header">VILLE</f:facet>
-		      #{membre.ville}
-		   </h:column>
-		   
-		   <h:column>
-		      <f:facet name = "header">PAYS</f:facet>
-		      #{membre.pays}
-		   </h:column>
-		   
-		   <h:column>
-		      <f:facet name = "header">NATIONALITE</f:facet>
-		      #{membre.nationalite}
-		   </h:column>
-		 
-		   <h:column>
-		      <f:facet name = "header">NUMGSM</f:facet>
-		      #{membre.numGSM}
-		   </h:column>
-		  
-		  <h:column>
-				<f:facet name="header">DETAILS</f:facet>
-					<h:form>
-						<h:commandButton value="Accéder" action="#{membreController.doDetails(membre)}"></h:commandButton>
-					</h:form>
-			</h:column>
-			
-		   	<h:column>
-				<f:facet name="header">
-					<h:outputText value="DELETE"/>
-				</f:facet>
-				<h:form>		
-				<h:commandButton value="X" action="#{membreController.doSupprimerMembre(membre)}"></h:commandButton>
-				</h:form>	
-			</h:column>
-			
-		</h:dataTable>
-		
-		<h:form>		
-			<h:commandButton value="Evènement" action="#{evenementController.doEvenement()}"></h:commandButton>
-		</h:form>
-			
->>>>>>> branch 'master' of https://github.com/GlaucoLeVif/groupeB5
 	</h:body>
 	
 </html>

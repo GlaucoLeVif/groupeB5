@@ -4,7 +4,6 @@ xmlns="http://www.w3.org/1999/xhtml"
 xmlns:b="http://bootsfaces.net/ui"
 xmlns:f="http://java.sun.com/jsf/core"
 xmlns:h="http://java.sun.com/jsf/html"
-xmlns:jsf="http://xmlns.jcp.org/jsf"
 >
 <h:head>
 <title>Inscription</title>
@@ -18,10 +17,9 @@ xmlns:jsf="http://xmlns.jcp.org/jsf"
             </b:navbarLinks>
         </b:navBar>
         
-        
 	<h1>Inscription</h1>
 		<h:form inline="true">
-  <h:panelGrid columns="2">
+  			<h:panelGrid columns="2">
 	 		<b:inputText label="Login : " value="#{membreController.login}"></b:inputText>				<BR />
 	 		<b:inputText label="Password : " value="#{membreController.mdp}"></b:inputText>				<BR />
 	 		<b:inputText label="Mail : " value="#{membreController.mail}"></b:inputText>					<BR />
