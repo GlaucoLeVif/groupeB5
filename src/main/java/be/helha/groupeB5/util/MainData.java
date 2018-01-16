@@ -15,7 +15,7 @@ public class MainData {
 	public static void main(String[] args) {
 
 		Date d = new Date(1997, 04, 14);
-		Membre m = new Membre("log", "mdp", "monmail", "Florian", "Led", "place", "Beaumont", "Belgique", "BE", "0492", d, 1, 6500, false);	// PQ numGSM en String
+		Membre m = new Membre("log", "mdp", "monmail", "distant", "Led", "place", "Beaumont", "Belgique", "BE", "0492", d, 1, 6500, false);	// PQ numGSM en String
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("groupeB5");
 		EntityManager em = emf.createEntityManager();
