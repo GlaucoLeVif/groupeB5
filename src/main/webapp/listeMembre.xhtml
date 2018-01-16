@@ -19,7 +19,9 @@ xmlns:jsf="http://xmlns.jcp.org/jsf"
                 <b:navLink value="Contact" href="#contact"></b:navLink>
             </b:navbarLinks>
         </b:navBar>
-<h1>Listes</h1>
+        
+		<h1>Listes</h1>
+		
 		<BR/><BR/>
 		
 	 	<h:dataTable value = "#{membreController.doAfficherMembre()}" var = "membre">
@@ -79,22 +81,22 @@ xmlns:jsf="http://xmlns.jcp.org/jsf"
 		      #{membre.numGSM}
 		   </h:column>
 		  
-		  <h:column>
+		  	<h:column>
 				<f:facet name="header">DETAILS</f:facet>
-					<h:form>
-						<h:commandButton value="Accéder" action="#{membreController.doDetails(membre)}"></h:commandButton>
-					</h:form>
+				<h:form>
+					<h:commandButton value="Accéder" action="#{membreController.doDetails(membre)}"></h:commandButton>
+				</h:form>
 			</h:column>
 			
 		   	<h:column>
-				<f:facet name="header">
-					<h:outputText value="DELETE"/>
-				</f:facet>
+				<f:facet name="header">DELETE</f:facet>
 				<h:form>		
-				<h:commandButton value="X" action="#{membreController.doSupprimerMembre(membre)}"></h:commandButton>
+					<h:commandButton value="X" action="#{membreController.doSupprimerMembre(membre)}"></h:commandButton>
 				</h:form>	
 			</h:column>
 			
 		</h:dataTable>
-</h:body>
+		
+		
+	</h:body>
 </html>

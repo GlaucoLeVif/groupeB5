@@ -21,27 +21,27 @@
 		<class>be.helha.groupeB5.entities.Evenement</class>
 		<class>be.helha.groupeB5.entities.Participation</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
-	
-		 <!-- <properties>
+		
+		 <properties>
 		    <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
 		    <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/dbb5"/>
 		    
 		    <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
 		  
 		    <property name="javax.persistence.jdbc.user" value="test"/>
-			<property name="javax.persistence.jdbc.password" value="test"/> 
-
-		</properties>-->
+			<property name="javax.persistence.jdbc.password" value="test"/>
+		</properties>
 		
+		<!--
 		<properties>
 		    <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
 		    <property name="javax.persistence.jdbc.url" value="jdbc:mysql://54.76.209.52:3306/dbb5"/>
  		    <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
 		  
 		    <property name="javax.persistence.jdbc.user" value="gb5"/>
-			<property name="javax.persistence.jdbc.password" value="2579"/> 
-
+			<property name="javax.persistence.jdbc.password" value="2579"/>
 		</properties>
+		-->
 		
 	</persistence-unit>
 	
