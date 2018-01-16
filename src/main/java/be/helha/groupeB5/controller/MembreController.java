@@ -16,9 +16,10 @@ public class MembreController {
 
 	@EJB
 	private GestionMembreEJB gestionMembreEJB;
-	private String login, mdp, mail, prenom, nom, rue, ville, pays, nationalite, numGSM;
+	private String login, mdp, mail, prenom, nom, rue,numRue, ville, pays, nationalite, numGSM;
 	private Date dateN;
-	private int numRue, cp;
+	private int cp;
+	private Membre membre = new Membre();
 	
 	public MembreController() {}
 	
@@ -34,11 +35,21 @@ public class MembreController {
 	public Membre doModifierMembre() {
 		return null;
 	}
-	/*
-	public Membre doSupprimerMembre() {
+	
+	public Membre doSupprimerMembre(Membre m) {
 		return gestionMembreEJB.deleteMembre(m);
 	}
-	*/
+	
+	public String doDetails(Membre m)
+	{
+		membre = m;
+		return "detailsMembre.xhtml?faces-redirect=false";
+	}
+	
+	public String doIndex()
+	{
+		return "index.xhtml?faces-redirect=true";
+	}
 	
 	public String getLogin() {
 		return login;
@@ -118,10 +129,10 @@ public class MembreController {
 		this.dateN = dateN;
 	}
 
-	public int getNumRue() {
+	public String getNumRue() {
 		return numRue;
 	}
-	public void setNumRue(int numRue) {
+	public void setNumRue(String numRue) {
 		this.numRue = numRue;
 	}
 
@@ -130,6 +141,12 @@ public class MembreController {
 	}
 	public void setCp(int cp) {
 		this.cp = cp;
+	}
+	public Membre getMembre() {
+		return membre;
+	}
+	public void setMembre(Membre membre) {
+		this.membre = membre;
 	}
 	
 	

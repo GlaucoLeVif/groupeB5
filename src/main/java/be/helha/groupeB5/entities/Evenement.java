@@ -16,9 +16,9 @@ public class Evenement implements Serializable {
 	private Integer idEv;
 	private String titre, resume, urlImage;
 	private double objectif, recolte;
-	private java.sql.Date dateEv;
+	private Date dateEv;
 	
-	public Evenement(String titre, String resume, String urlImage, double objectif, double recolte, java.sql.Date dateEv) {
+	public Evenement(String titre, String resume, String urlImage, double objectif, double recolte, Date dateEv) {
 		super();
 		this.titre = titre;
 		this.resume = resume;
@@ -81,7 +81,7 @@ public class Evenement implements Serializable {
 		return dateEv;
 	}
 
-	public void setDateEv(java.sql.Date dateEv) {
+	public void setDateEv(Date dateEv) {
 		this.dateEv = dateEv;
 	}
 	

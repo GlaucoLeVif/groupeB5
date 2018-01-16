@@ -57,5 +57,4 @@ public class DAOMembreLocalBean {
 		return m;
 	}
 	
-	
 }
