@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:b="http://bootsfaces.net/ui"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:jsf="http://xmlns.jcp.org/jsf"
+>
+
+<h:head>
+<title>Liste des Membres</title>
+</h:head>
+
+<h:body>
+<b:navBar brand="Project name" brandHref="index.xhtml" inverse="true">
+            <b:navbarLinks>
+                <b:navLink value="Inscription" href="inscription.xhtml"></b:navLink>
+                <b:navLink value="Liste membre" href="listeMembre.xhtml"></b:navLink>
+                <b:navLink value="Contact" href="#contact"></b:navLink>
+            </b:navbarLinks>
+        </b:navBar>
+<h1>Listes</h1>
+		<BR/><BR/>
+		
+	 	<h:dataTable value = "#{membreController.doAfficherMembre()}" var = "membre">
+	 		
+		   <h:column>
+		      <f:facet name = "header">LOGIN</f:facet>
+		      #{membre.idMembre}
+		   </h:column>
+		    
+		   <h:column>
+		      <f:facet name = "header">LOGIN</f:facet>
+		      #{membre.login}
+		   </h:column>
+		   
+		   <h:column>
+		      <f:facet name = "header">PASSWORD</f:facet>
+		      #{membre.mdp}
+		   </h:column>
+		   
+		   <h:column>
+		      <f:facet name = "header">MAIL</f:facet>
+		      #{membre.mail}
+		   </h:column>
+		   
+		   <h:column>
+		      <f:facet name = "header">PRENOM</f:facet>
+		      #{membre.prenom}
+		   </h:column>
+		   
+		   <h:column>
+		      <f:facet name = "header">NOM</f:facet>
+		      #{membre.nom}
+		   </h:column>
+		   
+		   <h:column>
+		      <f:facet name = "header">RUE</f:facet>
+		      #{membre.rue}
+		   </h:column>
+		   
+		   <h:column>
+		      <f:facet name = "header">VILLE</f:facet>
+		      #{membre.ville}
+		   </h:column>
+		   
+		   <h:column>
+		      <f:facet name = "header">PAYS</f:facet>
+		      #{membre.pays}
+		   </h:column>
+		   
+		   <h:column>
+		      <f:facet name = "header">NATIONALITE</f:facet>
+		      #{membre.nationalite}
+		   </h:column>
+		 
+		   <h:column>
+		      <f:facet name = "header">NUMGSM</f:facet>
+		      #{membre.numGSM}
+		   </h:column>
+		  
+		  <h:column>
+				<f:facet name="header">DETAILS</f:facet>
+					<h:form>
+						<h:commandButton value="Accéder" action="#{membreController.doDetails(membre)}"></h:commandButton>
+					</h:form>
+			</h:column>
+			
+		   	<h:column>
+				<f:facet name="header">
+					<h:outputText value="DELETE"/>
+				</f:facet>
+				<h:form>		
+				<h:commandButton value="X" action="#{membreController.doSupprimerMembre(membre)}"></h:commandButton>
+				</h:form>	
+			</h:column>
+			
+		</h:dataTable>
+</h:body>
+</html>
