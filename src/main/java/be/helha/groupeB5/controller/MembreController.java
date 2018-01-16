@@ -16,7 +16,7 @@ public class MembreController {
 
 	@EJB
 	private GestionMembreEJB gestionMembreEJB;
-	private String login, mdp, mail, prenom, nom, rue, ville, pays, nationalite, numeroGSM;
+	private String login, mdp, mail, prenom, nom, rue, ville, pays, nationalite, numGSM;
 	private Date dateN;
 	private int numRue, cp;
 	
@@ -27,18 +27,18 @@ public class MembreController {
 	}
 	
 	public Membre doAjouterMembre() {
-		Membre m = new Membre(login, mdp, mail, prenom, nom, rue, ville, pays, nationalite, numeroGSM, dateN, numRue, cp, false);
+		Membre m = new Membre(login, mdp, mail, prenom, nom, rue, ville, pays, nationalite, numGSM, dateN, numRue, cp, false);
 		return gestionMembreEJB.addMembre(m);
 	}
 	
 	public Membre doModifierMembre() {
 		return null;
 	}
-	
+	/*
 	public Membre doSupprimerMembre() {
-		return null;
+		return gestionMembreEJB.deleteMembre(m);
 	}
-	
+	*/
 	
 	public String getLogin() {
 		return login;
@@ -102,12 +102,13 @@ public class MembreController {
 	public void setNationalite(String nationalite) {
 		this.nationalite = nationalite;
 	}
-
-	public String getNumeroGSM() {
-		return numeroGSM;
+	
+	public String getNumGSM() {
+		return numGSM;
 	}
-	public void setNumeroGSM(String numeroGSM) {
-		this.numeroGSM = numeroGSM;
+
+	public void setNumGSM(String numGSM) {
+		this.numGSM = numGSM;
 	}
 
 	public Date getDateN() {
