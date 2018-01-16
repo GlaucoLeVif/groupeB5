@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 
 @Entity
@@ -14,15 +15,17 @@ public class Evenement implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer idEv;
-	private String titre, resume, urlImage;
+	private String titre, resume;
 	private double objectif, recolte;
 	private Date dateEv;
+	@Lob
+	private byte[] image1;
 	
-	public Evenement(String titre, String resume, String urlImage, double objectif, double recolte, Date dateEv) {
+	public Evenement(String titre, String resume, byte[] image1, double objectif, double recolte, Date dateEv) {
 		super();
 		this.titre = titre;
 		this.resume = resume;
-		this.urlImage = urlImage;
+		this.image1 = image1;
 		this.objectif = objectif;
 		this.recolte = recolte;
 		this.dateEv = dateEv;
@@ -53,12 +56,13 @@ public class Evenement implements Serializable {
 		this.resume = resume;
 	}
 
-	public String getUrlImage() {
-		return urlImage;
+
+	public byte[] getImage1() {
+		return image1;
 	}
 
-	public void setUrlImage(String urlImage) {
-		this.urlImage = urlImage;
+	public void setImage1(byte[] image1) {
+		this.image1 = image1;
 	}
 
 	public double getObjectif() {
@@ -97,7 +101,7 @@ public class Evenement implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Evenement [idEv=" + idEv + ", titre=" + titre + ", resume=" + resume + ", urlImage=" + urlImage
+		return "Evenement [idEv=" + idEv + ", titre=" + titre + ", resume=" + resume 
 				+ ", objectif=" + objectif + ", recolte=" + recolte + ", dateEv=" + dateEv + "]";
 	}
 	
