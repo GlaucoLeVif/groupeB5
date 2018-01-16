@@ -42,6 +42,16 @@ public class Membre implements Serializable {
 	public Membre() {
 		
 	}
+	
+	
+
+	public Integer getIdMembre() {
+		return idMembre;
+	}
+
+	public void setIdMembre(Integer idMembre) {
+		this.idMembre = idMembre;
+	}
 
 	public String getLogin() {
 		return login;
@@ -172,7 +182,8 @@ public class Membre implements Serializable {
 				+ nationalite + ", numeroGSM=" + numeroGSM + ", dateN=" + dateN + ", numRue=" + numRue + ", cp=" + cp
 				+ ", isAdmin=" + isAdmin + "]";
 	}
-	
+
+
 	
 	
 	
