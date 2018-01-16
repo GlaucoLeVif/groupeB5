@@ -38,7 +38,7 @@ public class MainData {
 		}
 		
 	
-		Membre m = new Membre("log", "mdp", "monmail", "distant", "Led", "place", "Beaumont", "Belgique", "BE", "0492", d, 1, 6500, false);	// PQ numGSM en String
+		Membre m = new Membre("log", "mdp", "monmail", "distant", "Led", "place", "Beaumont", "Belgique", "BE", "0492", d, "1", 6500, false);
 		Evenement e = new Evenement("titre1", "resume1", "url1", 5000.00, 0, d2);
 		Evenement e2 = new Evenement("titre2", "resume2", "url2", 100000.00, 0, d3);
 		

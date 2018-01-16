@@ -15,13 +15,13 @@ public class Membre implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idMembre;
-	private String login, mdp, mail, prenom, nom, rue, ville, pays, nationalite, numGSM;
+	private String login, mdp, mail, prenom, nom, rue,numRue, ville, pays, nationalite, numGSM;
 	private Date dateN;
-	private int numRue, cp;
+	private int cp;
 	private boolean isAdmin;
 
 	public Membre(String login, String mdp, String mail, String prenom, String nom, String rue, String ville,
-			String pays, String nationalite, String numGSM, Date dateN, int numRue, int cp, boolean isAdmin) {
+			String pays, String nationalite, String numGSM, Date dateN, String numRue, int cp, boolean isAdmin) {
 		super();
 		this.login = login;
 		this.mdp = mdp;
@@ -141,11 +141,11 @@ public class Membre implements Serializable {
 		this.dateN = dateN;
 	}
 
-	public int getNumRue() {
+	public String getNumRue() {
 		return numRue;
 	}
 
-	public void setNumRue(int numRue) {
+	public void setNumRue(String numRue) {
 		this.numRue = numRue;
 	}
 
