@@ -15,13 +15,13 @@ public class Membre implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idMembre;
-	private String login, mdp, mail, prenom, nom, rue, ville, pays, nationalite, numeroGSM;
+	private String login, mdp, mail, prenom, nom, rue, ville, pays, nationalite, numGSM;
 	private Date dateN;
 	private int numRue, cp;
 	private boolean isAdmin;
 
 	public Membre(String login, String mdp, String mail, String prenom, String nom, String rue, String ville,
-			String pays, String nationalite, String numeroGSM, Date dateN, int numRue, int cp, boolean isAdmin) {
+			String pays, String nationalite, String numGSM, Date dateN, int numRue, int cp, boolean isAdmin) {
 		super();
 		this.login = login;
 		this.mdp = mdp;
@@ -32,7 +32,7 @@ public class Membre implements Serializable {
 		this.ville = ville;
 		this.pays = pays;
 		this.nationalite = nationalite;
-		this.numeroGSM = numeroGSM;
+		this.numGSM = numGSM;
 		this.dateN = dateN;
 		this.numRue = numRue;
 		this.cp = cp;
@@ -41,6 +41,16 @@ public class Membre implements Serializable {
 	
 	public Membre() {
 		
+	}
+
+	
+
+	public Integer getIdMembre() {
+		return idMembre;
+	}
+
+	public void setIdMembre(Integer idMembre) {
+		this.idMembre = idMembre;
 	}
 
 	public String getLogin() {
@@ -115,12 +125,12 @@ public class Membre implements Serializable {
 		this.nationalite = nationalite;
 	}
 
-	public String getNumeroGSM() {
-		return numeroGSM;
+	public String getNumGSM() {
+		return numGSM;
 	}
 
-	public void setNumeroGSM(String numeroGSM) {
-		this.numeroGSM = numeroGSM;
+	public void setNumGSM(String numGSM) {
+		this.numGSM = numGSM;
 	}
 
 	public Date getDateN() {
@@ -169,7 +179,7 @@ public class Membre implements Serializable {
 	public String toString() {
 		return "Membre [idMembre=" + idMembre + ", login=" + login + ", mdp=" + mdp + ", mail=" + mail + ", prenom="
 				+ prenom + ", nom=" + nom + ", rue=" + rue + ", ville=" + ville + ", pays=" + pays + ", nationalite="
-				+ nationalite + ", numeroGSM=" + numeroGSM + ", dateN=" + dateN + ", numRue=" + numRue + ", cp=" + cp
+				+ nationalite + ", numeroGSM=" + numGSM + ", dateN=" + dateN + ", numRue=" + numRue + ", cp=" + cp
 				+ ", isAdmin=" + isAdmin + "]";
 	}
 	

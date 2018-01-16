@@ -23,7 +23,7 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 	 		Code postal : <h:inputText value="#{membreController.cp}"></h:inputText>			<BR />
 	 		Pays : <h:inputText value="#{membreController.pays}"></h:inputText>					<BR />
 	 		Nationalité : <h:inputText value="#{membreController.nationalite}"></h:inputText>	<BR />
-	 		Numéro GSM : <h:inputText value="#{membreController.numeroGSM}"></h:inputText>		<BR />
+	 		Numéro GSM : <h:inputText value="#{membreController.numGSM}"></h:inputText>		<BR />
 	 		
 			<BR /><BR /><BR />
 			
@@ -35,12 +35,12 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 		<BR /><BR /><BR />
 		
 	 	<h:dataTable value = "#{membreController.doAfficherMembre()}" var = "membre">
-	 		<!--
+	 		
 		   <h:column>
 		      <f:facet name = "header">LOGIN</f:facet>
 		      #{membre.idMembre}
 		   </h:column>
-		    -->
+		    
 		   <h:column>
 		      <f:facet name = "header">LOGIN</f:facet>
 		      #{membre.login}
@@ -85,12 +85,12 @@ xmlns:jsf="http://xmlns.jcp.org/jsf">
 		      <f:facet name = "header">NATIONALITE</f:facet>
 		      #{membre.nationalite}
 		   </h:column>
-		 <!--   
+		 
 		   <h:column>
 		      <f:facet name = "header">NUMGSM</f:facet>
 		      #{membre.numGSM}
 		   </h:column>
-		  -->  
+		  
 		</h:dataTable>
 		
 	</h:body>
