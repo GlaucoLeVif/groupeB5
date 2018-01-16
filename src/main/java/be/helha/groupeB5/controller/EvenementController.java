@@ -13,10 +13,12 @@ public class EvenementController {
 
 	@EJB
 	GestionEvenementEJB gestionEvenementEJB;
-	private String titre, resume, urlImage;
+	private String titre, resume;
 	private double objectif, recolte;
 	private Date dateEv;
 	private Evenement event = new Evenement();
+	
+	private byte[] image;
 	
 	public EvenementController() {}
 	
@@ -61,12 +63,17 @@ public class EvenementController {
 	public void setResume(String resume) {
 		this.resume = resume;
 	}
-	public String getUrlImage() {
-		return urlImage;
+
+	public byte[] getImage() {
+		return image;
 	}
-	public void setUrlImage(String urlImage) {
-		this.urlImage = urlImage;
+
+
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
+
+
 	public double getObjectif() {
 		return objectif;
 	}
