@@ -4,11 +4,15 @@ import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
 import be.helha.groupeB5.entities.Evenement;
 import be.helha.groupeB5.entities.Membre;
 import be.helha.groupeB5.sessionejb.GestionEvenementEJB;
 
+@Named
+@RequestScoped
 public class EvenementController {
 
 	@EJB
@@ -24,6 +28,7 @@ public class EvenementController {
 	
 
 	public List<Evenement> doAfficherEvenement() {
+		System.out.println("salut");
 		return gestionEvenementEJB.selectAll();
 	}
 	
@@ -40,6 +45,12 @@ public class EvenementController {
 		event = e;
 		return "detailsEvenement.xhtml?faces-redirect=false";
 	}
+	
+	public String doEvenement()
+	{
+		return "indexEvent.xhtml?faces-redirect=true";
+	}
+	
 	
 	public String doIndex()
 	{

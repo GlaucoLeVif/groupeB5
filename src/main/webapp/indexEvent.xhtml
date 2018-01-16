@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:b="http://bootsfaces.net/ui"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:jsf="http://xmlns.jcp.org/jsf"
+>
+
+	<h:head>
+		<title>Liste évenement</title>
+		<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
+	</h:head>
+	
+	<h:body>
+		<h1>Evenements</h1>
+	
+	
+		<h:form>
+	 		Titre : <h:inputText value="#{evenementController.titre}"></h:inputText>				<BR />
+	 		resumé : <h:inputText value="#{evenementController.resume}"></h:inputText>				<BR />
+	 		Objectif(€) : <h:inputText  value="#{evenementController.objectif}"></h:inputText>					<BR />
+	 		Récolte(€) : <h:inputText value="#{evenementController.recolte}"></h:inputText>					<BR />
+	 		Date de l'événement : <h:inputText value="#{evenementController.dateEv}"></h:inputText>				<BR />
+	 		Importer une image(pas encore fait) :				<BR />
+	 		
+	 		
+			<BR /><BR /><BR />
+			
+			<h:commandButton value="Save(pas opérationnel)" action="#{evenementController.doAjouterEvenement()}"></h:commandButton>
+		</h:form>
+		
+		<BR /><BR /><BR />
+		
+		<h1>Listes</h1>
+	 	#{evenementController.doAfficherEvenement()}
+		<BR /><BR /><BR />
+		
+		
+	 	<h:dataTable value = "#{evenementController.doAfficherEvenement()}" var = "ev">
+	 		
+		   <h:column>
+		      <f:facet name = "header">ID</f:facet>
+		      #{ev.idEv}
+		   </h:column>
+		    
+		   <h:column>
+		      <f:facet name = "header">TITRE</f:facet>
+		      #{ev.titre}
+		   </h:column>
+		   
+		   <h:column>
+		      <f:facet name = "header">RESUME</f:facet>
+		      #{ev.resume}
+		   </h:column>
+		   
+		   <h:column>
+		      <f:facet name = "header">OBJECTIF</f:facet>
+		      #{ev.objectif}
+		   </h:column>
+		   
+		   <h:column>
+		      <f:facet name = "header">RECOLTE</f:facet>
+		      #{ev.recolte}
+		   </h:column>
+		   
+		   <h:column>
+		      <f:facet name = "header">DATEEV</f:facet>
+		      #{ev.dateEv}
+		   </h:column>
+		   <h:column>
+		      <f:facet name = "header">IMAGE1</f:facet>
+		     <img src="data:image/jpg;base64,#{ev.image1}" width="75"></img>
+		   </h:column>
+		   
+		  
+		  <h:column>
+				<f:facet name="header">DETAILS</f:facet>
+					<h:form>
+						<h:commandButton value="Accéder" action="#{membreController.doDetails(membre)}"></h:commandButton>
+					</h:form>
+			</h:column>
+			
+		   	<h:column>
+				<f:facet name="header">
+					<h:outputText value="DELETE"/>
+				</f:facet>
+				<h:form>		
+				<h:commandButton value="X" action="#{evenementController.doSupprimerEvenement(ev)}"></h:commandButton>
+				</h:form>	
+			</h:column>
+			
+		</h:dataTable>
+		
+		<h:form>		
+			<h:commandButton value="Evènement" action="#{membreController.doEvenement()}"></h:commandButton>
+		</h:form>
+	
+	</h:body>
+	
+</html>

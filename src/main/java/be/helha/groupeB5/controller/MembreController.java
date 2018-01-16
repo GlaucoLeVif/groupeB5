@@ -46,6 +46,7 @@ public class MembreController {
 		return "detailsMembre.xhtml?faces-redirect=false";
 	}
 	
+	
 	public String doIndex()
 	{
 		return "index.xhtml?faces-redirect=true";

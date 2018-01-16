@@ -1,6 +1,8 @@
 package be.helha.groupeB5.entities;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Base64;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -57,8 +59,9 @@ public class Evenement implements Serializable {
 	}
 
 
-	public byte[] getImage1() {
-		return image1;
+	public String getImage1() {
+		//byte barray[] = Base64.getEncoder().encode(image1);
+		return new String(image1);
 	}
 
 	public void setImage1(byte[] image1) {
@@ -98,12 +101,19 @@ public class Evenement implements Serializable {
 		}
 		return false;
 	}
-
+/*
 	@Override
 	public String toString() {
 		return "Evenement [idEv=" + idEv + ", titre=" + titre + ", resume=" + resume 
 				+ ", objectif=" + objectif + ", recolte=" + recolte + ", dateEv=" + dateEv + "]";
+	}*/
+
+	@Override
+	public String toString() {
+		return "Evenement [idEv=" + idEv + ", titre=" + titre + ", resume=" + resume + ", objectif=" + objectif
+				+ ", recolte=" + recolte + ", dateEv=" + dateEv +  "]";
 	}
+	
 	
 	
 	
