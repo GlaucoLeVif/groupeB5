@@ -1,12 +1,25 @@
 package be.helha.groupeB5.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Participation {
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
+@Entity
+public class Participation implements Serializable {
+
+	@Id
+	@GeneratedValue
+	private Integer idP;
 	private float montant;
 	private Date dateDon;
+	@OneToOne(cascade=CascadeType.ALL)
 	private Membre m;
+	@OneToOne(cascade=CascadeType.ALL)
 	private Evenement e;
 	
 	public Participation(float montant,Date dateDon,Membre m,Evenement e)
@@ -15,6 +28,18 @@ public class Participation {
 		this.dateDon= dateDon;
 		this.m = m;
 		this.e = e;
+	}
+
+	public Participation() {}
+	
+	
+	
+	public Integer getIdP() {
+		return idP;
+	}
+
+	public void setIdP(Integer idP) {
+		this.idP = idP;
 	}
 
 	public float getMontant() {
