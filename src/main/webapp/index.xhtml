@@ -14,7 +14,7 @@ xmlns:jsf="http://xmlns.jcp.org/jsf"
 	</h:head>
 	
 	<h:body>
-	<h1>Utilisateurs</h1>
+		<h1>Utilisateurs</h1>
 		button
 		<b:button value="Left" />
 		button
@@ -119,6 +119,10 @@ xmlns:jsf="http://xmlns.jcp.org/jsf"
 			
 		</h:dataTable>
 		
+		<h:form>		
+			<h:commandButton value="Evènement" action="#{evenementController.doEvenement()}"></h:commandButton>
+		</h:form>
+			
 	</h:body>
 	
 </html>
