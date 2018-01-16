@@ -16,9 +16,9 @@ public class MembreController {
 
 	@EJB
 	private GestionMembreEJB gestionMembreEJB;
-	private String login, mdp, mail, prenom, nom, rue, ville, pays, nationalite, numGSM;
+	private String login, mdp, mail, prenom, nom, rue,numRue, ville, pays, nationalite, numGSM;
 	private Date dateN;
-	private int numRue, cp;
+	private int cp;
 	private Membre membre = new Membre();
 	
 	public MembreController() {}
@@ -44,6 +44,11 @@ public class MembreController {
 	{
 		membre = m;
 		return "detailsMembre.xhtml";
+	}
+	
+	public String doIndex()
+	{
+		return "index.xhtml";
 	}
 	
 	public String getLogin() {
@@ -124,10 +129,10 @@ public class MembreController {
 		this.dateN = dateN;
 	}
 
-	public int getNumRue() {
+	public String getNumRue() {
 		return numRue;
 	}
-	public void setNumRue(int numRue) {
+	public void setNumRue(String numRue) {
 		this.numRue = numRue;
 	}
 
