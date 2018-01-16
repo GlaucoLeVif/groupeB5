@@ -43,12 +43,12 @@ public class MembreController {
 	public String doDetails(Membre m)
 	{
 		membre = m;
-		return "detailsMembre.xhtml";
+		return "detailsMembre.xhtml?faces-redirect=false";
 	}
 	
 	public String doIndex()
 	{
-		return "index.xhtml";
+		return "index.xhtml?faces-redirect=true";
 	}
 	
 	public String getLogin() {
