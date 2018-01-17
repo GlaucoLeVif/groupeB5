@@ -14,8 +14,17 @@ xmlns:jsf="http://xmlns.jcp.org/jsf"
 	</h:head>
 	
 	<h:body>
+	<b:navBar brand="Project name" brandHref="index.xhtml" inverse="true">
+            <b:navbarLinks>
+                <b:navLink value="Inscription" href="inscription.xhtml"></b:navLink>
+                <b:navLink value="Liste membre" href="listeMembre.xhtml"></b:navLink>
+                <b:navLink value="Liste Evenement" href="indexEvent.xhtml"></b:navLink>
+            </b:navbarLinks>
+        </b:navBar>
 		<h1>Evenements</h1>
-	<h:form enctype="multipart/form-data">
+	
+	
+		<h:form>
 	 		Titre : <h:inputText value="#{evenementController.titre}"></h:inputText>				<BR />
 	 		resumé : <h:inputText value="#{evenementController.resume}"></h:inputText>				<BR />
 	 		Objectif(€) : <h:inputText  value="#{evenementController.objectif}"></h:inputText>					<BR />
@@ -31,67 +40,63 @@ xmlns:jsf="http://xmlns.jcp.org/jsf"
 		
 		<BR /><BR /><BR />
 		
-		
 		<h1>Listes</h1>
 	 	#{evenementController.doAfficherEvenement()}
 		<BR /><BR /><BR />
 		
 		
-	 	
-	 	<h:dataTable value = "#{evenementController.doAfficherEvenement()}" var = "ev">
+	 	<b:dataTable value = "#{evenementController.doAfficherEvenement()}" var = "ev">
 	 		
-		   <h:column>
-		      <f:facet name = "header">ID</f:facet>
-		      #{ev.idEv}
-		   </h:column>
+		   <b:dataTableColumn value="#{ev.idEv}">
+		   </b:dataTableColumn>
 		    
-		   <h:column>
+		    <b:dataTableColumn>
 		      <f:facet name = "header">TITRE</f:facet>
 		      #{ev.titre}
-		   </h:column>
+		   </b:dataTableColumn>
 		   
-		   <h:column>
+		    <b:dataTableColumn>
 		      <f:facet name = "header">RESUME</f:facet>
 		      #{ev.resume}
-		   </h:column>
+		   </b:dataTableColumn>
 		   
-		   <h:column>
+		    <b:dataTableColumn>
 		      <f:facet name = "header">OBJECTIF</f:facet>
 		      #{ev.objectif}
-		   </h:column>
+		   </b:dataTableColumn>
 		   
-		   <h:column>
+		   <b:dataTableColumn>
 		      <f:facet name = "header">RECOLTE</f:facet>
 		      #{ev.recolte}
-		   </h:column>
+		   </b:dataTableColumn>
 		   
-		   <h:column>
+		    <b:dataTableColumn>
 		      <f:facet name = "header">DATEEV</f:facet>
 		      #{ev.dateEv}
-		   </h:column>
-		   <h:column>
+		   </b:dataTableColumn>
+		   <b:dataTableColumn>
 		      <f:facet name = "header">IMAGE1</f:facet>
 		     <img src="data:image/jpg;base64,#{ev.image1}" width="75"></img>
-		   </h:column>
+		   </b:dataTableColumn>
 		   
 		  
-		  <h:column>
+		  <b:dataTableColumn>
 				<f:facet name="header">DETAILS</f:facet>
 					<h:form>
 						<h:commandButton value="Accéder" action="#{membreController.doDetails(membre)}"></h:commandButton>
 					</h:form>
-			</h:column>
+			</b:dataTableColumn>
 			
-		   	<h:column>
+		   	 <b:dataTableColumn>
 				<f:facet name="header">
 					<h:outputText value="DELETE"/>
 				</f:facet>
 				<h:form>		
 				<h:commandButton value="X" action="#{evenementController.doSupprimerEvenement(ev)}"></h:commandButton>
 				</h:form>	
-			</h:column>
+			</b:dataTableColumn>
 			
-		</h:dataTable>
+		</b:dataTable>
 		
 		<h:form>		
 			<h:commandButton value="Evènement" action="#{membreController.doEvenement()}"></h:commandButton>
