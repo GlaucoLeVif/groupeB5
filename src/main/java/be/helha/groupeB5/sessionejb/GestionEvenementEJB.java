@@ -19,6 +19,7 @@ public class GestionEvenementEJB implements IGestionEvenementEJBRemote{
 	
 	@Override	
 	public List<Evenement> selectAll() {
+		System.out.println("select all");
 		return dao.rechercherEvenement();
 	}
 

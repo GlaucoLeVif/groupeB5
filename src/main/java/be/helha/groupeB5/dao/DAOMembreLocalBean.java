@@ -58,6 +58,15 @@ public class DAOMembreLocalBean {
 	public Membre modifierMembre(Membre m) {
 		return m;
 	}
+	
+	public List<Membre> checkConnect(String login, String mdp) {
+		String str = "SELECT m FROM Membre m where m.login =:login and m.mdp =:mdp";
+		Query query = em.createQuery(str);
+		query.setParameter("login", login);
+		query.setParameter("mdp", mdp);
+		
+		return (List<Membre>)query.getResultList();
+	}
 
 	/*public Membre supprimerMembre(Membre m) {
 		String str="Delete FROM Membre m WHERE m.login=:login";
