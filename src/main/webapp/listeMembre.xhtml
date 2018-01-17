@@ -26,7 +26,16 @@ xmlns:jsf="http://xmlns.jcp.org/jsf"
 		<h1>Listes</h1>
 		<BR/><BR/>
 		
+<<<<<<< HEAD
 		<b:dataTable value = "#{membreController.doAfficherMembre()}" var = "ev">
+=======
+	 	<h:dataTable value = "#{membreController.doAfficherMembre()}" var = "membre">
+	 		
+		   <h:column>
+		      <f:facet name = "header">ID</f:facet>
+		      #{membre.idMembre}
+		   </h:column>
+>>>>>>> branch 'master' of https://github.com/GlaucoLeVif/groupeB5
 		    
 		    <b:dataTableColumn>
 		      <f:facet name = "header">LOGIN</f:facet>

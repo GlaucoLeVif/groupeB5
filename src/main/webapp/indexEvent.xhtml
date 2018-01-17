@@ -38,7 +38,7 @@ xmlns:jsf="http://xmlns.jcp.org/jsf"
 	 		
 			<BR /><BR /><BR />
 			
-			<h:commandButton value="Save(pas opérationnel)" action="#{evenementController.convertImage()}"></h:commandButton>
+			<h:commandButton value="Save(pas opérationnel)" action="#{evenementController.doAjouterEvenement()}"></h:commandButton>
 		</h:form>
 		
 		<BR /><BR /><BR />
@@ -85,7 +85,7 @@ xmlns:jsf="http://xmlns.jcp.org/jsf"
 		  <b:dataTableColumn>
 				<f:facet name="header">DETAILS</f:facet>
 					<h:form>
-						<h:commandButton value="Accéder" action="#{membreController.doDetails(membre)}"></h:commandButton>
+						<h:commandButton value="Accéder" action="#{evenementController.doDetails(ev)}"></h:commandButton>
 					</h:form>
 			</b:dataTableColumn>
 			
