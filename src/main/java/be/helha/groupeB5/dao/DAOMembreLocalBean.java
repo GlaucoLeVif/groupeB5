@@ -96,13 +96,14 @@ public class DAOMembreLocalBean {
 	}
 	
 	public Evenement ajouterEvenement(Evenement e) {
+		System.out.println("stade3");
 		if(isExistingEvenement(e.getTitre()))	return null;
 		em.persist(e);
 		return e;
 	}
 	
 	public boolean isExistingEvenement(String titre) {
-		String str = "SELECT e.idEvenement FROM Evenement e where e.titre =:titre";
+		String str = "SELECT e.idEv FROM Evenement e where e.titre =:titre";
 		Query query = em.createQuery(str);
 		query.setParameter("titre", titre);
 		

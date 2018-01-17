@@ -24,6 +24,7 @@ public class GestionEvenementEJB implements IGestionEvenementEJBRemote{
 
 	@Override
 	public Evenement addEvenement(Evenement e) {
+		System.out.println("stade2");
 		return dao.ajouterEvenement(e);
 	}
 

@@ -18,22 +18,25 @@ xmlns:h="http://java.sun.com/jsf/html"
         </b:navBar>
         
 	<h1>Inscription</h1>
-		<h:form>
+		<h:form inline="true">
   			<h:panelGrid columns="2">
-	 		<b:inputText label="Login : " value="#{membreController.login}"></b:inputText>				<BR />
-	 		<b:inputText label="Password : " value="#{membreController.mdp}"></b:inputText>				<BR />
-	 		<b:inputText label="Mail : " value="#{membreController.mail}"></b:inputText>					<BR />
-	 		<b:inputText label="Nom : " value="#{membreController.nom}"></b:inputText>					<BR />
-	 		<b:inputText label="Prénom : " value="#{membreController.prenom}"></b:inputText>				<BR />
-	 		<b:inputText label="Rue : " value="#{membreController.rue}"></b:inputText>					<BR />
-	 		<b:inputText label="Numéro : " value="#{membreController.numRue}"></b:inputText>				<BR />
-	 		<b:inputText label="Ville : " value="#{membreController.ville}"></b:inputText>				<BR />
-	 		<b:inputText label="Code Postal : " value="#{membreController.cp}"></b:inputText>			<BR />
-	 		<b:inputText label="Pays : " value="#{membreController.pays}"></b:inputText>					<BR />
-	 		<b:inputText label="Nationalité : " value="#{membreController.nationalite}"></b:inputText>	<BR />
-	 		<b:inputText label="Numéro de GSM : " value="#{membreController.numGSM}"></b:inputText>			<BR />
-  </h:panelGrid>
-</h:form>
-	 <h:commandButton value="Save" action="#{membreController.doAjouterMembre()}"></h:commandButton>	
-</h:body>
+		 		<b:inputText label="Login : " value="#{membreController.login}"></b:inputText>				<BR />
+		 		<b:inputText label="Password : " value="#{membreController.mdp}"></b:inputText>				<BR />
+		 		<b:inputText label="Mail : " value="#{membreController.mail}"></b:inputText>				<BR />
+		 		<b:inputText label="Nom : " value="#{membreController.nom}"></b:inputText>					<BR />
+		 		<b:inputText label="Prénom : " value="#{membreController.prenom}"></b:inputText>			<BR />
+		 		<b:inputText label="Rue : " value="#{membreController.rue}"></b:inputText>					<BR />
+		 		<b:inputText label="Numéro : " value="#{membreController.numRue}"></b:inputText>			<BR />
+		 		<b:inputText label="Ville : " value="#{membreController.ville}"></b:inputText>				<BR />
+		 		<b:inputText label="Code Postal : " value="#{membreController.cp}"></b:inputText>			<BR />
+		 		<b:inputText label="Pays : " value="#{membreController.pays}"></b:inputText>				<BR />
+		 		<b:inputText label="Nationalité : " value="#{membreController.nationalite}"></b:inputText>	<BR />
+		 		<b:inputText label="Numéro de GSM : " value="#{membreController.numGSM}"></b:inputText>		<BR />
+  			</h:panelGrid>
+  			
+			<h:commandButton value="Save" action="#{membreController.doAjouterMembre()}"></h:commandButton>
+		</h:form>
+		
+		
+	</h:body>
 </html>
