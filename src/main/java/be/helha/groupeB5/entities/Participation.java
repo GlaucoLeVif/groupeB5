@@ -17,9 +17,7 @@ public class Participation implements Serializable {
 	private Integer idP;
 	private float montant;
 	private Date dateDon;
-	@OneToOne(cascade=CascadeType.ALL)
 	private Membre m;
-	@OneToOne(cascade=CascadeType.ALL)
 	private Evenement e;
 	
 	public Participation(float montant,Date dateDon,Membre m,Evenement e)
