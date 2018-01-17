@@ -1,7 +1,9 @@
 package be.helha.groupeB5.controller;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.DateFormat;
@@ -15,8 +17,11 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.servlet.http.Part;
 
+import com.sun.istack.logging.Logger;
+
 import be.helha.groupeB5.entities.Evenement;
 import be.helha.groupeB5.entities.Membre;
+import be.helha.groupeB5.entities.UploadPage;
 import be.helha.groupeB5.sessionejb.GestionEvenementEJB;
 
 @Named
@@ -32,6 +37,7 @@ public class EvenementController {
 	
 	private byte[] image1;
 	private File file1;
+	private UploadPage up = new UploadPage();
 	
 	public EvenementController() {}
 	
@@ -71,9 +77,9 @@ public class EvenementController {
 	}
 	
 	public Evenement doAjouterEvenement() {
-		/*convertImage();
+		image1 = up.uploadFile();
 		Evenement e = new Evenement(titre, resume, image1, objectif, recolte, dateEv);
-		System.out.println(e.getImage1());*/
+		System.out.println(e.getImage1());
 		System.out.println("stade1");
 		Date d = new Date();
 		DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
@@ -83,13 +89,13 @@ public class EvenementController {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		Evenement e = new Evenement("titre"+System.currentTimeMillis(), "resume1", null, 5000.00, 0, d);
+		//Evenement e = new Evenement("titre"+System.currentTimeMillis(), "resume1", null, 5000.00, 0, d);
 		//System.out.println(e.toString());
 		return gestionEvenementEJB.addEvenement(e);
 		//return null;
 	}
 	
-	public void convertImage()
+	public void convertImage() throws FileNotFoundException
 	{
 		
 		
@@ -101,7 +107,7 @@ public class EvenementController {
 			fis = new FileInputStream(file1);
 			fis.read(image1);
 			fis.close();
-			System.out.println("réussi !");
+			System.out.println("rï¿½ussi !");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -113,6 +119,27 @@ public class EvenementController {
 		InputStream input = file1.getInputStream();
 		byte[] image = IOUtils.toByteArray(input); // Apache commons IO.
 		someEntity.setImage(image);*/
+		
+
+		 
+	        FileInputStream fis = new FileInputStream(file1);
+	      
+			
+	        //System.out.println(file.exists() + "!!");
+	        //InputStream in = resource.openStream();
+	       /* ByteArrayOutputStream bos = new ByteArrayOutputStream();
+	        byte[] buf = new byte[1024];
+	        try {
+	            for (int readNum; (readNum = fis.read(buf)) != -1;) {
+	                bos.write(buf, 0, readNum); //no doubt here is 0
+	                //Writes len bytes from the specified byte array starting at offset off to this byte array output stream.
+	                System.out.println("read " + readNum + " bytes,");
+	            }
+	        } catch (IOException ex) {
+	            
+	        }
+	        image1 = bos.toByteArray();*/
+	        
 	}
 	
 	
@@ -174,6 +201,16 @@ public class EvenementController {
 
 	public void setFile1(File file1) {
 		this.file1 = file1;
+	}
+
+
+	public UploadPage getUp() {
+		return up;
+	}
+
+
+	public void setUp(UploadPage up) {
+		this.up = up;
 	}
 	
 	
