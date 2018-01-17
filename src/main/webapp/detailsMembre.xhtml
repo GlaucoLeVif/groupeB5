@@ -10,13 +10,13 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
 	</h:head>
 	
 	<h:body>
-	<b:navBar brand="Project name" brandHref="index.xhtml" inverse="true">
-            <b:navbarLinks>
-                <b:navLink value="Inscription" href="inscription.xhtml"></b:navLink>
-                <b:navLink value="Liste membre" href="listeMembre.xhtml"></b:navLink>
-                <b:navLink value="Liste Evenement" href="indexEvent.xhtml"></b:navLink>
-            </b:navbarLinks>
-        </b:navBar>
+		<b:navBar brand="Project name" brandHref="index.xhtml" inverse="true">
+		    <b:navbarLinks>
+		        <b:navLink value="Inscription" href="inscription.xhtml"></b:navLink>
+		        <b:navLink value="Liste membre" href="listeMembre.xhtml"></b:navLink>
+		        <b:navLink value="Liste Evenement" href="indexEvent.xhtml"></b:navLink>
+		    </b:navbarLinks>
+	    </b:navBar>
 	
 		<h1>Détails de #{membreController.membre.login}</h1>
 		
@@ -37,10 +37,6 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
 		Gsm : #{membreController.membre.numGSM}					<BR/>
 
 		<BR/><BR/><BR/>
-		
-		<h:form>
-			<h:commandButton value="Retour" action="#{membreController.doIndex()}"></h:commandButton>
-		</h:form>
 					
 	</h:body>
 	

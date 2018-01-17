@@ -64,7 +64,7 @@ public class EvenementController {
 	{
 		return "index.xhtml?faces-redirect=true";
 	}
-
+	
 	
 	public void aaa() {
 		System.out.println("test");
