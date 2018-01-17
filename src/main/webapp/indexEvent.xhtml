@@ -27,13 +27,13 @@ xmlns:jsf="http://xmlns.jcp.org/jsf"
 		<h1>Evenements</h1>
 	
 	
-		<h:form>
+		<h:form enctype="multipart/form-data">
 	 		Titre : <h:inputText value="#{evenementController.titre}"></h:inputText>				<BR />
 	 		resumé : <h:inputText value="#{evenementController.resume}"></h:inputText>				<BR />
 	 		Objectif(€) : <h:inputText  value="#{evenementController.objectif}"></h:inputText>					<BR />
 	 		Récolte(€) : <h:inputText value="#{evenementController.recolte}"></h:inputText>					<BR />
 			Date de l'événement : <b:datepicker value="#{evenementController.dateEv}"></b:datepicker>				<BR />
-	 		Importer une image(pas encore fait) :	<h:inputFile value="evenementController.file1" />			<BR />
+	 		Importer une image(pas encore fait) :	<h:inputFile value="#{evenementController.up.uploadedFile}" />			<BR />
 	 		
 	 		
 			<BR /><BR /><BR />
