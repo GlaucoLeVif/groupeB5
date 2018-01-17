@@ -71,9 +71,9 @@ public class EvenementController {
 	}
 	
 	public Evenement doAjouterEvenement() {
-		convertImage();
+		/*convertImage();
 		Evenement e = new Evenement(titre, resume, image1, objectif, recolte, dateEv);
-		System.out.println(e.getImage1());
+		System.out.println(e.getImage1());*/
 		System.out.println("stade1");
 		Date d = new Date();
 		DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
@@ -83,7 +83,7 @@ public class EvenementController {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		//Evenement e = new Evenement("titre"+System.currentTimeMillis(), "resume1", null, 5000.00, 0, d);
+		Evenement e = new Evenement("titre"+System.currentTimeMillis(), "resume1", null, 5000.00, 0, d);
 		//System.out.println(e.toString());
 		return gestionEvenementEJB.addEvenement(e);
 		//return null;
@@ -91,6 +91,7 @@ public class EvenementController {
 	
 	public void convertImage()
 	{
+		
 		
 		//init array with file length
 		//image1 = new byte[(int) file1.length()]; // ca bug ici
