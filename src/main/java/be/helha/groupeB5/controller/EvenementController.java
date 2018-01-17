@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -39,13 +40,14 @@ public class EvenementController {
 	private int etat;
 	private Date dateEv;
 	private Evenement event = new Evenement();
+	private Set<Participation> parts = new HashSet<Participation>();
 	
 	private byte[] image1;
 	private File file1;
 	private UploadPage up = new UploadPage();
 	
 	public EvenementController() {}
-	
+
 
 	public List<Evenement> doAfficherEvenement() {
 		return gestionEvenementEJB.selectAll();
@@ -59,7 +61,12 @@ public class EvenementController {
 		return gestionEvenementEJB.deleteEvenement(e);
 	}
 	
-	public String doDetails(Evenement e )
+	public Set<Participation> doAfficherParticipation(/*Evenement e*/) {
+		// event = e;
+		return event.getParts();
+	}
+	
+	public String doDetails(Evenement e)
 	{
 		event = e;
 		return "detailsEvenement.xhtml?faces-redirect=false";
