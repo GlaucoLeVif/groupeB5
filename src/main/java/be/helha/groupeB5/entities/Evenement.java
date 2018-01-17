@@ -4,11 +4,16 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
+
 
 
 @Entity
@@ -17,22 +22,28 @@ public class Evenement implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer idEv;
-	private String titre, resume;
+	private String titre, resume,lieu;
 	private double objectif, recolte;
+	private int etat;
 	private Date dateEv;
-	@Lob
-	private byte[] image1;
 	
-	public Evenement(String titre, String resume, byte[] image1, double objectif, double recolte, Date dateEv) {
+	@OneToMany(cascade=CascadeType.ALL)
+	private Set<Image> images = new HashSet<Image>();
+	
+	
+	public Evenement(String titre, String resume, String lieu, double objectif, double recolte, int etat,
+			Date dateEv, Set<Image> images) {
 		super();
 		this.titre = titre;
 		this.resume = resume;
-		this.image1 = image1;
+		this.lieu = lieu;
 		this.objectif = objectif;
 		this.recolte = recolte;
+		this.etat = etat;
 		this.dateEv = dateEv;
+		this.images = images;
 	}
-	
+
 	public Evenement() {}
 	
 	public Integer getIdEv() {
@@ -58,7 +69,8 @@ public class Evenement implements Serializable {
 		this.resume = resume;
 	}
 
-
+	
+/*
 	public String getImage1() {
 		byte barray[] = Base64.getEncoder().encode(image1);
 		//String imageString = new String(image1);
@@ -67,6 +79,40 @@ public class Evenement implements Serializable {
 
 	public void setImage1(byte[] image1) {
 		this.image1 = image1;
+	}
+	
+	
+	public String getImage2() {
+		byte barray[] = Base64.getEncoder().encode(image1);
+		//String imageString = new String(image1);
+		return new String(barray);
+	}
+
+	public void setImage2(byte[] image2) {
+		this.image2 = image2;
+	}*/
+
+	public String getImage(int num)
+	{
+		if(images.size()>num)
+		{
+			int index = 0;
+		    for(Image element : images){
+		      if(index == num){
+		        return element.getImage();
+		      }
+		      index++;
+		    }
+		}
+		return "";
+	}
+	
+	public Set<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(Set<Image> images) {
+		this.images = images;
 	}
 
 	public double getObjectif() {
@@ -93,6 +139,23 @@ public class Evenement implements Serializable {
 		this.dateEv = dateEv;
 	}
 	
+	
+
+	public int getEtat() {
+		return etat;
+	}
+
+	public void setEtat(int etat) {
+		this.etat = etat;
+	}
+
+	public String getLieu() {
+		return lieu;
+	}
+
+	public void setLieu(String lieu) {
+		this.lieu = lieu;
+	}
 
 	public boolean equals(Object o)
 	{
@@ -111,9 +174,11 @@ public class Evenement implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Evenement [idEv=" + idEv + ", titre=" + titre + ", resume=" + resume + ", objectif=" + objectif
-				+ ", recolte=" + recolte + ", dateEv=" + dateEv +  "]";
+		return "Evenement [idEv=" + idEv + ", etat=" + etat + ", titre=" + titre + ", resume=" + resume + ", lieu="
+				+ lieu + ", objectif=" + objectif + ", recolte=" + recolte + ", dateEv=" + dateEv + "]";
 	}
+
+
 	
 	
 	

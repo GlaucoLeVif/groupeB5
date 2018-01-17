@@ -20,7 +20,7 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
 	
 		<h1 class="text-center">Détails de #{evenementController.event.titre}</h1>					<BR/>
 		
-		<img src="data:image/jpg;base64,#{evenementController.event.image1}" width="200" class=" pull-left gap-right img-thumbnail"></img>		<BR/>
+		<img src="data:image/jpg;base64,#{evenementController.event.getImage(0)}" width="200" class=" pull-left gap-right img-thumbnail"></img>		<BR/>
 		#{evenementController.event.resume}															<BR/>
 		objectif : #{evenementController.event.objectif}											<BR/>
 		recolte : #{evenementController.event.recolte}												<BR/>
