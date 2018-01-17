@@ -68,7 +68,7 @@ public class DAOMembreLocalBean {
 	}
 	
 	
-// Evenement	
+// Evenement
 	public List<Evenement> rechercherEvenement() {
 		String str = "SELECT e FROM Evenement e";
 		Query query = em.createQuery(str);
@@ -118,7 +118,10 @@ public class DAOMembreLocalBean {
 	}
 	
 	public Evenement supprimerEvenement(Evenement e) {
-		String str="Delete FROM Evenement m WHERE m.idEv=:idEv";
+		String str= "ALTER TABLE dbb5.participation\r\n" +
+					"DROP CONSTRAINT FK_PARTICIPATION_E_IDEV\r\n" +		// d'abord supprimer la clé étrangère event dans la table de participation car il y a une référence vers un évènement
+																		// ensuite supprimer les participations de l'évènement car la table participation ne peut pas contenir un membre sans évènement
+					"Delete FROM Evenement e WHERE e.idEv=:idEv";		// enfin supprimer l'évènement
 		Query qAdr = em.createQuery(str);
 		qAdr.setParameter("idEv",e.getIdEv());
 		qAdr.executeUpdate();
