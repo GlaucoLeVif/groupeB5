@@ -16,87 +16,55 @@ xmlns:jsf="http://xmlns.jcp.org/jsf"
             <b:navbarLinks>
                 <b:navLink value="Inscription" href="inscription.xhtml"></b:navLink>
                 <b:navLink value="Liste membre" href="listeMembre.xhtml"></b:navLink>
-                <b:navLink value="Liste Evenement" href="indexEvent.xhtml"></b:navLink>
+                <b:dropMenu value="Evenement">
+                	<b:navLink value="Liste Evenement" href="indexEvent.xhtml"></b:navLink>
+                	<b:navLink value="Creer un évenement" href="createEvent.xhtml"></b:navLink>
+                </b:dropMenu>
             </b:navbarLinks>
         </b:navBar>
         
 		<h1>Listes</h1>
-		
 		<BR/><BR/>
 		
-	 	<h:dataTable value = "#{membreController.doAfficherMembre()}" var = "membre">
-	 		
-		   <h:column>
-		      <f:facet name = "header">LOGIN</f:facet>
-		      #{membre.idMembre}
-		   </h:column>
+		<b:dataTable value = "#{membreController.doAfficherMembre()}" var = "ev">
 		    
-		   <h:column>
+		    <b:dataTableColumn>
 		      <f:facet name = "header">LOGIN</f:facet>
-		      #{membre.login}
-		   </h:column>
+		      #{ev.login}
+		   </b:dataTableColumn>
 		   
-		   <h:column>
-		      <f:facet name = "header">PASSWORD</f:facet>
-		      #{membre.mdp}
-		   </h:column>
+		    <b:dataTableColumn>
+		      <f:facet name = "header">EMAIL</f:facet>
+		      #{ev.mail}
+		   </b:dataTableColumn>
 		   
-		   <h:column>
-		      <f:facet name = "header">MAIL</f:facet>
-		      #{membre.mail}
-		   </h:column>
-		   
-		   <h:column>
+		    <b:dataTableColumn>
 		      <f:facet name = "header">PRENOM</f:facet>
-		      #{membre.prenom}
-		   </h:column>
+		      #{ev.prenom}
+		   </b:dataTableColumn>
 		   
-		   <h:column>
+		   <b:dataTableColumn>
 		      <f:facet name = "header">NOM</f:facet>
-		      #{membre.nom}
-		   </h:column>
+		      #{ev.nom}
+		   </b:dataTableColumn>
 		   
-		   <h:column>
-		      <f:facet name = "header">RUE</f:facet>
-		      #{membre.rue}
-		   </h:column>
-		   
-		   <h:column>
-		      <f:facet name = "header">VILLE</f:facet>
-		      #{membre.ville}
-		   </h:column>
-		   
-		   <h:column>
-		      <f:facet name = "header">PAYS</f:facet>
-		      #{membre.pays}
-		   </h:column>
-		   
-		   <h:column>
-		      <f:facet name = "header">NATIONALITE</f:facet>
-		      #{membre.nationalite}
-		   </h:column>
-		 
-		   <h:column>
-		      <f:facet name = "header">NUMGSM</f:facet>
-		      #{membre.numGSM}
-		   </h:column>
-		  
-		  	<h:column>
+		   <b:dataTableColumn>
 				<f:facet name="header">DETAILS</f:facet>
-				<h:form>
-					<h:commandButton value="Accéder" action="#{membreController.doDetails(membre)}"></h:commandButton>
-				</h:form>
-			</h:column>
+					<h:form>
+						<h:commandButton value="Accéder" action="#{membreController.doDetails(ev)}"></h:commandButton>
+					</h:form>
+			</b:dataTableColumn>
 			
-		   	<h:column>
-				<f:facet name="header">DELETE</f:facet>
+		   	 <b:dataTableColumn>
+				<f:facet name="header">
+					<h:outputText value="DELETE"/>
+				</f:facet>
 				<h:form>		
-					<h:commandButton value="X" action="#{membreController.doSupprimerMembre(membre)}"></h:commandButton>
+				<h:commandButton value="X" action="#{membreController.doSupprimerMembre(ev)}"></h:commandButton>
 				</h:form>	
-			</h:column>
+			</b:dataTableColumn>
 			
-		</h:dataTable>
-		
-		
+		</b:dataTable>
+
 	</h:body>
 </html>

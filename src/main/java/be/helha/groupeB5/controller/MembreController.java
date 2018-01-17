@@ -47,9 +47,9 @@ public class MembreController {
 	}
 	
 	
-	public String doIndex()
+	public String doList()
 	{
-		return "index.xhtml?faces-redirect=true";
+		return "listeMembre.xhtml?faces-redirect=true";
 	}
 	
 	public String getLogin() {
