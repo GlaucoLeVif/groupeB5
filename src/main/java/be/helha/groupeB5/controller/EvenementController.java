@@ -24,6 +24,7 @@ import com.sun.istack.logging.Logger;
 import be.helha.groupeB5.entities.Evenement;
 import be.helha.groupeB5.entities.Image;
 import be.helha.groupeB5.entities.Membre;
+import be.helha.groupeB5.entities.Participation;
 import be.helha.groupeB5.entities.UploadPage;
 import be.helha.groupeB5.sessionejb.GestionEvenementEJB;
 
@@ -84,7 +85,7 @@ public class EvenementController {
 		Image i1 = new Image(up.uploadFile());
 		Set<Image> images = new HashSet<Image>();
 		images.add(i1);
-		Evenement e = new Evenement(titre, resume, lieu, objectif, recolte,etat, dateEv,images);
+		Evenement e = new Evenement(titre, resume, lieu, objectif, recolte,etat, dateEv,images,null);
 		
 		System.out.println("stade1");
 		Date d = new Date();

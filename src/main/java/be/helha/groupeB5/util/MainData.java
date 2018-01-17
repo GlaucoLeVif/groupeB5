@@ -23,6 +23,7 @@ public class MainData {
 	
 	public static void main(String[] args) {
 		Set<Image> images = new HashSet<Image>();
+		Set<Participation> parts = new HashSet<Participation>();
 		Date d = new Date();
 		Date d2 = new Date();
 		Date d3 = new Date();
@@ -314,17 +315,25 @@ public class MainData {
 		images.add(i1);
 		images.add(i2);
 		
+		Participation p1 = new Participation("Kévin", 50, d4);
+		Participation p2 = new Participation("Florian", 2, d5);
 		
+		parts.add(p1);
+		parts.add(p2);
 		
 		
 		Membre m = new Membre("log", "mdp", "monmail", "distant", "Led", "place", "Beaumont", "Belgique", "BE", "0492", d, "1", 6500, false);
-		Evenement e = new Evenement("titre1", "resume1", "lieu1", 5000.00, 0,1, d2,images);
-		Evenement e2 = new Evenement("titre2", "resume2", "lieu2", 8000.00, 0,1, d3,images);
+		Evenement e = new Evenement("titre1", "resume1", "lieu1", 5000.00, 0,1, d2,images,parts);
+		Evenement e2 = new Evenement("titre2", "resume2", "lieu2", 8000.00, 0,1, d3,images,parts);
 
 		//Evenement e2 = new Evenement("titre2", "resume2", image2, 100000.00, 0, d3,);
 		
-		Participation p = new Participation(20, d4,m,e);
-		Participation p2 = new Participation(40, d5,m,e2);
+		//Participation p1 = new Participation(20, d4,m,e);
+		//Participation p2 = new Participation(40, d5,m,e2);
+		
+		
+		
+		
 
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("groupeB5");
 		EntityManager em = emf.createEntityManager();
@@ -334,7 +343,7 @@ public class MainData {
 		em.persist(m);
 		em.persist(e);
 		em.persist(e2);
-		em.persist(p);
+		em.persist(p1);
 		em.persist(p2);
 		tx.commit();
 		

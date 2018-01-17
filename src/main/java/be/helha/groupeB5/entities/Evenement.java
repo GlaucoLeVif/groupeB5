@@ -30,9 +30,13 @@ public class Evenement implements Serializable {
 	@OneToMany(cascade=CascadeType.ALL)
 	private Set<Image> images = new HashSet<Image>();
 	
+	@OneToMany(cascade=CascadeType.ALL)
+	private Set<Participation> parts = new HashSet<Participation>();
+	
+	
 	
 	public Evenement(String titre, String resume, String lieu, double objectif, double recolte, int etat,
-			Date dateEv, Set<Image> images) {
+			Date dateEv, Set<Image> images,Set<Participation> parts) {
 		super();
 		this.titre = titre;
 		this.resume = resume;
@@ -42,6 +46,7 @@ public class Evenement implements Serializable {
 		this.etat = etat;
 		this.dateEv = dateEv;
 		this.images = images;
+		this.parts = parts;
 	}
 
 	public Evenement() {}
@@ -113,6 +118,15 @@ public class Evenement implements Serializable {
 
 	public void setImages(Set<Image> images) {
 		this.images = images;
+	}
+	
+
+	public Set<Participation> getParts() {
+		return parts;
+	}
+
+	public void setParts(Set<Participation> parts) {
+		this.parts = parts;
 	}
 
 	public double getObjectif() {

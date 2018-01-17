@@ -9,86 +9,102 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import org.eclipse.persistence.annotations.CascadeOnDelete;
+
 @Entity
 public class Participation implements Serializable {
 
 	@Id
 	@GeneratedValue
 	private Integer idP;
+	private String nomDonateur;
 	private float montant;
 	private Date dateDon;
-	private Membre m;
-	private Evenement e;
+
 	
-	public Participation(float montant,Date dateDon,Membre m,Evenement e)
-	{
-		this.montant= montant;
-		this.dateDon= dateDon;
-		this.m = m;
-		this.e = e;
+	
+
+	public Participation(String nomDonateur, float montant, Date dateDon) {
+		super();
+		this.nomDonateur = nomDonateur;
+		this.montant = montant;
+		this.dateDon = dateDon;
 	}
 
 	public Participation() {}
-	
-	
-	
+
+
+
 	public Integer getIdP() {
 		return idP;
 	}
+
+
+
 
 	public void setIdP(Integer idP) {
 		this.idP = idP;
 	}
 
+
+
+
+	public String getNomDonateur() {
+		return nomDonateur;
+	}
+
+
+
+
+	public void setNomDonateur(String nomDonateur) {
+		this.nomDonateur = nomDonateur;
+	}
+
+
+
+
 	public float getMontant() {
 		return montant;
 	}
+
+
+
 
 	public void setMontant(float montant) {
 		this.montant = montant;
 	}
 
+
+
+
 	public Date getDateDon() {
 		return dateDon;
 	}
+
+
+
 
 	public void setDateDon(Date dateDon) {
 		this.dateDon = dateDon;
 	}
 
-	public Membre getM() {
-		return m;
-	}
 
-	public void setM(Membre m) {
-		this.m = m;
-	}
 
-	public Evenement getE() {
-		return e;
-	}
-
-	public void setE(Evenement e) {
-		this.e = e;
-	}
-	
 
 	public boolean equals(Object o)
 	{
 		if(o instanceof Participation){
 			Participation p = (Participation) o;
-			return this.m.equals(p.getM()) && this.e.equals(p.getE());
+			return this.idP ==p.getIdP();
 		}
 		return false;
 	}
 
 	@Override
 	public String toString() {
-		return "Participation [montant=" + montant + ", dateDon=" + dateDon + ", m=" + m + ", e=" + e + "]";
+		return "Participation [idP=" + idP + ", nomDonateur=" + nomDonateur + ", montant=" + montant + ", dateDon="
+				+ dateDon + "]";
 	}
 
-	
-	
-	
 	
 }
