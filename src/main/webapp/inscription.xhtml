@@ -13,12 +13,12 @@ xmlns:h="http://java.sun.com/jsf/html"
             <b:navbarLinks>
                 <b:navLink value="Inscription" href="inscription.xhtml"></b:navLink>
                 <b:navLink value="Liste membre" href="listeMembre.xhtml"></b:navLink>
-                <b:navLink value="Contact" href="#contact"></b:navLink>
+                <b:navLink value="Liste Evenement" href="indexEvent.xhtml"></b:navLink>
             </b:navbarLinks>
         </b:navBar>
         
 	<h1>Inscription</h1>
-		<h:form inline="true">
+		<h:form>
   			<h:panelGrid columns="2">
 	 		<b:inputText label="Login : " value="#{membreController.login}"></b:inputText>				<BR />
 	 		<b:inputText label="Password : " value="#{membreController.mdp}"></b:inputText>				<BR />
