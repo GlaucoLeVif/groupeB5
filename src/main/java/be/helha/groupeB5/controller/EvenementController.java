@@ -23,6 +23,7 @@ import com.sun.istack.logging.Logger;
 
 import be.helha.groupeB5.entities.Evenement;
 import be.helha.groupeB5.entities.Image;
+import be.helha.groupeB5.entities.MailGestion;
 import be.helha.groupeB5.entities.Membre;
 import be.helha.groupeB5.entities.Participation;
 import be.helha.groupeB5.entities.UploadPage;
@@ -43,6 +44,7 @@ public class EvenementController {
 	private byte[] image1;
 	private File file1;
 	private UploadPage up = new UploadPage();
+	private MailGestion mailG = new MailGestion();
 	
 	public EvenementController() {}
 	
@@ -244,7 +246,10 @@ public class EvenementController {
 	}
 	
 	
-	
+	public void sendEmail()
+	{
+		mailG.sendMail();
+	}
 	
 	
 	
