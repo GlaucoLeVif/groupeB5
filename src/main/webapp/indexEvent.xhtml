@@ -18,7 +18,10 @@ xmlns:jsf="http://xmlns.jcp.org/jsf"
             <b:navbarLinks>
                 <b:navLink value="Inscription" href="inscription.xhtml"></b:navLink>
                 <b:navLink value="Liste membre" href="listeMembre.xhtml"></b:navLink>
-                <b:navLink value="Liste Evenement" href="indexEvent.xhtml"></b:navLink>
+                <b:dropMenu value="Evenement">
+                	<b:navLink value="Liste Evenement" href="indexEvent.xhtml"></b:navLink>
+                	<b:navLink value="Creer un évenement" href="createEvent.xhtml"></b:navLink>
+                </b:dropMenu>
             </b:navbarLinks>
         </b:navBar>
 		<h1>Evenements</h1>
@@ -41,7 +44,6 @@ xmlns:jsf="http://xmlns.jcp.org/jsf"
 		<BR /><BR /><BR />
 		
 		<h1>Listes</h1>
-	 	#{evenementController.doAfficherEvenement()}
 		<BR /><BR /><BR />
 		
 		
@@ -83,7 +85,7 @@ xmlns:jsf="http://xmlns.jcp.org/jsf"
 		  <b:dataTableColumn>
 				<f:facet name="header">DETAILS</f:facet>
 					<h:form>
-						<h:commandButton value="Accéder" action="#{membreController.doDetails(membre)}"></h:commandButton>
+						<h:commandButton value="Accéder" action="#{evenementController.doDetails(ev)}"></h:commandButton>
 					</h:form>
 			</b:dataTableColumn>
 			

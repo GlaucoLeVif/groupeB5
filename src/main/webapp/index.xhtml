@@ -14,7 +14,10 @@ xmlns:h="http://java.sun.com/jsf/html"
             <b:navbarLinks>
                 <b:navLink value="Inscription" href="inscription.xhtml"></b:navLink>
                 <b:navLink value="Liste membre" href="listeMembre.xhtml"></b:navLink>
-                <b:navLink value="Liste Evenement" href="indexEvent.xhtml"></b:navLink>
+                <b:dropMenu value="Evenement">
+                	<b:navLink value="Liste Evenement" href="indexEvent.xhtml"></b:navLink>
+                	<b:navLink value="Creer un évenement" href="indexEvent.xhtml"></b:navLink>
+                </b:dropMenu>
             </b:navbarLinks>
         </b:navBar>
 	</h:body>

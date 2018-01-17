@@ -14,9 +14,19 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
             <b:navbarLinks>
                 <b:navLink value="Inscription" href="inscription.xhtml"></b:navLink>
                 <b:navLink value="Liste membre" href="listeMembre.xhtml"></b:navLink>
-                <b:navLink value="Liste Evenement" href="indexEvent.xhtml"></b:navLink>
+                <b:dropMenu value="Evenement">
+                	<b:navLink value="Liste Evenement" href="indexEvent.xhtml"></b:navLink>
+                	<b:navLink value="Creer un évenement" href="createEvent.xhtml"></b:navLink>
+                </b:dropMenu>
             </b:navbarLinks>
         </b:navBar>
+		<b:navBar brand="Project name" brandHref="index.xhtml" inverse="true">
+		    <b:navbarLinks>
+		        <b:navLink value="Inscription" href="inscription.xhtml"></b:navLink>
+		        <b:navLink value="Liste membre" href="listeMembre.xhtml"></b:navLink>
+		        <b:navLink value="Liste Evenement" href="indexEvent.xhtml"></b:navLink>
+		    </b:navbarLinks>
+	    </b:navBar>
 	
 		<h1>Détails de #{membreController.membre.login}</h1>
 		
@@ -39,7 +49,7 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
 		<BR/><BR/><BR/>
 		
 		<h:form>
-			<h:commandButton value="Retour" action="#{membreController.doIndex()}"></h:commandButton>
+			<h:commandButton value="Retour" action="#{membreController.doList()}"></h:commandButton>
 		</h:form>
 					
 	</h:body>

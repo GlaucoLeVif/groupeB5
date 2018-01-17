@@ -58,14 +58,36 @@ public class DAOMembreLocalBean {
 	public Membre modifierMembre(Membre m) {
 		return m;
 	}
-	
-	public Membre supprimerMembre(Membre m) {
+
+	/*public Membre supprimerMembre(Membre m) {
 		String str="Delete FROM Membre m WHERE m.login=:login";
 		Query qAdr = em.createQuery(str);
 		qAdr.setParameter("login",m.getLogin());
 		qAdr.executeUpdate();
 		return m;
+	}*/
+	
+	public Membre supprimerMembre(Membre m) {
+		//int id = rechercherIdByLogin(m.getLogin());
+		if(m.getIdMembre()>=0) {
+			Membre aSupp = em.find(Membre.class, m.getIdMembre());
+			em.remove(aSupp);
+			return m;
+		}
+		return null;
 	}
+	
+	/*public int rechercherIdByLogin(String login) {
+		String requeteIdByLogin = "SELECT m.idMembre FROM Membre m where m.login =:login";
+		Query queryProprio = em.createQuery(requeteIdByLogin);
+		queryProprio.setParameter("login", login);
+		
+		if(!queryProprio.getResultList().isEmpty()) {
+			int id = Integer.parseInt(queryProprio.getResultList().get(0).toString());
+			return id;
+		}
+		return -1;
+	}*/
 	
 	
 // Evenement	
@@ -117,12 +139,22 @@ public class DAOMembreLocalBean {
 		return e;
 	}
 	
-	public Evenement supprimerEvenement(Evenement e) {
+	/*public Evenement supprimerEvenement(Evenement e) {
 		String str="Delete FROM Evenement m WHERE m.titre=:titre";
 		Query qAdr = em.createQuery(str);
 		qAdr.setParameter("titre",e.getTitre());
 		qAdr.executeUpdate();
 		return e;
+	}*/
+	
+	public Evenement supprimerEvenement(Evenement e) {
+		//int id = rechercherIdByLogin(m.getLogin());
+		if(e.getIdEv()>=0) {
+			Membre aSupp = em.find(Membre.class, e.getIdEv());
+			em.remove(aSupp);
+			return e;
+		}
+		return null;
 	}
 	
 }
