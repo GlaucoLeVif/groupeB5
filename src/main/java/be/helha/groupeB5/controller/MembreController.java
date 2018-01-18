@@ -7,6 +7,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
+import be.helha.groupeB5.entities.Evenement;
 import be.helha.groupeB5.entities.Membre;
 import be.helha.groupeB5.sessionejb.GestionMembreEJB;
 
@@ -20,6 +21,7 @@ public class MembreController {
 	private Date dateN;
 	private int cp;
 	private Membre membre = new Membre();
+	private List<Evenement> listEvent;
 	
 	public MembreController() {}
 	
@@ -40,8 +42,8 @@ public class MembreController {
 		return gestionMembreEJB.deleteMembre(m);
 	}
 	
-	public Membre doAfficherMembreConnecter() {
-		return null;
+	public List<Evenement> doAfficherMesEvenements(){
+		return gestionMembreEJB.displayMyEvenements(ConnexionController.getMembre());
 	}
 	
 	public String doDetails(Membre m)
@@ -152,6 +154,12 @@ public class MembreController {
 	}
 	public void setMembre(Membre membre) {
 		this.membre = membre;
+	}
+	public List<Evenement> getListEvent() {
+		return listEvent;
+	}
+	public void setListEvent(List<Evenement> listEvent) {
+		this.listEvent = listEvent;
 	}
 	
 	

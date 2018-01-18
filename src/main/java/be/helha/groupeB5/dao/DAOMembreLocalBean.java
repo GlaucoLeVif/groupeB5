@@ -33,12 +33,10 @@ public class DAOMembreLocalBean {
 	
 // Membre	
 	public List<Membre> rechercherMembre() {
-			
-			    String str = "SELECT m FROM Membre m";
-				Query queryMembres = em.createQuery(str);
-				List<Membre> list = (List<Membre>) queryMembres.getResultList();
-				return list;
-			
+	    String str = "SELECT m FROM Membre m";
+		Query queryMembres = em.createQuery(str);
+		List<Membre> list = (List<Membre>) queryMembres.getResultList();
+		return list;
 	}
 	
 	public Membre ajouterMembre(Membre m) {
@@ -97,7 +95,13 @@ public class DAOMembreLocalBean {
 		return m;
 	}
 	
-	
+	public List<Evenement> afficherMesEvenements(Membre m){
+		String str = "SELECT m.listEvent FROM Membre m where m.login =:login";
+		Query query = em.createQuery(str);
+		query.setParameter("login", m.getLogin());
+		List<Evenement> list = (List<Evenement>) query.getResultList();
+		return list;
+	}
 	
 	
 	

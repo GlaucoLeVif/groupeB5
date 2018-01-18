@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:b="http://bootsfaces.net/ui"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:c="http://java.sun.com/jsp/jstl/core"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+
+	<h:head>
+		<title>JSF WEB APP</title>
+		<link rel="stylesheet" href="style.css"/>
+	</h:head>
+	
+	<h:body>
+		<ui:include src="/navBar.xhtml"></ui:include>
+		
+		<div class="gap-left gap-right">
+		
+			<h1>Gestion de mes évènements</h1>
+			
+			<BR/><BR/><BR/>
+			
+			<b:dataTable value = "#{membreController.doAfficherMesEvenements()}" var = "ev">
+		 		
+			    <b:dataTableColumn>
+			      <f:facet name = "header">TITRE</f:facet>
+			      #{ev.titre}
+			   </b:dataTableColumn>
+			   
+			    <b:dataTableColumn>
+			      <f:facet name = "header">RESUME</f:facet>
+			      #{ev.resume}
+			   </b:dataTableColumn>
+			   
+			    <b:dataTableColumn>
+			      <f:facet name = "header">OBJECTIF</f:facet>
+			      #{ev.objectif}
+			   </b:dataTableColumn>
+			   
+			    <b:dataTableColumn>
+			      <f:facet name = "header">Lieu</f:facet>
+			      #{ev.lieu}
+			   </b:dataTableColumn>
+			   
+			   <b:dataTableColumn>
+			      <f:facet name = "header">RECOLTE</f:facet>
+			      #{ev.recolte}
+			   </b:dataTableColumn>
+			   
+			    <b:dataTableColumn>
+			      <f:facet name = "header">DATEEV</f:facet>
+			      #{ev.dateEv}
+			   </b:dataTableColumn>
+			   
+			   <b:dataTableColumn>
+			      <f:facet name = "header">IMAGE1</f:facet>
+			     <img src="data:image/jpg;base64,#{ev.getImage(0)}" width="75"></img>
+			   </b:dataTableColumn>
+			   
+			  <b:dataTableColumn>
+				<f:facet name="header">DETAILS</f:facet>
+					<h:form>
+						<h:commandButton value="Accéder" action="#{evenementController.doDetails(ev)}"></h:commandButton>
+					</h:form>
+			  </b:dataTableColumn>
+				
+		   	  <b:dataTableColumn>
+				<f:facet name="header">
+					<h:outputText value="DELETE"/>
+				</f:facet>
+				<h:form>		
+				<h:commandButton value="X" action="#{evenementController.doSupprimerEvenement(ev)}"></h:commandButton>
+				</h:form>	
+			  </b:dataTableColumn>
+			  
+			</b:dataTable>
+		
+		</div>
+		
+		
+	</h:body>
+</html>
