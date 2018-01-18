@@ -26,6 +26,7 @@ import be.helha.groupeB5.entities.Participation;
 import be.helha.groupeB5.entities.UploadPage;
 import be.helha.groupeB5.sessionejb.GestionEvenementEJB;
 import be.helha.groupeB5.sessionejb.GestionMembreEJB;
+import be.helha.groupeB5.sessionejb.GestionParticipationEJB;
 
 @ManagedBean  
 @SessionScoped
@@ -35,6 +36,8 @@ public class EvenementController {
 	GestionEvenementEJB gestionEvenementEJB;
 	@EJB
 	GestionMembreEJB gestionMembreEJB;
+	@EJB
+	GestionParticipationEJB gestionParticipationEJB;
 	
 	private String titre, resume,lieu;
 	private double objectif, recolte;
@@ -43,13 +46,33 @@ public class EvenementController {
 	private Evenement event = new Evenement();
 	private List<Participation> parts = new ArrayList<Participation>();
 	private List<Evenement> lastEvents = new ArrayList<Evenement>();
+	private List<Participation> lastParts = new ArrayList<Participation>();
 	
 	//participation
 	private String nomDonateur;
 	private float montant;
 	private Date dateDon;
 	
-	
+	public List<Participation> getLastParts() {
+		if(lastParts.size()<5) {
+			List<Participation> tempList = gestionParticipationEJB.selectAll();
+			for(int i = tempList.size()-1 ; i>tempList.size()-6;i--) {
+				if(i<0 || tempList.get(0).equals(null)) {
+					return lastParts;
+				}
+				lastParts.add(tempList.get(i));
+			}
+			return lastParts;
+		}
+		return lastParts;
+	}
+
+
+	public void setLastParts(List<Participation> lastParts) {
+		this.lastParts = lastParts;
+	}
+
+
 	public List<Evenement> getLastEvents() {
 		if(lastEvents.size()<5) {
 			List<Evenement> tempList = gestionEvenementEJB.selectAll();
@@ -158,6 +181,7 @@ public class EvenementController {
 		System.out.println(pos);
 		mTmp.getListEvent().get(pos).addPart(tmpP);
 		doModifierMembre(mTmp);
+		lastParts.clear();
 	}
 	
 	public String doDetails(Evenement e)

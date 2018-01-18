@@ -19,6 +19,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 			<h1 class="text-center">Détails de #{evenementController.event.titre}</h1>						<BR/>
 			
 			<div class="pull-left gap-right">
+			<h3>Photos :</h3>
 				<b:carousel id="tiovivo" style="width:300px" interval="2500" >
 					<c:forEach var="img" items="#{evenementController.event.images}">
 						<b:carouselItem>
@@ -26,18 +27,17 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
   						</b:carouselItem>
 					</c:forEach>
 				</b:carousel>
-				Objectif : #{evenementController.event.objectif}											<BR/>
-				Recolte : #{evenementController.event.recolte}												<BR/>
-				Date : #{evenementController.event.dateEv}													<BR/>
-				Recolte : #{evenementController.event.recolte}												<BR/>
-				Lieu : #{evenementController.event.lieu}													<BR/>
+				<b>Objectif : </b>		#{evenementController.event.objectif}									<BR/>
+				<b>Recolte : </b>		#{evenementController.event.recolte}												<BR/>
+				<b>Date : </b>		#{evenementController.event.dateEv}												<BR/>
+				<b>Recolte : </b>		#{evenementController.event.recolte}											<BR/>
+				<b>Lieu : </b>		#{evenementController.event.lieu}												<BR/><br/>
 			
-				<BR/><BR/><BR/><BR/>
-				
 				#{evenementController.event.resume}
 			</div>
 			
-			<div class="pull-right">
+			<div class="pull-center">
+			<h3>Faites un don :</h3>
 				<b:flyOutMenu width="50px" style="padding: 30px;">
 					<h:form inline="true">
 			  			<h:panelGrid columns="2">
@@ -45,14 +45,34 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 					 		<b:inputText label="Montant : " value="#{evenementController.montant}"></b:inputText>				<BR />
 			  			</h:panelGrid>
 			  			
-						<b:commandButton value="Payer" action="#{evenementController.doAjouterParticipation()}"></b:commandButton>	<BR /><BR /><BR /><BR />
+						<b:commandButton value="Payer" action="#{evenementController.doAjouterParticipation()}"></b:commandButton>	<BR /><BR />
 						
 						<b:label value="Date du jour : ">#{evenementController.afficherDateDuJour()}</b:label>
 					</h:form>
 				</b:flyOutMenu>
 			</div>
 			
-			<BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/>
+			<div class="pull-right">
+				<h3>Derniers dons :</h3>
+				<b:carousel style="width:300px" interval="2500" >
+					<c:forEach var="part" items="#{evenementController.lastParts}">
+						<b:carouselItem>
+							<p align="center"><b>Nom : </b>#{part.nomDonateur}</p>
+  							<p align="center"><b>Montant : </b>#{part.montant} €</p>
+  						</b:carouselItem>
+					</c:forEach>
+				</b:carousel>
+			</div>
+			
+			<BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/>
+			<BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/>
+			<div class="pull-left">
+				<b>Partagez!</b><br/>
+				<b:socialShare shares="twitter,linkedin,facebook" url="http://54.76.209.52:5080/groupeB5"
+	               showLabel="true" show-count="false"
+	               text="Faites un don pour MSF!"  block-message="Click to unblock the share buttons" />
+			</div>
+			<BR/><BR/>
 			
 			<b:dataTable value = "#{evenementController.doAfficherParticipation()}" var = "part">
 			    
@@ -73,6 +93,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 				
 			</b:dataTable>
 		</div>
-	</h:body>
+		
+</h:body>
 	
 </html>
