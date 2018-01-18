@@ -22,7 +22,7 @@ public class ConnexionController {
 	private GestionConnexionEJB gestionConnexionEJB;
 	
 	private String login, mdp;
-	private static Membre m;
+	private static Membre membre;
 	private static String token="";
 	private static Key key= MacProvider.generateKey();
 	
@@ -35,15 +35,13 @@ public class ConnexionController {
 		if(!m.isEmpty()) {
 			if(token==null) {
 				key = MacProvider.generateKey();
-				MembreConnecte.getInstance().setKey(key);
 			}
 			token = Jwts.builder()
 			  .setSubject("Joe")
 			  .signWith(SignatureAlgorithm.HS512, key)
 			  .compact();
-			MembreConnecte.getInstance().setToken(token);
-			MembreConnecte.getInstance().setM(m.get(0));
 			isConnecte=true;
+			membre = m.get(0);
 			toggleConnecte();
 			
 			return "index.xhtml";
@@ -52,15 +50,11 @@ public class ConnexionController {
 	}
 	
 	public void disconnect() {
-		toggleConnecte();
 		key=null;
-		MembreConnecte.getInstance().setKey(null);
 		token=null;
-		MembreConnecte.getInstance().setToken(null);
-		m=null;
-		login = null;
-		mdp = null;
-		MembreConnecte.getInstance().setM(null);
+		membre=null;
+		login=null;
+		mdp=null;
 		isConnecte=false;
 	}
 	
@@ -105,11 +99,11 @@ public class ConnexionController {
 	}
 
 	public static Membre getMembre() {
-		return m;
+		return membre;
 	}
 
-	public void setM(Membre m) {
-		this.m = m;
+	public static void setMembre(Membre membre) {
+		membre = membre;
 	}
 
 	public static String getToken() {
@@ -131,9 +125,9 @@ public class ConnexionController {
 	public boolean getIsConnecte() {
 		return isConnecte;
 	}
-	
-	public void setIsConnecte(boolean connecte) {
-		this.isConnecte = connecte;
+
+	public void setIsConnecte(boolean isConnecte) {
+		this.isConnecte = isConnecte;
 	}
 
 	public String getBoutonConnecte() {
