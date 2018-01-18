@@ -1,33 +1,28 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:b="http://bootsfaces.net/ui"
 xmlns:f="http://java.sun.com/jsf/core"
+xmlns:b="http://bootsfaces.net/ui"
 xmlns:h="http://java.sun.com/jsf/html"
-xmlns:jsf="http://xmlns.jcp.org/jsf"
+xmlns:c="http://java.sun.com/jsp/jstl/core"
 xmlns:ui="http://java.sun.com/jsf/facelets"
 >
 
 	<h:head>
-		<title>Liste évenements</title>
+		<title>JSF WEB APP</title>
 		<link rel="stylesheet" href="style.css"/>
-		<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
 	</h:head>
 	
 	<h:body>
 		<ui:include src="/navBar.xhtml"></ui:include>
-        
-        <div class="gap-left gap-right">		
-			<h1>Listes des évenemensts</h1>
-			<BR /><BR /><BR />
+		
+		<div class="gap-left gap-right">
+		
+			<h1>Gestion de mes évènements</h1>
 			
+			<BR/><BR/><BR/>
 			
-		 	<b:dataTable value = "#{evenementController.doAfficherEvenement()}" var = "ev">
+			<b:dataTable value = "#{membreController.doAfficherMesEvenements()}" var = "ev">
 		 		
-			   <b:dataTableColumn value="#{ev.idEv}">
-			   </b:dataTableColumn>
-			    
 			    <b:dataTableColumn>
 			      <f:facet name = "header">TITRE</f:facet>
 			      #{ev.titre}
@@ -57,35 +52,32 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 			      <f:facet name = "header">DATEEV</f:facet>
 			      #{ev.dateEv}
 			   </b:dataTableColumn>
+			   
 			   <b:dataTableColumn>
 			      <f:facet name = "header">IMAGE1</f:facet>
 			     <img src="data:image/jpg;base64,#{ev.getImage(0)}" width="75"></img>
 			   </b:dataTableColumn>
 			   
-			  
 			  <b:dataTableColumn>
-					<f:facet name="header">DETAILS</f:facet>
-						<h:form>
-							<h:commandButton value="Accéder" action="#{evenementController.doDetails(ev)}"></h:commandButton>
-						</h:form>
-				</b:dataTableColumn>
+				<f:facet name="header">DETAILS</f:facet>
+					<h:form>
+						<h:commandButton value="Accéder" action="#{evenementController.doDetails(ev)}"></h:commandButton>
+					</h:form>
+			  </b:dataTableColumn>
 				
-			   	 <b:dataTableColumn>
-					<f:facet name="header">
-						<h:outputText value="DELETE"/>
-					</f:facet>
-					<h:form>		
-					<h:commandButton value="X" action="#{evenementController.doSupprimerEvenement(ev)}"></h:commandButton>
-					</h:form>	
-				</b:dataTableColumn>
-				
+		   	  <b:dataTableColumn>
+				<f:facet name="header">
+					<h:outputText value="DELETE"/>
+				</f:facet>
+				<h:form>		
+				<h:commandButton value="X" action="#{evenementController.doSupprimerEvenement(ev)}"></h:commandButton>
+				</h:form>	
+			  </b:dataTableColumn>
+			  
 			</b:dataTable>
-			
-			<h:form>
-				
-				<h:commandButton value="Envoyer un mail !" action="#{evenementController.sendEmail()}"></h:commandButton>
-			</h:form>
+		
 		</div>
+		
+		
 	</h:body>
-	
 </html>

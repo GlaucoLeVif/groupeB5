@@ -7,6 +7,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
 import be.helha.groupeB5.dao.DAOMembreLocalBean;
+import be.helha.groupeB5.entities.Evenement;
 import be.helha.groupeB5.entities.Membre;
 
 @Stateless
@@ -20,6 +21,11 @@ public class GestionMembreEJB implements IGestionMembreEJBRemote{
 	@Override	
 	public List<Membre> selectAll() {
 		return dao.rechercherMembre();
+	}
+
+	@Override
+	public List<Evenement> displayMyEvenements(Membre m) {
+		return dao.afficherMesEvenements(m);
 	}
 
 	@Override
@@ -38,9 +44,6 @@ public class GestionMembreEJB implements IGestionMembreEJBRemote{
 	public Membre deleteMembre(Membre m) {
 		return dao.supprimerMembre(m);
 	}
-	
-	
-	
 	
 	
 	
