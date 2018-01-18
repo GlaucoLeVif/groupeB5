@@ -58,16 +58,7 @@ public class EvenementController {
 
 	public List<Evenement> doAfficherEvenement() {
 		System.out.println("doafficher");
-		try {
-
-		    Jwts.parser().setSigningKey(ConnexionController.getKey()).parseClaimsJws(ConnexionController.getToken());
-
-		    return gestionEvenementEJB.selectAll();
-
-		} catch (SignatureException e) {
-		    System.out.println("badToken");
-		    return null;
-		}
+		return gestionEvenementEJB.selectAll();
 	}
 	
 	public void doModifierEvenement() {

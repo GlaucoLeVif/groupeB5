@@ -1,5 +1,6 @@
 package be.helha.groupeB5.sessionejb;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -22,17 +23,7 @@ public class GestionEvenementEJB implements IGestionEvenementEJBRemote{
 	
 	@Override	
 	public List<Evenement> selectAll() {
-		System.out.println("select all");
-		try {
-
-		    Jwts.parser().setSigningKey(ConnexionController.getKey()).parseClaimsJws(ConnexionController.getToken());
-		    return dao.rechercherEvenement();
-
-		} catch (SignatureException e) {
-			System.out.println("pas de token");
-		    return null;
-		}
-		
+		return dao.rechercherEvenement();
 	}
 
 	@Override
