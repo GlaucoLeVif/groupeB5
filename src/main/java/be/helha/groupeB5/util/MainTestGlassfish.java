@@ -10,7 +10,7 @@ import javax.persistence.Persistence;
 import be.helha.groupeB5.entities.Membre;
 
 public class MainTestGlassfish {
-	public static void main(String[] args) {
+	public static void main(String[] args) {/*
 		Membre user1 = new Membre("loginA", "mdpA", "emailA", "prenomA", "nomA", "rueA", "villeA", "paysA", "nationaliteA", "rueA", new Date(), "1", 1, false);
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("groupeB5");
@@ -23,6 +23,6 @@ public class MainTestGlassfish {
 		tx.commit();
 
 		em.close();
-		emf.close();
+		emf.close();*/
 	}
 }

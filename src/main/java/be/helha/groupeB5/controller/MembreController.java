@@ -32,8 +32,8 @@ public class MembreController {
 		return gestionMembreEJB.addMembre(m);
 	}
 	
-	public Membre doModifierMembre() {
-		return null;
+	public void doModifierMembre() {
+		gestionMembreEJB.UpdateMembre(ConnexionController.getMembre());
 	}
 	
 	public Membre doSupprimerMembre(Membre m) {

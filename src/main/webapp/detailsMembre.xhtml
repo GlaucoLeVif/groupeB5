@@ -9,18 +9,13 @@ xmlns:c="http://java.sun.com/jsp/jstl/core">
 		<title>JSF WEB APP</title>
 		<link rel="stylesheet" href="style.css"/>
 	</h:head>
-	
+
 	<h:body>
-		<b:navBar brand="Project name" brandHref="index.xhtml" inverse="true">
-            <b:navbarLinks>
-                <b:navLink value="Inscription" href="inscription.xhtml"></b:navLink>
-                <b:navLink value="Liste membre" href="listeMembre.xhtml"></b:navLink>
-                <b:dropMenu value="Evenement">
-                	<b:navLink value="Liste Evenement" href="indexEvent.xhtml"></b:navLink>
-                	<b:navLink value="Creer un évenement" href="createEvent.xhtml"></b:navLink>
-                </b:dropMenu>
-            </b:navbarLinks>
-        </b:navBar>
+		<ui:include src="/navBar.xhtml"></ui:include>
+	
+		<h1>Détails de #{membreController.membre.login}</h1>
+		
+		<BR/><BR/><BR/>
 
         <div class="gap-left gap-right">
 	

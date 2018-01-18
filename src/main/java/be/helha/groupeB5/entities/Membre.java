@@ -1,12 +1,16 @@
 package be.helha.groupeB5.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -19,6 +23,9 @@ public class Membre implements Serializable {
 	private Date dateN;
 	private int cp;
 	private boolean isAdmin;
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	private List<Evenement> listEvent = new ArrayList<Evenement>();
 
 	public Membre(String login, String mdp, String mail, String prenom, String nom, String rue, String ville,
 			String pays, String nationalite, String numGSM, Date dateN, String numRue, int cp, boolean isAdmin) {
@@ -38,6 +45,8 @@ public class Membre implements Serializable {
 		this.cp = cp;
 		this.isAdmin = isAdmin;
 	}
+
+	
 	
 	public Membre() {
 		
@@ -157,15 +166,37 @@ public class Membre implements Serializable {
 		this.cp = cp;
 	}
 
-	public boolean isAdmin() {
+	public boolean getIsAdmin() {
 		return isAdmin;
 	}
 
-	public void setAdmin(boolean isAdmin) {
+	public void setIsAdmin(boolean isAdmin) {
 		this.isAdmin = isAdmin;
 	}
 	
+	
 
+
+	public List<Evenement> getListEvent() {
+		return listEvent;
+	}
+
+	public void setListEvent(List<Evenement> listEvent) {
+		this.listEvent = listEvent;
+	}
+
+	
+	public void addEv(Evenement e)
+	{
+		listEvent.add(e);
+		
+	}
+	
+	public void removeEv(Evenement e)
+	{
+		listEvent.remove(e);
+	}
+	
 	public boolean equals(Object o)
 	{
 		if(o instanceof Membre){

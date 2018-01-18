@@ -6,9 +6,12 @@ import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
+import be.helha.groupeB5.controller.ConnexionController;
 import be.helha.groupeB5.dao.DAOEvenementLocalBean;
 import be.helha.groupeB5.dao.DAOMembreLocalBean;
 import be.helha.groupeB5.entities.Evenement;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureException;
 
 @Stateless
 @LocalBean

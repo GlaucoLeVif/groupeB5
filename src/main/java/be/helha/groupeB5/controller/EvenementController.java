@@ -16,12 +16,15 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 import be.helha.groupeB5.entities.Evenement;
+import be.helha.groupeB5.entities.Membre;
 import be.helha.groupeB5.entities.Image;
 import be.helha.groupeB5.entities.MailGestion;
-import be.helha.groupeB5.entities.Membre;
 import be.helha.groupeB5.entities.Participation;
 import be.helha.groupeB5.entities.UploadPage;
 import be.helha.groupeB5.sessionejb.GestionEvenementEJB;
+import be.helha.groupeB5.sessionejb.GestionMembreEJB;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureException;
 
 @Named
 @RequestScoped
@@ -29,6 +32,7 @@ public class EvenementController {
 
 	@EJB
 	GestionEvenementEJB gestionEvenementEJB;
+	GestionMembreEJB gestionMembreEJB;
 	private String titre, resume,lieu;
 	private double objectif, recolte;
 	private int etat;
@@ -42,18 +46,21 @@ public class EvenementController {
 	private MailGestion mailG = new MailGestion();
 	
 	public EvenementController() {}
-
+	
 
 	public List<Evenement> doAfficherEvenement() {
+		System.out.println("doafficher");
 		return gestionEvenementEJB.selectAll();
 	}
 	
-	public Membre doModifierEvenement() {
-		return null;
+	public void doModifierEvenement() {
+		gestionMembreEJB.UpdateMembre(ConnexionController.getMembre());
 	}
 	
-	public Evenement doSupprimerEvenement(Evenement e) {
-		return gestionEvenementEJB.deleteEvenement(e);
+	public void doSupprimerEvenement(Evenement e) {
+		ConnexionController.getMembre().removeEv(e);
+		gestionMembreEJB.UpdateMembre(ConnexionController.getMembre());
+		//return gestionEvenementEJB.deleteEvenement(e);
 	}
 	
 	public String doDetails(Evenement e)
@@ -78,7 +85,7 @@ public class EvenementController {
 		System.out.println("test");
 	}
 	
-	public Evenement doAjouterEvenement() {
+	public void doAjouterEvenement() {
 		Image i1 = new Image(up.uploadFile());
 		Set<Image> images = new HashSet<Image>();
 		images.add(i1);
@@ -93,9 +100,13 @@ public class EvenementController {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		
+		ConnexionController.getMembre().addEv(e);
+		doModifierEvenement();
+		
 		//Evenement e = new Evenement("titre"+System.currentTimeMillis(), "resume1", null, 5000.00, 0, d);
 		//System.out.println(e.toString());
-		return gestionEvenementEJB.addEvenement(e);
+		//return gestionEvenementEJB.addEvenement(e);
 		//return null;
 	}
 	
@@ -245,7 +256,6 @@ public class EvenementController {
 	{
 		mailG.sendMail();
 	}
-	
 	
 	
 	
