@@ -18,13 +18,13 @@ xmlns:h="http://java.sun.com/jsf/html"
                 <b:navLink value="Inscription" rendered="#{!connexionController.isConnecte}"  href="inscription.xhtml"></b:navLink>
                 <!-- b:navLink value="Liste membre" rendered="#{connexionController.getMembre().isAdmin}" href="listeMembre.xhtml"></b:navLink-->
                 <b:dropMenu value="Evenement">
-                	<b:navLink value="Liste Evenement" action="@{connexionController.goListEvent()}"></b:navLink>
+                	<b:navLink value="Liste Evenement" href="" action="@{connexionController.goListEvent()}"></b:navLink>
                 	<b:navLink value="Creer un évenement" href="indexEvent.xhtml"></b:navLink>
                 </b:dropMenu>
             </b:navbarLinks>
             <b:navbarLinks pull="right">
                	<b:navLink pull="right" rendered="#{!connexionController.isConnecte}" value="Connexion" href="connexion.xhtml"></b:navLink>
-               	<b:navLink pull="right" rendered="#{connexionController.isConnecte}" action="#{connexionController.disconnect()}" value="Déconnexion" href="index.xhtml"></b:navLink>
+               	<b:navLink pull="right" rendered="#{connexionController.isConnecte}" onclick="#{connexionController.disconnect()}" value="Déconnexion" href="index.xhtml"></b:navLink>
   			</b:navbarLinks>
         </b:navBar>
 	</h:body>

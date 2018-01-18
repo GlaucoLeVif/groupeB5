@@ -58,7 +58,7 @@ public class EvenementController {
 		System.out.println("doafficher");
 		try {
 
-		    Jwts.parser().setSigningKey(MembreConnecte.getInstance().getKey()).parseClaimsJws(MembreConnecte.getInstance().getToken());
+		    Jwts.parser().setSigningKey(ConnexionController.getKey()).parseClaimsJws(ConnexionController.getToken());
 
 		    return gestionEvenementEJB.selectAll();
 

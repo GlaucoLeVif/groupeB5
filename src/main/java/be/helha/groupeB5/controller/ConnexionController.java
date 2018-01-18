@@ -27,8 +27,6 @@ public class ConnexionController {
 	private static Key key= MacProvider.generateKey();
 	
 	private boolean isConnecte;
-	
-	private String boutonConnecte;
 
 	public String connect() {
 		List<Membre> m=gestionConnexionEJB.checkConnect(login, mdp);
@@ -42,7 +40,6 @@ public class ConnexionController {
 			  .compact();
 			isConnecte=true;
 			membre = m.get(0);
-			toggleConnecte();
 			
 			return "index.xhtml";
 		}
@@ -56,14 +53,6 @@ public class ConnexionController {
 		login=null;
 		mdp=null;
 		isConnecte=false;
-	}
-	
-	public void toggleConnecte() {
-		if(isConnecte){
-			boutonConnecte = "Déconnexion";
-		}else {
-			boutonConnecte = "Connexion";
-		}
 	}
 	
 	public String goIndex() {
@@ -128,13 +117,5 @@ public class ConnexionController {
 
 	public void setIsConnecte(boolean isConnecte) {
 		this.isConnecte = isConnecte;
-	}
-
-	public String getBoutonConnecte() {
-		return boutonConnecte;
-	}
-
-	public void setBoutonConnecte(String connecte) {
-		this.boutonConnecte = connecte;
 	}
 }
