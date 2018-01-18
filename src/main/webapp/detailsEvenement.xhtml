@@ -19,18 +19,16 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 			<h1 class="text-center">Détails de #{evenementController.event.titre}</h1>						<BR/>
 			
 			<div class="pull-left gap-right">
-				<b:flyOutMenu width="50px img-thumbnail" style="padding: 30px;">
-					<img src="data:image/jpg;base64,#{evenementController.event.getImage(0)}" width="400" class="pull-left gap-right img-thumbnail"></img>
-					Objectif : #{evenementController.event.objectif}											<BR/>
-					Recolte : #{evenementController.event.recolte}												<BR/>
-					Date : #{evenementController.event.dateEv}													<BR/>
-					Recolte : #{evenementController.event.recolte}												<BR/>
-					Lieu : #{evenementController.event.lieu}													<BR/>
+				<img src="data:image/jpg;base64,#{evenementController.event.getImage(0)}" width="300px" class="pull-left gap-right img-thumbnail"></img>
+				Objectif : #{evenementController.event.objectif}											<BR/>
+				Recolte : #{evenementController.event.recolte}												<BR/>
+				Date : #{evenementController.event.dateEv}													<BR/>
+				Recolte : #{evenementController.event.recolte}												<BR/>
+				Lieu : #{evenementController.event.lieu}													<BR/>
+			
+				<BR/><BR/><BR/><BR/>
 				
-					<BR/><BR/><BR/><BR/>
-					
-					#{evenementController.event.resume}
-				</b:flyOutMenu>
+				#{evenementController.event.resume}
 			</div>
 			
 			<div class="pull-right">
@@ -41,7 +39,8 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 					 		<b:inputText label="Montant : " value="#{participationController.montant}"></b:inputText>				<BR />
 			  			</h:panelGrid>
 			  			
-						<b:commandButton value="Payer"></b:commandButton>	<BR /><BR /><BR /><BR />
+						<b:commandButton value="Payer" action="#{participationController.doAjouterParticipation()}"></b:commandButton>	<BR /><BR /><BR /><BR />
+						
 						<b:label value="Date du jour : ">#{participationController.afficherDateDuJour()}</b:label>
 					</h:form>
 				</b:flyOutMenu>
@@ -49,7 +48,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 			
 			<BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/>
 			
-			<b:dataTable value = "#{participationController.doAfficherParticipation()}" var = "part">
+			<b:dataTable value = "#{evenementController.doAjouterParticipation()}" var = "part">
 			    
 			    <b:dataTableColumn>
 			      <f:facet name = "header">ID</f:facet>
