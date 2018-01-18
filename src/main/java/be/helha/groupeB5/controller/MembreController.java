@@ -33,7 +33,7 @@ public class MembreController {
 	}
 	
 	public void doModifierMembre() {
-		//ConnexionController.getMembre();
+		gestionMembreEJB.UpdateMembre(ConnexionController.getMembre());
 	}
 	
 	public Membre doSupprimerMembre(Membre m) {

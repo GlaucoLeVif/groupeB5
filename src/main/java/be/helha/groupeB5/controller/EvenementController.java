@@ -103,7 +103,7 @@ public class EvenementController {
 		System.out.println("test");
 	}
 	
-	public Evenement doAjouterEvenement() {
+	public void doAjouterEvenement() {
 		Image i1 = new Image(up.uploadFile());
 		Set<Image> images = new HashSet<Image>();
 		images.add(i1);
@@ -118,9 +118,11 @@ public class EvenementController {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		
+		ConnexionController.getMembre().addEv(e);
 		//Evenement e = new Evenement("titre"+System.currentTimeMillis(), "resume1", null, 5000.00, 0, d);
 		//System.out.println(e.toString());
-		return gestionEvenementEJB.addEvenement(e);
+		//return gestionEvenementEJB.addEvenement(e);
 		//return null;
 	}
 	
