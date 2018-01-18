@@ -6,6 +6,7 @@ import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
+import be.helha.groupeB5.dao.DAOEvenementLocalBean;
 import be.helha.groupeB5.dao.DAOMembreLocalBean;
 import be.helha.groupeB5.entities.Evenement;
 
@@ -14,7 +15,7 @@ import be.helha.groupeB5.entities.Evenement;
 public class GestionEvenementEJB implements IGestionEvenementEJBRemote{
 
 	@EJB
-	private DAOMembreLocalBean dao;//Jamais de NEW
+	private DAOEvenementLocalBean dao;//Jamais de NEW
 	
 	
 	@Override	

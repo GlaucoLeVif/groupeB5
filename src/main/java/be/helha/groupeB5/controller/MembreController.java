@@ -40,6 +40,10 @@ public class MembreController {
 		return gestionMembreEJB.deleteMembre(m);
 	}
 	
+	public Membre doAfficherMembreConnecter() {
+		return null;
+	}
+	
 	public String doDetails(Membre m)
 	{
 		membre = m;

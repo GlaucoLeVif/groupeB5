@@ -1,15 +1,11 @@
 package be.helha.groupeB5.controller;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -18,9 +14,6 @@ import java.util.Set;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
-import javax.servlet.http.Part;
-
-import com.sun.istack.logging.Logger;
 
 import be.helha.groupeB5.entities.Evenement;
 import be.helha.groupeB5.entities.Image;
@@ -61,11 +54,6 @@ public class EvenementController {
 	
 	public Evenement doSupprimerEvenement(Evenement e) {
 		return gestionEvenementEJB.deleteEvenement(e);
-	}
-	
-	public Set<Participation> doAfficherParticipation(/*Evenement e*/) {
-		// event = e;
-		return event.getParts();
 	}
 	
 	public String doDetails(Evenement e)

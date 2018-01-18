@@ -9,6 +9,7 @@ xmlns:jsf="http://xmlns.jcp.org/jsf"
 
 <h:head>
 <title>Liste des Membres</title>
+<link rel="stylesheet" href="style.css"/>
 </h:head>
 
 <h:body>
@@ -23,48 +24,49 @@ xmlns:jsf="http://xmlns.jcp.org/jsf"
             </b:navbarLinks>
         </b:navBar>
         
-		<h1>Listes</h1>
-		<BR/><BR/>
-		
-		<b:dataTable value = "#{membreController.doAfficherMembre()}" var = "ev">
-		    
-		    <b:dataTableColumn>
-		      <f:facet name = "header">LOGIN</f:facet>
-		      #{ev.login}
-		   </b:dataTableColumn>
-		   
-		    <b:dataTableColumn>
-		      <f:facet name = "header">EMAIL</f:facet>
-		      #{ev.mail}
-		   </b:dataTableColumn>
-		   
-		    <b:dataTableColumn>
-		      <f:facet name = "header">PRENOM</f:facet>
-		      #{ev.prenom}
-		   </b:dataTableColumn>
-		   
-		   <b:dataTableColumn>
-		      <f:facet name = "header">NOM</f:facet>
-		      #{ev.nom}
-		   </b:dataTableColumn>
-		   
-		   <b:dataTableColumn>
-				<f:facet name="header">DETAILS</f:facet>
-					<h:form>
-						<h:commandButton value="Accéder" action="#{membreController.doDetails(ev)}"></h:commandButton>
-					</h:form>
-			</b:dataTableColumn>
+        <div class="gap-left gap-right">
+			<h1>Listes</h1>
+			<BR/><BR/>
 			
-		   	 <b:dataTableColumn>
-				<f:facet name="header">
-					<h:outputText value="DELETE"/>
-				</f:facet>
-				<h:form>		
-				<h:commandButton value="X" action="#{membreController.doSupprimerMembre(ev)}"></h:commandButton>
-				</h:form>	
-			</b:dataTableColumn>
-			
-		</b:dataTable>
-
+			<b:dataTable value = "#{membreController.doAfficherMembre()}" var = "ev">
+			    
+			    <b:dataTableColumn>
+			      <f:facet name = "header">LOGIN</f:facet>
+			      #{ev.login}
+			   </b:dataTableColumn>
+			   
+			    <b:dataTableColumn>
+			      <f:facet name = "header">EMAIL</f:facet>
+			      #{ev.mail}
+			   </b:dataTableColumn>
+			   
+			    <b:dataTableColumn>
+			      <f:facet name = "header">PRENOM</f:facet>
+			      #{ev.prenom}
+			   </b:dataTableColumn>
+			   
+			   <b:dataTableColumn>
+			      <f:facet name = "header">NOM</f:facet>
+			      #{ev.nom}
+			   </b:dataTableColumn>
+			   
+			   <b:dataTableColumn>
+					<f:facet name="header">DETAILS</f:facet>
+						<h:form>
+							<h:commandButton value="Accéder" action="#{membreController.doDetails(ev)}"></h:commandButton>
+						</h:form>
+				</b:dataTableColumn>
+				
+			   	 <b:dataTableColumn>
+					<f:facet name="header">
+						<h:outputText value="DELETE"/>
+					</f:facet>
+					<h:form>		
+					<h:commandButton value="X" action="#{membreController.doSupprimerMembre(ev)}"></h:commandButton>
+					</h:form>	
+				</b:dataTableColumn>
+				
+			</b:dataTable>
+		</div>
 	</h:body>
 </html>
