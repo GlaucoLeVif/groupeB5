@@ -126,6 +126,7 @@ public class EvenementController {
 		System.out.println(ConnexionController.getMembre().toString());
 		ConnexionController.getMembre().addEv(e);
 		doModifierEvenement();
+		sendEmail();
 		
 		//Evenement e = new Evenement("titre"+System.currentTimeMillis(), "resume1", null, 5000.00, 0, d);
 		//System.out.println(e.toString());
@@ -277,7 +278,7 @@ public class EvenementController {
 	
 	public void sendEmail()
 	{
-		mailG.sendMail();
+		mailG.sendMail(ConnexionController.getMembre().getLogin(),titre,lieu);
 	}
 	
 	

@@ -15,7 +15,7 @@ import javax.inject.Named;
 public class MailGestion implements Serializable {
 
 	
-	public void sendMail()
+	public void sendMail(String nomCreateur,String nomEv,String nomLieu)
 	{
 	/*	
 		String smtpHost = "smtp.gmail.com";
@@ -65,7 +65,7 @@ public class MailGestion implements Serializable {
 		             message.setRecipients(Message.RecipientType.TO,
 		             InternetAddress.parse("alex.10101997@gmail.com"));
 		             message.setSubject("Notif - Ajout d'un evenement - ");
-		             message.setText("Un nouvel événement a été créé par - - au sujet de - - et se déroule - - . Pour gérer vos événements, rendez-vous sur le site dans la section gérer les événements : --");
+		             message.setText("Un nouvel événement a été créé par "+nomCreateur+" au sujet de "+nomEv+" et se déroule à "+nomLieu+". \nPour gérer vos événements, rendez-vous sur le site dans la section gérer les événements : http://54.76.209.52:5080/groupeB5/");
 		             Transport.send(message);
 		 
 		             System.out.println("Envoyé");
