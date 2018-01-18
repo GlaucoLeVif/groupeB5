@@ -25,12 +25,12 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 			 		<b:inputText label="Lieu" value="#{evenementController.lieu}"></b:inputText> <BR />
 			 		<b:inputText label="Objectif " value="#{evenementController.objectif}"></b:inputText>		<BR />
 			 		<b:datepicker label="Date " value="#{evenementController.dateEv}"></b:datepicker>			<BR /><BR />
-			 		<h:inputFile label="Image " value="evenementController.up.uploadedFile" />	<BR /><BR /><BR />
+			 		<h:inputFile label="Image " value="#{evenementController.up.uploadedFile}" />	<BR /><BR /><BR />
 	  		
 	  			</h:panelGrid>
 	  		
 	  			
-				<h:commandButton value="Save" action="#{evenementController.doAjouterEvenement()}"></h:commandButton>
+				<h:commandButton value="Enregistrer l'événement !" action="#{evenementController.doAjouterEvenement()}"></h:commandButton>
 			</h:form>
         </div>
 	</h:body>

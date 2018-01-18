@@ -7,6 +7,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
+import be.helha.groupeB5.entities.Membre;
 import be.helha.groupeB5.entities.Participation;
 import be.helha.groupeB5.sessionejb.GestionParticipationEJB;
 
@@ -26,6 +27,11 @@ public class ParticipationController {
 	
 	public List<Participation> doAfficherParticipation() {
 		return gestionParticipationEJB.selectAll();
+	}
+	
+	public Participation doAjouterParticipation() {
+		Participation p = new Participation(nomDonateur, montant, dateDon);
+		return gestionParticipationEJB.addParticipation(p);
 	}
 	
 	public Participation doSupprimerParticipation(Participation p) {
