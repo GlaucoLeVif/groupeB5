@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -16,15 +17,12 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 import be.helha.groupeB5.entities.Evenement;
-import be.helha.groupeB5.entities.Membre;
 import be.helha.groupeB5.entities.Image;
 import be.helha.groupeB5.entities.MailGestion;
 import be.helha.groupeB5.entities.Participation;
 import be.helha.groupeB5.entities.UploadPage;
 import be.helha.groupeB5.sessionejb.GestionEvenementEJB;
 import be.helha.groupeB5.sessionejb.GestionMembreEJB;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureException;
 
 @Named
 @RequestScoped
@@ -40,7 +38,28 @@ public class EvenementController {
 	private Date dateEv;
 	private Evenement event = new Evenement();
 	private Set<Participation> parts = new HashSet<Participation>();
+	private List<Evenement> lastEvents = new ArrayList<Evenement>();
 	
+	public List<Evenement> getLastEvents() {
+		if(lastEvents.size()<5) {
+			List<Evenement> tempList = gestionEvenementEJB.selectAll();
+			for(int i = tempList.size()-1 ; i>tempList.size()-6;i--) {
+				if(i<0) {
+					return lastEvents;
+				}
+				lastEvents.add(tempList.get(i));
+			}
+			return lastEvents;
+		}
+		return lastEvents;
+	}
+
+
+	public void setLastEvents(List<Evenement> lastEvents) {
+		this.lastEvents = lastEvents;
+	}
+
+
 	private byte[] image1;
 	private File file1;
 	private UploadPage up = new UploadPage();
@@ -81,6 +100,7 @@ public class EvenementController {
 	{
 		return "index.xhtml?faces-redirect=true";
 	}
+	
 	
 	
 	public void aaa() {
