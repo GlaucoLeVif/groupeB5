@@ -1,20 +1,30 @@
 package be.helha.groupeB5.controller;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+import javax.servlet.http.Part;
+
+import com.sun.istack.logging.Logger;
 
 import be.helha.groupeB5.entities.Evenement;
 import be.helha.groupeB5.entities.Membre;
+import be.helha.groupeB5.entities.Image;
+import be.helha.groupeB5.entities.Participation;
 import be.helha.groupeB5.entities.MembreConnecte;
 import be.helha.groupeB5.entities.UploadPage;
 import be.helha.groupeB5.sessionejb.GestionEvenementEJB;
@@ -27,8 +37,9 @@ public class EvenementController {
 
 	@EJB
 	GestionEvenementEJB gestionEvenementEJB;
-	private String titre, resume;
+	private String titre, resume,lieu;
 	private double objectif, recolte;
+	private int etat;
 	private Date dateEv;
 	private Evenement event = new Evenement();
 	
@@ -84,9 +95,11 @@ public class EvenementController {
 	}
 	
 	public Evenement doAjouterEvenement() {
-		image1 = up.uploadFile();
-		Evenement e = new Evenement(titre, resume, image1, objectif, recolte, dateEv);
-		System.out.println(e.getImage1());
+		Image i1 = new Image(up.uploadFile());
+		Set<Image> images = new HashSet<Image>();
+		images.add(i1);
+		Evenement e = new Evenement(titre, resume, lieu, objectif, recolte,etat, dateEv,images,null);
+		
 		System.out.println("stade1");
 		Date d = new Date();
 		DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
@@ -187,6 +200,29 @@ public class EvenementController {
 	public void setRecolte(double recolte) {
 		this.recolte = recolte;
 	}
+	
+	
+	
+	public String getLieu() {
+		return lieu;
+	}
+
+
+	public void setLieu(String lieu) {
+		this.lieu = lieu;
+	}
+
+
+	public int getEtat() {
+		return etat;
+	}
+
+
+	public void setEtat(int etat) {
+		this.etat = etat;
+	}
+
+
 	public Date getDateEv() {
 		return dateEv;
 	}

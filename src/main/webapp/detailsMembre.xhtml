@@ -3,30 +3,15 @@
 xmlns:f="http://java.sun.com/jsf/core"
 xmlns:b="http://bootsfaces.net/ui"
 xmlns:h="http://java.sun.com/jsf/html"
-xmlns:c="http://java.sun.com/jsp/jstl/core">
+xmlns:c="http://java.sun.com/jsp/jstl/core"
+xmlns:ui="http://java.sun.com/jsf/facelets">
 
 	<h:head>
 		<title>JSF WEB APP</title>
 	</h:head>
 	
 	<h:body>
-	<b:navBar brand="Project name" brandHref="index.xhtml" inverse="true">
-            <b:navbarLinks>
-                <b:navLink value="Inscription" href="inscription.xhtml"></b:navLink>
-                <b:navLink value="Liste membre" href="listeMembre.xhtml"></b:navLink>
-                <b:dropMenu value="Evenement">
-                	<b:navLink value="Liste Evenement" href="indexEvent.xhtml"></b:navLink>
-                	<b:navLink value="Creer un évenement" href="createEvent.xhtml"></b:navLink>
-                </b:dropMenu>
-            </b:navbarLinks>
-        </b:navBar>
-		<b:navBar brand="Project name" brandHref="index.xhtml" inverse="true">
-		    <b:navbarLinks>
-		        <b:navLink value="Inscription" href="inscription.xhtml"></b:navLink>
-		        <b:navLink value="Liste membre" href="listeMembre.xhtml"></b:navLink>
-		        <b:navLink value="Liste Evenement" href="indexEvent.xhtml"></b:navLink>
-		    </b:navbarLinks>
-	    </b:navBar>
+	<ui:include src="/navBar.xhtml"></ui:include>
 	
 		<h1>Détails de #{membreController.membre.login}</h1>
 		

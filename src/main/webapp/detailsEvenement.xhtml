@@ -3,33 +3,31 @@
 xmlns:f="http://java.sun.com/jsf/core"
 xmlns:b="http://bootsfaces.net/ui"
 xmlns:h="http://java.sun.com/jsf/html"
-xmlns:c="http://java.sun.com/jsp/jstl/core">
+xmlns:c="http://java.sun.com/jsp/jstl/core"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+>
 
 	<h:head>
 		<title>JSF WEB APP</title>
+		<link rel="stylesheet" href="style.css"/>
 	</h:head>
 	
 	<h:body>
-		<b:navBar brand="Project name" brandHref="index.xhtml" inverse="true">
-		    <b:navbarLinks>
-		        <b:navLink value="Inscription" href="inscription.xhtml"></b:navLink>
-		        <b:navLink value="Liste membre" href="listeMembre.xhtml"></b:navLink>
-		        <b:navLink value="Liste Evenement" href="indexEvent.xhtml"></b:navLink>
-		    </b:navbarLinks>
-	    </b:navBar>
+	<ui:include src="/navBar.xhtml"></ui:include>
 	
 		<h1 class="text-center">Détails de #{evenementController.event.titre}</h1>					<BR/>
 		
-		<img src="data:image/jpg;base64,#{evenementController.event.image1}" width="200" class=" pull-left gap-right img-thumbnail"></img>		<BR/>
-		#{evenementController.event.resume}															<BR/>
-		objectif : #{evenementController.event.objectif}											<BR/>
-		recolte : #{evenementController.event.recolte}												<BR/>
-		date : #{evenementController.event.dateEv}													<BR/>
-		recolte : #{evenementController.event.recolte}												<BR/>
+		<div class="pull-left gap-right">
+			<img src="data:image/jpg;base64,#{evenementController.event.getImage(0)}" width="400" class="pull-left gap-right img-thumbnail"></img>
+			objectif : #{evenementController.event.objectif}											<BR/>
+			recolte : #{evenementController.event.recolte}												<BR/>
+			date : #{evenementController.event.dateEv}													<BR/>
+			recolte : #{evenementController.event.recolte}												<BR/>
+		</div>
 		
-		<BR/><BR/><BR/>
+		<BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/>
 		
-		
+		#{evenementController.event.resume}
 		
 		<BR/><BR/><BR/>
 					

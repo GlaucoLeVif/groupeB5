@@ -4,6 +4,7 @@ xmlns:b="http://bootsfaces.net/ui"
 xmlns:f="http://java.sun.com/jsf/core"
 xmlns:h="http://java.sun.com/jsf/html"
 xmlns:jsf="http://xmlns.jcp.org/jsf"
+xmlns:ui="http://java.sun.com/jsf/facelets"
 >
 
 	<h:head>
@@ -14,31 +15,24 @@ xmlns:jsf="http://xmlns.jcp.org/jsf"
 	</h:head>
 	
 	<h:body>
-	<b:navBar brand="Project name" brandHref="index.xhtml" inverse="true">
-            <b:navbarLinks>
-                <b:navLink value="Inscription" href="inscription.xhtml"></b:navLink>
-                <b:navLink value="Liste membre" href="listeMembre.xhtml"></b:navLink>
-                <b:dropMenu value="Evenement">
-                	<b:navLink value="Liste Evenement" href="indexEvent.xhtml"></b:navLink>
-                	<b:navLink value="Creer un évenement" href="createEvent.xhtml"></b:navLink>
-                </b:dropMenu>
-            </b:navbarLinks>
-        </b:navBar>
+	<ui:include src="/navBar.xhtml"></ui:include>
 		<h1>Evenements</h1>
 	
 	
 		<h:form enctype="multipart/form-data">
 	 		Titre : <h:inputText value="#{evenementController.titre}"></h:inputText>				<BR />
 	 		resumé : <h:inputText value="#{evenementController.resume}"></h:inputText>				<BR />
+	 		Lieu : <h:inputText value="#{evenementController.lieu}"></h:inputText>				<BR />
 	 		Objectif(€) : <h:inputText  value="#{evenementController.objectif}"></h:inputText>					<BR />
 	 		Récolte(€) : <h:inputText value="#{evenementController.recolte}"></h:inputText>					<BR />
 			Date de l'événement : <b:datepicker value="#{evenementController.dateEv}"></b:datepicker>				<BR />
+			Etat : <h:inputText value="#{evenementController.etat}"></h:inputText>				<BR />
 	 		Importer une image(pas encore fait) :	<h:inputFile value="#{evenementController.up.uploadedFile}" />			<BR />
 	 		
 	 		
 			<BR /><BR /><BR />
 			
-			<h:commandButton value="Save(pas opérationnel)" action="#{evenementController.doAjouterEvenement()}"></h:commandButton>
+			<h:commandButton value="Enregistrer l'événement !" action="#{evenementController.doAjouterEvenement()}"></h:commandButton>
 		</h:form>
 		
 		<BR /><BR /><BR />
@@ -78,7 +72,7 @@ xmlns:jsf="http://xmlns.jcp.org/jsf"
 		   </b:dataTableColumn>
 		   <b:dataTableColumn>
 		      <f:facet name = "header">IMAGE1</f:facet>
-		     <img src="data:image/jpg;base64,#{ev.image1}" width="75"></img>
+		     <img src="data:image/jpg;base64,#{ev.getImage(0)}" width="75"></img>
 		   </b:dataTableColumn>
 		   
 		  
@@ -99,10 +93,6 @@ xmlns:jsf="http://xmlns.jcp.org/jsf"
 			</b:dataTableColumn>
 			
 		</b:dataTable>
-		
-		<h:form>		
-			<h:commandButton value="Evènement" action="#{membreController.doEvenement()}"></h:commandButton>
-		</h:form>
 	
 	</h:body>
 	

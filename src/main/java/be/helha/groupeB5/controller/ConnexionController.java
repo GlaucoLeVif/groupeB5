@@ -4,8 +4,8 @@ import java.security.Key;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import be.helha.groupeB5.entities.Membre;
 import be.helha.groupeB5.entities.MembreConnecte;
@@ -14,8 +14,8 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.crypto.MacProvider;
 
-@Named
-@RequestScoped
+@ManagedBean  
+@SessionScoped
 public class ConnexionController {
 	
 	@EJB
@@ -25,11 +25,13 @@ public class ConnexionController {
 	private Membre m;
 	private String token;
 	private Key key;
+	private boolean isConnecte;
+	
+	private String boutonConnecte;
 
-	public Membre connect() {
+	public String connect() {
 		List<Membre> m=gestionConnexionEJB.checkConnect(login, mdp);
 		if(!m.isEmpty()) {
-			System.out.println("compte existe");
 			if(token==null) {
 				key = MacProvider.generateKey();
 				MembreConnecte.getInstance().setKey(key);
@@ -40,9 +42,41 @@ public class ConnexionController {
 			  .compact();
 			MembreConnecte.getInstance().setToken(token);
 			MembreConnecte.getInstance().setM(m.get(0));
-			return m.get(0);
+			isConnecte=true;
+			toggleConnecte();
+			
+			return "index.xhtml";
 		}
-		return null;
+		return "";
+	}
+	
+	public void disconnect() {
+		toggleConnecte();
+		key=null;
+		MembreConnecte.getInstance().setKey(null);
+		token=null;
+		MembreConnecte.getInstance().setToken(null);
+		m=null;
+		login = null;
+		mdp = null;
+		MembreConnecte.getInstance().setM(null);
+		isConnecte=false;
+	}
+	
+	public void toggleConnecte() {
+		if(isConnecte){
+			boutonConnecte = "Déconnexion";
+		}else {
+			boutonConnecte = "Connexion";
+		}
+	}
+	
+	public String goIndex() {
+		return "index.xhtml";
+	}
+	
+	public String goListEvent() {
+		return "indexEvent.xhtml";
 	}
 	
 	public String getLogin() {
@@ -59,5 +93,53 @@ public class ConnexionController {
 
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
+	}
+
+	public GestionConnexionEJB getGestionConnexionEJB() {
+		return gestionConnexionEJB;
+	}
+
+	public void setGestionConnexionEJB(GestionConnexionEJB gestionConnexionEJB) {
+		this.gestionConnexionEJB = gestionConnexionEJB;
+	}
+
+	public Membre getM() {
+		return m;
+	}
+
+	public void setM(Membre m) {
+		this.m = m;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public Key getKey() {
+		return key;
+	}
+
+	public void setKey(Key key) {
+		this.key = key;
+	}
+
+	public boolean getIsConnecte() {
+		return isConnecte;
+	}
+	
+	public void setIsConnecte(boolean connecte) {
+		this.isConnecte = connecte;
+	}
+
+	public String getBoutonConnecte() {
+		return boutonConnecte;
+	}
+
+	public void setBoutonConnecte(String connecte) {
+		this.boutonConnecte = connecte;
 	}
 }

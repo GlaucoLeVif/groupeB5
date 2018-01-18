@@ -3,6 +3,7 @@
 xmlns:b="http://bootsfaces.net/ui"
 xmlns:f="http://java.sun.com/jsf/core"
 xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets"
 >
 
 	<h:head>
@@ -10,26 +11,12 @@ xmlns:h="http://java.sun.com/jsf/html"
 	</h:head>
 	
 	<h:body>
-	<b:navBar brand="Project name" brandHref="index.xhtml" inverse="true">
-            <b:navbarLinks>
-                <b:navLink value="Inscription" href="inscription.xhtml"></b:navLink>
-                <b:navLink value="Liste membre" href="listeMembre.xhtml"></b:navLink>
-                <b:dropMenu value="Evenement">
-                	<b:navLink value="Liste Evenement" href="indexEvent.xhtml"></b:navLink>
-                	<b:navLink value="Creer un évenement" href="indexEvent.xhtml"></b:navLink>
-                </b:dropMenu>
-                <b:navLink value="Connexion" href="connexion.xhtml"></b:navLink>
-            </b:navbarLinks>
-        </b:navBar>
-        
-        <b:form>
-        	<b:inputText label="Username : " value="#{connexionController.login}"></b:inputText>
-        	<b:inputSecret label="Password : " value="#{connexionController.mdp}"></b:inputSecret>
-  			<h:commandButton value="Connexion" action="#{connexionController.connect()}"></h:commandButton>
-        	<h:commandButton value="AccesBD" action="#{evenementController.doAfficherEvenement()}"></h:commandButton>
-        </b:form>
-        
-        
+		<ui:include src="/navBar.xhtml"></ui:include>
+	    <b:form>
+	       	<b:inputText label="Username : " value="#{connexionController.login}"></b:inputText>
+	       	<b:inputSecret label="Password : " value="#{connexionController.mdp}"></b:inputSecret>
+	  		<h:commandButton value="Connexion" action="#{connexionController.connect()}"></h:commandButton>
+	       	<h:commandButton value="AccesBD" action="#{evenementController.doAfficherEvenement()}"></h:commandButton>
+	    </b:form>
 	</h:body>
-	
 </html>
