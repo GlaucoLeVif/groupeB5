@@ -320,18 +320,24 @@ public class MainData {
 		Participation p1 = new Participation("Kévin", 50, d4);
 		Participation p2 = new Participation("Florian", 2, d5);
 		
-		parts.add(p1);
-		parts.add(p2);
+	//	parts.add(p1);
+	//	parts.add(p2);
 		
 		
 		
-		Evenement e = new Evenement("titre1", "resume1", "lieu1", 5000.00, 0,1, d2,images,parts);
-		Evenement e2 = new Evenement("titre2", "resume2", "lieu2", 8000.00, 0,1, d3,images,parts);
+		Evenement e = new Evenement("titre1", "resume1", "lieu1", 5000.00, 0,1, d2);
+		Evenement e2 = new Evenement("titre2", "resume2", "lieu2", 8000.00, 0,1, d3);
+		
+		e.addImage(i1);
+		e.addImage(i2);
 
-		List<Evenement> listEvent = new ArrayList<Evenement>();
+		e.addPart(p1);
+		e.addPart(p2);
 		
-		listEvent.add(e);
-		listEvent.add(e2);
+		//List<Evenement> listEvent = new ArrayList<Evenement>();
+		
+		//listEvent.add(e);
+		//listEvent.add(e2);
 
 		Membre m = new Membre("log", "mdp", "monmail", "distant", "Led", "place", "Beaumont", "Belgique", "BE", "0492", d, "1", 6500, false);
 		m.addEv(e);

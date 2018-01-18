@@ -11,6 +11,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
@@ -29,16 +30,16 @@ public class Evenement implements Serializable {
 	private int etat;
 	private Date dateEv;
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	private Set<Image> images = new HashSet<Image>();
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,orphanRemoval=true)
+	private List<Image> images;
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	private Set<Participation> parts = new HashSet<Participation>();
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,orphanRemoval=true)
+	private List<Participation> parts;
 	
 	
 	
 	public Evenement(String titre, String resume, String lieu, double objectif, double recolte, int etat,
-			Date dateEv, Set<Image> images,Set<Participation> parts) {
+			Date dateEv) {
 		super();
 		this.titre = titre;
 		this.resume = resume;
@@ -47,8 +48,8 @@ public class Evenement implements Serializable {
 		this.recolte = recolte;
 		this.etat = etat;
 		this.dateEv = dateEv;
-		this.images = images;
-		this.parts = parts;
+		this.images = new ArrayList<>();
+		this.parts = new ArrayList<>();
 	}
 
 	public Evenement() {}
@@ -76,32 +77,9 @@ public class Evenement implements Serializable {
 		this.resume = resume;
 	}
 
-	
-/*
-	public String getImage1() {
-		byte barray[] = Base64.getEncoder().encode(image1);
-		//String imageString = new String(image1);
-		return new String(barray);
-	}
-
-	public void setImage1(byte[] image1) {
-		this.image1 = image1;
-	}
-	
-	
-	public String getImage2() {
-		byte barray[] = Base64.getEncoder().encode(image1);
-		//String imageString = new String(image1);
-		return new String(barray);
-	}
-
-	public void setImage2(byte[] image2) {
-		this.image2 = image2;
-	}*/
-
 	public String getImage(int num)
 	{
-		if(images.size()>num)
+		/*if(images.size()>num)
 		{
 			int index = 0;
 		    for(Image element : images){
@@ -110,24 +88,25 @@ public class Evenement implements Serializable {
 		      }
 		      index++;
 		    }
-		}
-		return "";
+		}*/
+		return images.get(num).getImage();
 	}
 	
-	public Set<Image> getImages() {
+	
+
+	public List<Image> getImages() {
 		return images;
 	}
 
-	public void setImages(Set<Image> images) {
+	public void setImages(List<Image> images) {
 		this.images = images;
 	}
-	
 
-	public Set<Participation> getParts() {
+	public List<Participation> getParts() {
 		return parts;
 	}
 
-	public void setParts(Set<Participation> parts) {
+	public void setParts(List<Participation> parts) {
 		this.parts = parts;
 	}
 
@@ -172,6 +151,26 @@ public class Evenement implements Serializable {
 	public void setLieu(String lieu) {
 		this.lieu = lieu;
 	}
+	
+	public void addImage(Image img)
+	{
+		images.add(img);
+	}
+	
+	public void removeImage(Image img)
+	{
+		images.remove(img);
+	}
+	
+	public void addPart(Participation p)
+	{
+		parts.add(p);
+	}
+	
+	public void removePart(Participation p)
+	{
+		parts.remove(p);
+	}
 
 	public boolean equals(Object o)
 	{
@@ -181,12 +180,6 @@ public class Evenement implements Serializable {
 		}
 		return false;
 	}
-/*
-	@Override
-	public String toString() {
-		return "Evenement [idEv=" + idEv + ", titre=" + titre + ", resume=" + resume 
-				+ ", objectif=" + objectif + ", recolte=" + recolte + ", dateEv=" + dateEv + "]";
-	}*/
 
 	@Override
 	public String toString() {

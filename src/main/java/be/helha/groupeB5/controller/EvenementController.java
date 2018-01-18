@@ -108,16 +108,10 @@ public class EvenementController {
 	}
 	
 	
-	
-	public void aaa() {
-		System.out.println("test");
-	}
-	
 	public void doAjouterEvenement() {
 		Image i1 = new Image(up.uploadFile());
-		Set<Image> images = new HashSet<Image>();
-		images.add(i1);
-		Evenement e = new Evenement(titre, resume, lieu, objectif, recolte,etat, dateEv,images,null);
+		Evenement e = new Evenement(titre, resume, lieu, objectif, recolte,etat, dateEv);
+		e.addImage(i1);
 		
 		System.out.println("stade1");
 		Date d = new Date();
@@ -139,55 +133,6 @@ public class EvenementController {
 		//return gestionEvenementEJB.addEvenement(e);
 		//return null;
 	}
-	
-	public void convertImage() throws FileNotFoundException
-	{
-		
-		
-		//init array with file length
-		//image1 = new byte[(int) file1.length()]; // ca bug ici
-/*
-		FileInputStream fis;
-		try {
-			fis = new FileInputStream(file1);
-			fis.read(image1);
-			fis.close();
-			System.out.println("r�ussi !");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} //read file into bytes[]
-		
-		System.out.println("Je passe");*/
-		
-		/*
-		InputStream input = file1.getInputStream();
-		byte[] image = IOUtils.toByteArray(input); // Apache commons IO.
-		someEntity.setImage(image);*/
-		
-
-		 
-	        FileInputStream fis = new FileInputStream(file1);
-	      
-			
-	        //System.out.println(file.exists() + "!!");
-	        //InputStream in = resource.openStream();
-	       /* ByteArrayOutputStream bos = new ByteArrayOutputStream();
-	        byte[] buf = new byte[1024];
-	        try {
-	            for (int readNum; (readNum = fis.read(buf)) != -1;) {
-	                bos.write(buf, 0, readNum); //no doubt here is 0
-	                //Writes len bytes from the specified byte array starting at offset off to this byte array output stream.
-	                System.out.println("read " + readNum + " bytes,");
-	            }
-	        } catch (IOException ex) {
-	            
-	        }
-	        image1 = bos.toByteArray();*/
-	        
-	}
-	
-	
 	
 
 	public String getTitre() {

@@ -16,27 +16,7 @@ public class MailGestion implements Serializable {
 
 	
 	public void sendMail(String nomCreateur,String nomEv,String nomLieu)
-	{
-	/*	
-		String smtpHost = "smtp.gmail.com";
-	    String from = "servicemsfmail@gmail.com";
-	    String to = "alex.10101997@gmail.com";
-	    String username = "servicemsfmail@gmail.com";
-	    String password = "msf123456";
-	 
-	    Properties props = new Properties();
-	 
-	    props.put("mail.smtp.auth", "true");
-	    props.put("mail.smtp.starttls.enable", "true");
-	    props.put("mail.stmp.host", "smtp.gmail.com");
-	    props.put("mail.smtp.port", "587");
-	    
-	    Session session = Session.getInstance(props,new javax.mail.Authenticator() {
-	    	return null;
-	    }
-	});
-		*/
-		
+	{	
 		 		final String username = "servicemsfmail@gmail.com";
 		        final String password = "msf123456";
 		  
@@ -54,12 +34,7 @@ public class MailGestion implements Serializable {
 		        	 }
 		         });
 		 
-		  
-		 
 		         try {
-		 
-		  
-		 
 		             Message message = new MimeMessage(session);
 		             message.setFrom(new InternetAddress("alex.10101997@gmail.com"));
 		             message.setRecipients(Message.RecipientType.TO,
@@ -70,12 +45,8 @@ public class MailGestion implements Serializable {
 		 
 		             System.out.println("Envoyé");
 		 
-		  
-		 
 		         } catch (MessagingException e) {
-		 
 		             throw new RuntimeException(e);
-		 
 		         }
 
 /*
