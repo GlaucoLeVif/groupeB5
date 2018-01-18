@@ -46,7 +46,7 @@ public class ConnexionController {
 			membre = m.get(0);
 			System.out.println(connecte);
 			
-			return "index.xhtml";
+			return "index.xhtml?faces-redirect=true";
 		}
 		return "";
 	}

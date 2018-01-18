@@ -1,11 +1,8 @@
 package be.helha.groupeB5.controller;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -18,19 +15,14 @@ import java.util.Set;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
-import javax.servlet.http.Part;
-
-import com.sun.istack.logging.Logger;
 
 import be.helha.groupeB5.entities.Evenement;
-import be.helha.groupeB5.entities.Membre;
 import be.helha.groupeB5.entities.Image;
 import be.helha.groupeB5.entities.MailGestion;
 import be.helha.groupeB5.entities.Participation;
 import be.helha.groupeB5.entities.UploadPage;
 import be.helha.groupeB5.sessionejb.GestionEvenementEJB;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureException;
+import be.helha.groupeB5.sessionejb.GestionMembreEJB;
 
 @Named
 @RequestScoped
@@ -38,6 +30,7 @@ public class EvenementController {
 
 	@EJB
 	GestionEvenementEJB gestionEvenementEJB;
+	GestionMembreEJB gestionMembreEJB;
 	private String titre, resume,lieu;
 	private double objectif, recolte;
 	private int etat;
@@ -79,17 +72,14 @@ public class EvenementController {
 		return gestionEvenementEJB.selectAll();
 	}
 	
-	public Membre doModifierEvenement() {
-		return null;
+	public void doModifierEvenement() {
+		gestionMembreEJB.UpdateMembre(ConnexionController.getMembre());
 	}
 	
-	public Evenement doSupprimerEvenement(Evenement e) {
-		return gestionEvenementEJB.deleteEvenement(e);
-	}
-	
-	public Set<Participation> doAfficherParticipation(/*Evenement e*/) {
-		// event = e;
-		return event.getParts();
+	public void doSupprimerEvenement(Evenement e) {
+		ConnexionController.getMembre().removeEv(e);
+		gestionMembreEJB.UpdateMembre(ConnexionController.getMembre());
+		//return gestionEvenementEJB.deleteEvenement(e);
 	}
 	
 	public String doDetails(Evenement e)
@@ -132,6 +122,8 @@ public class EvenementController {
 		}
 		
 		ConnexionController.getMembre().addEv(e);
+		doModifierEvenement();
+		
 		//Evenement e = new Evenement("titre"+System.currentTimeMillis(), "resume1", null, 5000.00, 0, d);
 		//System.out.println(e.toString());
 		//return gestionEvenementEJB.addEvenement(e);
