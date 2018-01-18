@@ -33,21 +33,12 @@ public class DAOMembreLocalBean {
 	
 // Membre	
 	public List<Membre> rechercherMembre() {
-		if(!ConnexionController.getMembre().equals(null)) {
-			try {
-			    Jwts.parser().setSigningKey(ConnexionController.getKey()).parseClaimsJws(ConnexionController.getToken());
+			
 			    String str = "SELECT m FROM Membre m";
 				Query queryMembres = em.createQuery(str);
 				List<Membre> list = (List<Membre>) queryMembres.getResultList();
 				return list;
-				
-			} catch (SignatureException e) {
-				System.out.println("pas de token");
-			    return null;
-			}
-		}else {
-			return null;
-		}
+			
 	}
 	
 	public Membre ajouterMembre(Membre m) {
@@ -68,10 +59,16 @@ public class DAOMembreLocalBean {
 	}
 	
 	public void modifierMembre(Membre m) {
+		System.out.println("stade3");
+		System.out.println(m.toString());
+/*
 		Membre m1 = rechercherMembre(m);
 		if(m1==null) {return;}
 		Membre mModif = em.merge(m1);
-		mModif.setListEvent(m.getListEvent());
+		mModif.setListEvent(m.getListEvent());*/
+		em.merge(m);
+		//for(int i = 0;i <mModif.getListEvent().size();i++)
+		//	System.out.println(mModif.getListEvent().get(i).toString());
 	}
 	
 	public Membre rechercherMembre(Membre m)

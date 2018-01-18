@@ -29,6 +29,8 @@ public class GestionMembreEJB implements IGestionMembreEJBRemote{
 
 	@Override
 	public void UpdateMembre(Membre m) {
+		System.out.println("stade2");
+		System.out.println(m.toString());
 		dao.modifierMembre(m);
 	}
 

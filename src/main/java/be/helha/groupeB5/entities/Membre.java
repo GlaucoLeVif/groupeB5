@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,8 +25,8 @@ public class Membre implements Serializable {
 	private int cp;
 	private boolean isAdmin;
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	private List<Evenement> listEvent = new ArrayList<Evenement>();
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,orphanRemoval=true)
+	private List<Evenement> listEvent;
 
 	public Membre(String login, String mdp, String mail, String prenom, String nom, String rue, String ville,
 			String pays, String nationalite, String numGSM, Date dateN, String numRue, int cp, boolean isAdmin) {
@@ -44,6 +45,7 @@ public class Membre implements Serializable {
 		this.numRue = numRue;
 		this.cp = cp;
 		this.isAdmin = isAdmin;
+		this.listEvent =  new ArrayList<>();
 	}
 
 	
@@ -189,6 +191,8 @@ public class Membre implements Serializable {
 	public void addEv(Evenement e)
 	{
 		listEvent.add(e);
+		for(int i = 0;i <listEvent.size();i++)		
+			System.out.println(listEvent.get(i).toString());
 		
 	}
 	
@@ -206,13 +210,17 @@ public class Membre implements Serializable {
 		return false;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Membre [idMembre=" + idMembre + ", login=" + login + ", mdp=" + mdp + ", mail=" + mail + ", prenom="
-				+ prenom + ", nom=" + nom + ", rue=" + rue + ", ville=" + ville + ", pays=" + pays + ", nationalite="
-				+ nationalite + ", numeroGSM=" + numGSM + ", dateN=" + dateN + ", numRue=" + numRue + ", cp=" + cp
-				+ ", isAdmin=" + isAdmin + "]";
+				+ prenom + ", nom=" + nom + ", rue=" + rue + ", numRue=" + numRue + ", ville=" + ville + ", pays="
+				+ pays + ", nationalite=" + nationalite + ", numGSM=" + numGSM + ", dateN=" + dateN + ", cp=" + cp
+				+ ", isAdmin=" + isAdmin + ", listEvent=" + listEvent + "]";
 	}
+
+
 
 
 	
