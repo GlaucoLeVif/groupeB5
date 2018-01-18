@@ -58,6 +58,15 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 			     <img src="data:image/jpg;base64,#{ev.getImage(0)}" width="75"></img>
 			   </b:dataTableColumn>
 			   
+			    <b:dataTableColumn>
+			      	<f:facet name = "header">Importer</f:facet>
+			      		<h:form enctype="multipart/form-data">
+			   			<h:inputFile label="Image" value="#{evenementController.up.uploadedFile}" />
+			   			<h:commandButton value="Envoyer" action="#{evenementController.doAjouterPhoto(ev)}"></h:commandButton>
+			   			
+			   		</h:form>
+			   </b:dataTableColumn>
+			   
 			  <b:dataTableColumn>
 				<f:facet name="header">DETAILS</f:facet>
 					<h:form>
