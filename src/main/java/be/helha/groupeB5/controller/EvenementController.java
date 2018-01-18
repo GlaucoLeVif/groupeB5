@@ -27,7 +27,6 @@ import be.helha.groupeB5.entities.Membre;
 import be.helha.groupeB5.entities.Image;
 import be.helha.groupeB5.entities.MailGestion;
 import be.helha.groupeB5.entities.Participation;
-import be.helha.groupeB5.entities.MembreConnecte;
 import be.helha.groupeB5.entities.UploadPage;
 import be.helha.groupeB5.sessionejb.GestionEvenementEJB;
 import be.helha.groupeB5.sessionejb.GestionMembreEJB;

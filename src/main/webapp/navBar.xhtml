@@ -15,16 +15,16 @@ xmlns:h="http://java.sun.com/jsf/html"
 	<h:body>
 	<b:navBar brand="Project name" brandHref="index.xhtml" inverse="true">
             <b:navbarLinks>
-                <b:navLink value="Inscription" rendered="#{!connexionController.isConnecte}"  href="inscription.xhtml"></b:navLink>
+                <b:navLink value="Inscription" rendered="#{!connexionController.connecte}"  href="inscription.xhtml"></b:navLink>
                 <!-- b:navLink value="Liste membre" rendered="#{connexionController.getMembre().isAdmin}" href="listeMembre.xhtml"></b:navLink-->
                 <b:dropMenu value="Evenement">
-                	<b:navLink value="Liste Evenement" href="" action="@{connexionController.goListEvent()}"></b:navLink>
-                	<b:navLink value="Creer un évenement" href="indexEvent.xhtml"></b:navLink>
+                	<b:navLink value="Liste Evenement" href="indexEvent.xhmtl"></b:navLink>
+                	<b:navLink value="Creer un évenement" href="createEvent.xhtml"></b:navLink>
                 </b:dropMenu>
             </b:navbarLinks>
             <b:navbarLinks pull="right">
-               	<b:navLink pull="right" rendered="#{!connexionController.isConnecte}" value="Connexion" href="connexion.xhtml"></b:navLink>
-               	<b:navLink pull="right" rendered="#{connexionController.isConnecte}" onclick="#{connexionController.disconnect()}" value="Déconnexion" href="index.xhtml"></b:navLink>
+               	<b:navLink pull="right" rendered="#{!connexionController.connecte}" value="Connexion" href="connexion.xhtml"></b:navLink>
+               	<h:form><h:commandButton pull="right" rendered="#{connexionController.connecte}" action="#{connexionController.disconnect()}" value="Déconnexion" href="index.xhtml"></h:commandButton></h:form>
   			</b:navbarLinks>
         </b:navBar>
 	</h:body>
