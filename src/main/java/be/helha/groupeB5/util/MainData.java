@@ -333,8 +333,9 @@ public class MainData {
 		listEvent.add(e);
 		listEvent.add(e2);
 
-		Membre m = new Membre("log", "mdp", "monmail", "distant", "Led", "place", "Beaumont", "Belgique", "BE", "0492", d, "1", 6500, false,listEvent);
-		
+		Membre m = new Membre("log", "mdp", "monmail", "distant", "Led", "place", "Beaumont", "Belgique", "BE", "0492", d, "1", 6500, false);
+		m.addEv(e);
+		m.addEv(e2);
 		//Evenement e2 = new Evenement("titre2", "resume2", image2, 100000.00, 0, d3,);
 		
 		//Participation p1 = new Participation(20, d4,m,e);
