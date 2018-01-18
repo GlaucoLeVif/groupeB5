@@ -181,7 +181,9 @@ public class EvenementController {
 		}
 		System.out.println(pos);
 		mTmp.getListEvent().get(pos).addPart(tmpP);
+		mTmp.getListEvent().get(pos).setRecolte(mTmp.getListEvent().get(pos).getRecolte()+montant);
 		doModifierMembre(mTmp);
+		
 		lastParts.clear();
 	}
 	
