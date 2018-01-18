@@ -82,6 +82,7 @@ public class EvenementController {
 	}
 	
 	public void doSupprimerEvenement(Evenement e) {
+		lastEvents.clear();
 		ConnexionController.getMembre().removeEv(e);
 		gestionMembreEJB.UpdateMembre(ConnexionController.getMembre());
 		//return gestionEvenementEJB.deleteEvenement(e);

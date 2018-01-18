@@ -20,6 +20,13 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 			
 			<div class="pull-left gap-right">
 				<img src="data:image/jpg;base64,#{evenementController.event.getImage(0)}" width="300px" class="pull-left gap-right img-thumbnail"></img>
+				<b:carousel id="tiovivo" style="width:300px" interval="2500" >
+					<c:forEach var="img" items="#{evenementsController.event.images}">
+						<b:carouselItem>
+  							<img src="data:image/jpg;base64,#{img}" style="width: 800px; height: 600px"></img>
+  						</b:carouselItem>
+					</c:forEach>
+				</b:carousel>
 				Objectif : #{evenementController.event.objectif}											<BR/>
 				Recolte : #{evenementController.event.recolte}												<BR/>
 				Date : #{evenementController.event.dateEv}													<BR/>
