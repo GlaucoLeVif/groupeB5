@@ -12,7 +12,10 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 	
 	<h:body>
 	<ui:include src="/navBar.xhtml"></ui:include>
-	<h:outputLabel id="test" value="#{connexionController.isConnecte}"></h:outputLabel>
+	<h:form>
+		<h:commandButton value="test" action="#{connexionController.test()}"></h:commandButton>
+	</h:form>
+	<h:outputLabel id="test" value="#{connexionController.connecte}"></h:outputLabel>
 	</h:body>
 	
 </html>

@@ -8,7 +8,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import be.helha.groupeB5.entities.Membre;
-import be.helha.groupeB5.entities.MembreConnecte;
 import be.helha.groupeB5.sessionejb.GestionConnexionEJB;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -26,7 +25,13 @@ public class ConnexionController {
 	private static String token="";
 	private static Key key= MacProvider.generateKey();
 	
-	private boolean isConnecte;
+	private boolean connecte;
+	
+	public void test() {
+		System.out.println("avant: " +connecte);
+		connecte=!connecte;
+		System.out.println("apres: " +connecte);
+	}
 
 	public String connect() {
 		List<Membre> m=gestionConnexionEJB.checkConnect(login, mdp);
@@ -39,9 +44,9 @@ public class ConnexionController {
 			  .setSubject("Joe")
 			  .signWith(SignatureAlgorithm.HS512, key)
 			  .compact();
-			isConnecte=true;
+			connecte=true;
 			membre = m.get(0);
-			System.out.println(isConnecte);
+			System.out.println(connecte);
 			
 			return "index.xhtml";
 		}
@@ -54,7 +59,7 @@ public class ConnexionController {
 		membre=null;
 		login=null;
 		mdp=null;
-		isConnecte=false;
+		connecte=false;
 	}
 	
 	public String goIndex() {
@@ -119,11 +124,11 @@ public class ConnexionController {
 		this.key = key;
 	}
 
-	public boolean getIsConnecte() {
-		return isConnecte;
+	public boolean getConnecte() {
+		return connecte;
 	}
 
-	public void setIsConnecte(boolean isConnecte) {
-		this.isConnecte = isConnecte;
+	public void setConnecte(boolean connecte) {
+		this.connecte = connecte;
 	}
 }
