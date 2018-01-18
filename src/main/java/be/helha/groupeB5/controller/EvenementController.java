@@ -108,6 +108,15 @@ public class EvenementController {
 		return "index.xhtml?faces-redirect=true";
 	}
 	
+	public void doAjouterPhoto(Evenement e)
+	{
+		List<Evenement> evs = ConnexionController.getMembre().getListEvent();
+		System.out.println(evs);
+		int pos = evs.indexOf(e);
+		System.out.println(pos);
+		ConnexionController.getMembre().getListEvent().get(pos).addImage(new Image(up.uploadFile()));
+		doModifierEvenement();
+	}
 	
 	public void doAjouterEvenement() {
 		Image i1 = new Image(up.uploadFile());

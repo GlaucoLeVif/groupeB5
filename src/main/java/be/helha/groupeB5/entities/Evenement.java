@@ -92,7 +92,6 @@ public class Evenement implements Serializable {
 		return images.get(num).getImage();
 	}
 	
-	
 
 	public List<Image> getImages() {
 		return images;
@@ -154,6 +153,7 @@ public class Evenement implements Serializable {
 	
 	public void addImage(Image img)
 	{
+		System.out.println("ajout dans ev");
 		images.add(img);
 	}
 	
