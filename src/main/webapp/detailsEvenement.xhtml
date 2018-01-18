@@ -19,11 +19,10 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 			<h1 class="text-center">Détails de #{evenementController.event.titre}</h1>						<BR/>
 			
 			<div class="pull-left gap-right">
-				<img src="data:image/jpg;base64,#{evenementController.event.getImage(0)}" width="300px" class="pull-left gap-right img-thumbnail"></img>
 				<b:carousel id="tiovivo" style="width:300px" interval="2500" >
-					<c:forEach var="img" items="#{evenementsController.event.images}">
+					<c:forEach var="img" items="#{evenementController.event.images}">
 						<b:carouselItem>
-  							<img src="data:image/jpg;base64,#{img}" style="width: 800px; height: 600px"></img>
+  							<img src="data:image/jpg;base64,#{img.image}" style="width: 300px; height:300px"></img>
   						</b:carouselItem>
 					</c:forEach>
 				</b:carousel>

@@ -54,6 +54,11 @@ public class Evenement implements Serializable {
 
 	public Evenement() {}
 	
+	public int getSize() {
+		System.out.println("size ="+images.size());
+		return images.size();
+	}
+	
 	public Integer getIdEv() {
 		return idEv;
 	}
