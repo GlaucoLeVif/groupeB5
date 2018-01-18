@@ -28,7 +28,7 @@ public class Membre implements Serializable {
 	private List<Evenement> listEvent = new ArrayList<Evenement>();
 
 	public Membre(String login, String mdp, String mail, String prenom, String nom, String rue, String ville,
-			String pays, String nationalite, String numGSM, Date dateN, String numRue, int cp, boolean isAdmin,List<Evenement> listEvent) {
+			String pays, String nationalite, String numGSM, Date dateN, String numRue, int cp, boolean isAdmin) {
 		super();
 		this.login = login;
 		this.mdp = mdp;
@@ -44,8 +44,9 @@ public class Membre implements Serializable {
 		this.numRue = numRue;
 		this.cp = cp;
 		this.isAdmin = isAdmin;
-		this.listEvent = listEvent;
 	}
+
+	
 	
 	public Membre() {
 		
@@ -175,6 +176,7 @@ public class Membre implements Serializable {
 	
 	
 
+
 	public List<Evenement> getListEvent() {
 		return listEvent;
 	}
@@ -183,6 +185,17 @@ public class Membre implements Serializable {
 		this.listEvent = listEvent;
 	}
 
+	
+	public void addEv(Evenement e)
+	{
+		listEvent.add(e);
+	}
+	
+	public void removeEv(Evenement e)
+	{
+		listEvent.remove(e);
+	}
+	
 	public boolean equals(Object o)
 	{
 		if(o instanceof Membre){

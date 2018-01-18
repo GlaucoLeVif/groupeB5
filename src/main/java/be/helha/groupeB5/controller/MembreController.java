@@ -28,12 +28,12 @@ public class MembreController {
 	}
 	
 	public Membre doAjouterMembre() {
-		Membre m = new Membre(login, mdp, mail, prenom, nom, rue, ville, pays, nationalite, numGSM, dateN, numRue, cp, false,null);
+		Membre m = new Membre(login, mdp, mail, prenom, nom, rue, ville, pays, nationalite, numGSM, dateN, numRue, cp, false);
 		return gestionMembreEJB.addMembre(m);
 	}
 	
-	public Membre doModifierMembre() {
-		return null;
+	public void doModifierMembre() {
+		//ConnexionController.getMembre();
 	}
 	
 	public Membre doSupprimerMembre(Membre m) {

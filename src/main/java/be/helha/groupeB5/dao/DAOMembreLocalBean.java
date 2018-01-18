@@ -55,8 +55,20 @@ public class DAOMembreLocalBean {
 		return false;
 	}
 	
-	public Membre modifierMembre(Membre m) {
-		return m;
+	public void modifierMembre(Membre m) {
+		Membre m1 = rechercherMembre(m);
+		if(m1==null) {return;}
+		Membre mModif = em.merge(m1);
+		mModif.setListEvent(m.getListEvent());
+	}
+	
+	public Membre rechercherMembre(Membre m)
+	{
+		String str = "SELECT m FROM Membre m WHERE m.login=:login";
+		Query q = em.createQuery(str);
+		q.setParameter("login", m.getLogin());
+		List<Membre> result = (List<Membre>) q.getResultList();
+		return result.get(0);
 	}
 
 	public Membre supprimerMembre(Membre m) {

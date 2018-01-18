@@ -12,7 +12,7 @@ public interface IGestionMembreEJBRemote {
 	
 	Membre addMembre(Membre m);
 	
-	Membre UpdateMembre(Membre m);
+	void UpdateMembre(Membre m);
 	
 	Membre deleteMembre(Membre m);
 	
