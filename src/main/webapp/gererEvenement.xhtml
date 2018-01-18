@@ -44,7 +44,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 			   </b:dataTableColumn>
 			   
 			    <b:dataTableColumn>
-			      <f:facet name = "header">Lieu</f:facet>
+			      <f:facet name = "header">LIEU</f:facet>
 			      #{ev.lieu}
 			   </b:dataTableColumn>
 			   
@@ -54,11 +54,11 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 			   </b:dataTableColumn>
 			   
 			    <b:dataTableColumn>
-			      <f:facet name = "header">DATEEV</f:facet>
+			      <f:facet name = "header">DATE</f:facet>
 			      #{ev.dateEv}
 			   </b:dataTableColumn>
 		
-		  <b:dataTableColumn>
+		  <b:dataTableColumn orderable = "false">
 					<f:facet name="header">VALIDER</f:facet>
 						<h:form>
 							<h:commandButton value="Valider" action="#{evenementController.doModifierEvenementEtat(ev,1)}"></h:commandButton>
@@ -66,14 +66,14 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 				</b:dataTableColumn>
 			   
 			  
-			  <b:dataTableColumn>
+			  <b:dataTableColumn orderable = "false">
 					<f:facet name="header">DETAILS</f:facet>
 						<h:form>
 							<h:commandButton value="Accéder" action="#{evenementController.doDetails(ev)}"></h:commandButton>
 						</h:form>
 				</b:dataTableColumn>
 				
-			   	 <b:dataTableColumn>
+			   	 <b:dataTableColumn orderable = "false">
 					<f:facet name="header">
 						<h:outputText value="DELETE"/>
 					</f:facet>
@@ -108,7 +108,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 			   </b:dataTableColumn>
 			   
 			    <b:dataTableColumn>
-			      <f:facet name = "header">Lieu</f:facet>
+			      <f:facet name = "header">LIEU</f:facet>
 			      #{ev.lieu}
 			   </b:dataTableColumn>
 			   
@@ -118,23 +118,23 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 			   </b:dataTableColumn>
 			   
 			    <b:dataTableColumn>
-			      <f:facet name = "header">DATEEV</f:facet>
+			      <f:facet name = "header">DATE</f:facet>
 			      #{ev.dateEv}
 			   </b:dataTableColumn>
-			   <b:dataTableColumn>
-			      <f:facet name = "header">IMAGE1</f:facet>
+			   <b:dataTableColumn orderable = "false">
+			      <f:facet name = "header">IMAGE</f:facet>
 			     <img src="data:image/jpg;base64,#{ev.getImage(0)}" width="75"></img>
 			   </b:dataTableColumn>
 			   
 			  
-			  <b:dataTableColumn>
+			  <b:dataTableColumn orderable = "false">
 					<f:facet name="header">DETAILS</f:facet>
 						<h:form>
 							<h:commandButton value="Accéder" action="#{evenementController.doDetails(ev)}"></h:commandButton>
 						</h:form>
 				</b:dataTableColumn>
 				
-			   	 <b:dataTableColumn>
+			   	 <b:dataTableColumn orderable = "false">
 					<f:facet name="header">
 						<h:outputText value="DELETE"/>
 					</f:facet>
