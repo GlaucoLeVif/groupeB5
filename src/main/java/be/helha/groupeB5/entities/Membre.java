@@ -189,6 +189,7 @@ public class Membre implements Serializable {
 	public void addEv(Evenement e)
 	{
 		listEvent.add(e);
+		
 	}
 	
 	public void removeEv(Evenement e)

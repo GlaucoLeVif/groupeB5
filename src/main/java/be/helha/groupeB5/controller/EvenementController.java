@@ -30,6 +30,7 @@ import be.helha.groupeB5.entities.Participation;
 import be.helha.groupeB5.entities.MembreConnecte;
 import be.helha.groupeB5.entities.UploadPage;
 import be.helha.groupeB5.sessionejb.GestionEvenementEJB;
+import be.helha.groupeB5.sessionejb.GestionMembreEJB;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureException;
 
@@ -39,6 +40,7 @@ public class EvenementController {
 
 	@EJB
 	GestionEvenementEJB gestionEvenementEJB;
+	GestionMembreEJB gestionMembreEJB;
 	private String titre, resume,lieu;
 	private double objectif, recolte;
 	private int etat;
@@ -68,12 +70,14 @@ public class EvenementController {
 		}
 	}
 	
-	public Membre doModifierEvenement() {
-		return null;
+	public void doModifierEvenement() {
+		gestionMembreEJB.UpdateMembre(ConnexionController.getMembre());
 	}
 	
-	public Evenement doSupprimerEvenement(Evenement e) {
-		return gestionEvenementEJB.deleteEvenement(e);
+	public void doSupprimerEvenement(Evenement e) {
+		ConnexionController.getMembre().removeEv(e);
+		gestionMembreEJB.UpdateMembre(ConnexionController.getMembre());
+		//return gestionEvenementEJB.deleteEvenement(e);
 	}
 	
 	public Set<Participation> doAfficherParticipation(/*Evenement e*/) {
@@ -120,6 +124,8 @@ public class EvenementController {
 		}
 		
 		ConnexionController.getMembre().addEv(e);
+		doModifierEvenement();
+		
 		//Evenement e = new Evenement("titre"+System.currentTimeMillis(), "resume1", null, 5000.00, 0, d);
 		//System.out.println(e.toString());
 		//return gestionEvenementEJB.addEvenement(e);
