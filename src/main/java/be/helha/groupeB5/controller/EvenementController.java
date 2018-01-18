@@ -1,8 +1,6 @@
 package be.helha.groupeB5.controller;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,10 +11,8 @@ import java.util.List;
 import java.util.Set;
 
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.inject.Named;
 
 import be.helha.groupeB5.entities.Evenement;
 import be.helha.groupeB5.entities.Image;
@@ -25,6 +21,7 @@ import be.helha.groupeB5.entities.Participation;
 import be.helha.groupeB5.entities.UploadPage;
 import be.helha.groupeB5.sessionejb.GestionEvenementEJB;
 import be.helha.groupeB5.sessionejb.GestionMembreEJB;
+import be.helha.groupeB5.sessionejb.GestionParticipationEJB;
 
 @ManagedBean  
 @SessionScoped
@@ -34,6 +31,8 @@ public class EvenementController {
 	GestionEvenementEJB gestionEvenementEJB;
 	@EJB
 	GestionMembreEJB gestionMembreEJB;
+	@EJB
+	GestionParticipationEJB gestionParticipationEJB;
 	
 	private String titre, resume,lieu;
 	private double objectif, recolte;
@@ -42,7 +41,28 @@ public class EvenementController {
 	private Evenement event = new Evenement();
 	private Set<Participation> parts = new HashSet<Participation>();
 	private List<Evenement> lastEvents = new ArrayList<Evenement>();
+	private List<Participation> lastParts = new ArrayList<Participation>();
 	
+	public List<Participation> getLastParts() {
+		if(lastParts.size()<5) {
+			List<Participation> tempList = gestionParticipationEJB.selectAll();
+			for(int i = tempList.size()-1 ; i>tempList.size()-6;i--) {
+				if(i<0 || tempList.get(0).equals(null)) {
+					return lastParts;
+				}
+				lastParts.add(tempList.get(i));
+			}
+			return lastParts;
+		}
+		return lastParts;
+	}
+
+
+	public void setLastParts(List<Participation> lastParts) {
+		this.lastParts = lastParts;
+	}
+
+
 	public List<Evenement> getLastEvents() {
 		if(lastEvents.size()<5) {
 			List<Evenement> tempList = gestionEvenementEJB.selectAll();
@@ -89,6 +109,7 @@ public class EvenementController {
 	}
 	
 	public Set<Participation> doAjouterParticipation() {
+		lastParts.clear();
 		return parts;
 	}
 	

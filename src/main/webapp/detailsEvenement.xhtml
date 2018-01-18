@@ -32,11 +32,12 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 				Recolte : #{evenementController.event.recolte}												<BR/>
 				Lieu : #{evenementController.event.lieu}													<BR/>
 			
-				<BR/><BR/><BR/><BR/>
+				
 				
 				#{evenementController.event.resume}
+				
+				
 			</div>
-			
 			<div class="pull-right">
 				<b:flyOutMenu width="50px" style="padding: 30px;">
 					<h:form inline="true">
@@ -51,8 +52,27 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 					</h:form>
 				</b:flyOutMenu>
 			</div>
+			<BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/>
+			<div>
+				<b:carousel style="width:300px" interval="2500" >
+					<c:forEach var="part" items="#{evenementController.lastParts}">
+						<b:carouselItem>
+						<b:label value="Nom : #{part.nomDonateur} "></b:label>
+  							 <BR/>
+  							Montant : #{part.montant}  <BR/>
+  						</b:carouselItem>
+					</c:forEach>
+				</b:carousel>
+			</div>
 			
-			<BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/>
+			<BR/><BR/><BR/>
+			
+			<b>Partagez!</b><br/>
+			<b:socialShare shares="twitter,linkedin,facebook" url="http://54.76.209.52:5080/groupeB5"
+               showLabel="true" show-count="false"
+               text="Faites un don pour MSF!"  block-message="Click to unblock the share buttons" />
+			
+			<BR/><BR/>
 			
 			<b:dataTable value = "#{evenementController.doAjouterParticipation()}" var = "part">
 			    
@@ -78,6 +98,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 				
 			</b:dataTable>
 		</div>
-	</h:body>
+		
+</h:body>
 	
 </html>
