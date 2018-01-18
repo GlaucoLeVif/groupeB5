@@ -39,6 +39,7 @@ public class EvenementController {
 
 	@EJB
 	GestionEvenementEJB gestionEvenementEJB;
+	@EJB
 	GestionMembreEJB gestionMembreEJB;
 	private String titre, resume,lieu;
 	private double objectif, recolte;
@@ -61,6 +62,7 @@ public class EvenementController {
 	}
 	
 	public void doModifierEvenement() {
+		System.out.println(ConnexionController.getMembre().toString());
 		gestionMembreEJB.UpdateMembre(ConnexionController.getMembre());
 	}
 	
@@ -113,6 +115,7 @@ public class EvenementController {
 			e1.printStackTrace();
 		}
 		
+		System.out.println(ConnexionController.getMembre().toString());
 		ConnexionController.getMembre().addEv(e);
 		doModifierEvenement();
 		
