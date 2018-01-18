@@ -13,6 +13,8 @@ import java.util.Set;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 
 import be.helha.groupeB5.entities.Evenement;
@@ -26,8 +28,8 @@ import be.helha.groupeB5.sessionejb.GestionMembreEJB;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureException;
 
-@Named
-@RequestScoped
+@ManagedBean  
+@SessionScoped
 public class EvenementController {
 
 	@EJB
@@ -61,6 +63,10 @@ public class EvenementController {
 		ConnexionController.getMembre().removeEv(e);
 		gestionMembreEJB.UpdateMembre(ConnexionController.getMembre());
 		//return gestionEvenementEJB.deleteEvenement(e);
+	}
+	
+	public Set<Participation> doAjouterParticipation() {
+		return parts;
 	}
 	
 	public String doDetails(Evenement e)
@@ -255,6 +261,13 @@ public class EvenementController {
 	public void sendEmail()
 	{
 		mailG.sendMail();
+	}
+	
+	public Set<Participation> getParts() {
+		return parts;
+	}
+	public void setParts(Set<Participation> parts) {
+		this.parts = parts;
 	}
 	
 	
