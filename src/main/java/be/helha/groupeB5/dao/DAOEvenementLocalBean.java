@@ -48,6 +48,11 @@ public class DAOEvenementLocalBean {
 		return listE;
 	}
 	
+	public List<Evenement> rechercherEvenementEtat( int etat)
+	{
+		return null; //TODO
+	}
+	
 	public Evenement ajouterEvenement(Evenement e) {
 		System.out.println("stade3");
 		if(isExistingEvenement(e.getTitre()))	return null;

@@ -10,6 +10,8 @@ import be.helha.groupeB5.entities.Evenement;
 public interface IGestionEvenementEJBRemote {
 	List<Evenement> selectAll();
 	
+	List<Evenement> selectAllEtat(int etat);
+	
 	Evenement addEvenement(Evenement e);
 	
 	Evenement UpdateEvenement(Evenement e);

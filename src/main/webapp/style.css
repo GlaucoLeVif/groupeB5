@@ -7,3 +7,15 @@
 .gap-left {
   margin-left: 20px; 
 }
+
+.pull-center-bis {
+	margin-left: auto;
+  	margin-right: auto;
+  	width: 350px;
+}
+
+.pull-center {
+	margin-left: auto;
+  	margin-right: auto;
+  	width: 800px;
+}

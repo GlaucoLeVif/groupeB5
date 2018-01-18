@@ -13,7 +13,13 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 	
 	<h:body>
 	<ui:include src="/navBar.xhtml"></ui:include>
+	<div class="pull-center-bis">
+		<img src="logo1.png" style="width: 300px; height: 100px"></img>
+	</div>
 	
+	<div class="pull-center">
+	<p align="center"><h1>vous souhaite la bienvenue...</h1></p>
+	<BR/><BR/>
 	<b:carousel id="tiovivo" style="width:800px" interval="2500" >
   		<b:carouselItem action="#{evenementController.doDetails(evenementController.lastEvents.get(0))}">
   			<img src="data:image/jpg;base64,#{evenementController.lastEvents.get(0).getImage(0)}" style="width: 800px; height: 600px"></img>
@@ -46,7 +52,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
     		</b:carouselCaption>
   		</b:carouselItem>
 	</b:carousel>
-	
+	</div>
 	</h:body>
 	
 </html>
