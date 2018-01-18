@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -24,6 +25,7 @@ import com.sun.istack.logging.Logger;
 import be.helha.groupeB5.entities.Evenement;
 import be.helha.groupeB5.entities.Membre;
 import be.helha.groupeB5.entities.Image;
+import be.helha.groupeB5.entities.MailGestion;
 import be.helha.groupeB5.entities.Participation;
 import be.helha.groupeB5.entities.MembreConnecte;
 import be.helha.groupeB5.entities.UploadPage;
@@ -42,10 +44,12 @@ public class EvenementController {
 	private int etat;
 	private Date dateEv;
 	private Evenement event = new Evenement();
+	private Set<Participation> parts = new HashSet<Participation>();
 	
 	private byte[] image1;
 	private File file1;
 	private UploadPage up = new UploadPage();
+	private MailGestion mailG = new MailGestion();
 	
 	public EvenementController() {}
 	
@@ -72,7 +76,12 @@ public class EvenementController {
 		return gestionEvenementEJB.deleteEvenement(e);
 	}
 	
-	public String doDetails(Evenement e )
+	public Set<Participation> doAfficherParticipation(/*Evenement e*/) {
+		// event = e;
+		return event.getParts();
+	}
+	
+	public String doDetails(Evenement e)
 	{
 		event = e;
 		return "detailsEvenement.xhtml?faces-redirect=false";
@@ -257,6 +266,10 @@ public class EvenementController {
 	}
 	
 	
+	public void sendEmail()
+	{
+		mailG.sendMail();
+	}
 	
 	
 	

@@ -1,12 +1,16 @@
 package be.helha.groupeB5.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -19,9 +23,12 @@ public class Membre implements Serializable {
 	private Date dateN;
 	private int cp;
 	private boolean isAdmin;
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	private List<Evenement> listEvent = new ArrayList<Evenement>();
 
 	public Membre(String login, String mdp, String mail, String prenom, String nom, String rue, String ville,
-			String pays, String nationalite, String numGSM, Date dateN, String numRue, int cp, boolean isAdmin) {
+			String pays, String nationalite, String numGSM, Date dateN, String numRue, int cp, boolean isAdmin,List<Evenement> listEvent) {
 		super();
 		this.login = login;
 		this.mdp = mdp;
@@ -37,6 +44,7 @@ public class Membre implements Serializable {
 		this.numRue = numRue;
 		this.cp = cp;
 		this.isAdmin = isAdmin;
+		this.listEvent = listEvent;
 	}
 	
 	public Membre() {
@@ -165,6 +173,15 @@ public class Membre implements Serializable {
 		this.isAdmin = isAdmin;
 	}
 	
+	
+
+	public List<Evenement> getListEvent() {
+		return listEvent;
+	}
+
+	public void setListEvent(List<Evenement> listEvent) {
+		this.listEvent = listEvent;
+	}
 
 	public boolean equals(Object o)
 	{

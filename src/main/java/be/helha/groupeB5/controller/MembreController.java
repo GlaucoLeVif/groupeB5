@@ -28,7 +28,7 @@ public class MembreController {
 	}
 	
 	public Membre doAjouterMembre() {
-		Membre m = new Membre(login, mdp, mail, prenom, nom, rue, ville, pays, nationalite, numGSM, dateN, numRue, cp, false);
+		Membre m = new Membre(login, mdp, mail, prenom, nom, rue, ville, pays, nationalite, numGSM, dateN, numRue, cp, false,null);
 		return gestionMembreEJB.addMembre(m);
 	}
 	
