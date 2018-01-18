@@ -41,25 +41,20 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 				<b:flyOutMenu width="50px" style="padding: 30px;">
 					<h:form inline="true">
 			  			<h:panelGrid columns="2">
-					 		<b:inputText label="Nom donateur : " value="#{participationController.nomDonateur}"></b:inputText>		<BR />
-					 		<b:inputText label="Montant : " value="#{participationController.montant}"></b:inputText>				<BR />
+					 		<b:inputText label="Nom donateur : " value="#{evenementController.nomDonateur}"></b:inputText>		<BR />
+					 		<b:inputText label="Montant : " value="#{evenementController.montant}"></b:inputText>				<BR />
 			  			</h:panelGrid>
 			  			
-						<b:commandButton value="Payer" action="#{participationController.doAjouterParticipation()}"></b:commandButton>	<BR /><BR /><BR /><BR />
+						<b:commandButton value="Payer" action="#{evenementController.doAjouterParticipation()}"></b:commandButton>	<BR /><BR /><BR /><BR />
 						
-						<b:label value="Date du jour : ">#{participationController.afficherDateDuJour()}</b:label>
+						<b:label value="Date du jour : ">#{evenementController.afficherDateDuJour()}</b:label>
 					</h:form>
 				</b:flyOutMenu>
 			</div>
 			
 			<BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/>
 			
-			<b:dataTable value = "#{evenementController.doAjouterParticipation()}" var = "part">
-			    
-			    <b:dataTableColumn>
-			      <f:facet name = "header">ID</f:facet>
-			      #{part.idP}
-			   </b:dataTableColumn>
+			<b:dataTable value = "#{evenementController.doAfficherParticipation()}" var = "part">
 			    
 			    <b:dataTableColumn>
 			      <f:facet name = "header">Donateur</f:facet>
@@ -73,7 +68,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 			    
 			    <b:dataTableColumn>
 			      <f:facet name = "header">DateDon</f:facet>
-			      #{part.dateDon}
+			      #{part.getDateDonFormat()}
 			   </b:dataTableColumn>
 				
 			</b:dataTable>

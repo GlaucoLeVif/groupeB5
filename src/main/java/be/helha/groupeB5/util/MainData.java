@@ -342,6 +342,7 @@ public class MainData {
 		Membre m = new Membre("log", "mdp", "monmail", "distant", "Led", "place", "Beaumont", "Belgique", "BE", "0492", d, "1", 6500, false);
 		m.addEv(e);
 		m.addEv(e2);
+	
 		//Evenement e2 = new Evenement("titre2", "resume2", image2, 100000.00, 0, d3,);
 		
 		//Participation p1 = new Participation(20, d4,m,e);

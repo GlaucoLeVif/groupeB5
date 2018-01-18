@@ -31,6 +31,13 @@ public class GestionEvenementEJB implements IGestionEvenementEJBRemote{
 		    return null;
 		}*/
 	}
+	
+	@Override
+	public List<Evenement> selectAllEtat(int etat)
+	{
+		//return dao.rechercherEvenementEtat(etat);//TODO
+		return null;
+	}
 
 	@Override
 	public Evenement addEvenement(Evenement e) {

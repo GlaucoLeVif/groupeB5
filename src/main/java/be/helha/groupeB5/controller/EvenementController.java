@@ -21,6 +21,7 @@ import javax.inject.Named;
 import be.helha.groupeB5.entities.Evenement;
 import be.helha.groupeB5.entities.Image;
 import be.helha.groupeB5.entities.MailGestion;
+import be.helha.groupeB5.entities.Membre;
 import be.helha.groupeB5.entities.Participation;
 import be.helha.groupeB5.entities.UploadPage;
 import be.helha.groupeB5.sessionejb.GestionEvenementEJB;
@@ -40,8 +41,14 @@ public class EvenementController {
 	private int etat;
 	private Date dateEv;
 	private Evenement event = new Evenement();
-	private Set<Participation> parts = new HashSet<Participation>();
+	private List<Participation> parts = new ArrayList<Participation>();
 	private List<Evenement> lastEvents = new ArrayList<Evenement>();
+	
+	//participation
+	private String nomDonateur;
+	private float montant;
+	private Date dateDon;
+	
 	
 	public List<Evenement> getLastEvents() {
 		if(lastEvents.size()<5) {
@@ -76,9 +83,35 @@ public class EvenementController {
 		return gestionEvenementEJB.selectAll();
 	}
 	
+	public List<Participation> doAfficherParticipation()
+	{
+		List<Membre> listM = gestionMembreEJB.selectAll();
+		Membre mTmp = new Membre();
+		int pos = -1;
+		for(int i = 0; i<listM.size();i++)
+		{
+			pos = listM.get(i).getListEvent().indexOf(event);
+			if(pos >=0 )
+			{
+				mTmp=listM.get(i);
+				i=listM.size();
+			}
+		}
+		return mTmp.getListEvent().get(pos).getParts();
+	}
+	/*
+	public List<Evenement> doAfficherEvenementEtat(int etat)
+	{
+		return gestionEvenementEJB.select //TODO
+	}*/
+	
 	public void doModifierEvenement() {
 		System.out.println(ConnexionController.getMembre().toString());
 		gestionMembreEJB.UpdateMembre(ConnexionController.getMembre());
+	}
+	
+	public void doModifierMembre(Membre m) {
+		gestionMembreEJB.UpdateMembre(m);
 	}
 	
 	public void doSupprimerEvenement(Evenement e) {
@@ -88,8 +121,24 @@ public class EvenementController {
 		//return gestionEvenementEJB.deleteEvenement(e);
 	}
 	
-	public Set<Participation> doAjouterParticipation() {
-		return parts;
+	public void doAjouterParticipation() {
+		Participation tmpP = new Participation(nomDonateur, montant, dateDon);
+		List<Membre> listM = gestionMembreEJB.selectAll();
+		Membre mTmp = new Membre();
+		int pos = -1;
+		for(int i = 0; i<listM.size();i++)
+		{
+			pos = listM.get(i).getListEvent().indexOf(event);
+			if(pos >=0 )
+			{
+				mTmp=listM.get(i);
+				System.out.println("OULALALALALALALALALAALA");
+				i=listM.size();
+			}
+		}
+		System.out.println(pos);
+		mTmp.getListEvent().get(pos).addPart(tmpP);
+		doModifierMembre(mTmp);
 	}
 	
 	public String doDetails(Evenement e)
@@ -245,12 +294,52 @@ public class EvenementController {
 		mailG.sendMail(ConnexionController.getMembre().getLogin(),titre,lieu);
 	}
 	
-	public Set<Participation> getParts() {
+	public String afficherDateDuJour() {
+		String format = "dd/MM/yyyy"; 
+
+		java.text.SimpleDateFormat formater = new java.text.SimpleDateFormat( format ); 
+		java.util.Date date = new java.util.Date(); 
+		dateDon = new java.util.Date(); 
+		return formater.format(date);
+	}
+	
+	public List<Participation> getParts() {
 		return parts;
 	}
-	public void setParts(Set<Participation> parts) {
+	public void setParts(List<Participation> parts) {
 		this.parts = parts;
 	}
+
+
+	public String getNomDonateur() {
+		return nomDonateur;
+	}
+
+
+	public void setNomDonateur(String nomDonateur) {
+		this.nomDonateur = nomDonateur;
+	}
+
+
+	public float getMontant() {
+		return montant;
+	}
+
+
+	public void setMontant(float montant) {
+		this.montant = montant;
+	}
+
+
+	public Date getDateDon() {
+		return dateDon;
+	}
+
+
+	public void setDateDon(Date dateDon) {
+		this.dateDon = dateDon;
+	}
+	
 	
 	
 	

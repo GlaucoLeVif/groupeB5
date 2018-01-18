@@ -37,15 +37,6 @@ public class ParticipationController {
 	public Participation doSupprimerParticipation(Participation p) {
 		return gestionParticipationEJB.deleteParticipation(p);
 	}
-	
-	public String afficherDateDuJour() {
-		String format = "dd/MM/yyyy"; 
-
-		java.text.SimpleDateFormat formater = new java.text.SimpleDateFormat( format ); 
-		java.util.Date date = new java.util.Date(); 
-
-		return formater.format(date);
-	}
 
 	public String getNomDonateur() {
 		return nomDonateur;

@@ -80,6 +80,13 @@ public class Participation implements Serializable {
 	public Date getDateDon() {
 		return dateDon;
 	}
+	
+	public String getDateDonFormat() {
+		String format = "dd/MM/yyyy"; 
+		java.text.SimpleDateFormat formater = new java.text.SimpleDateFormat( format );
+		dateDon = new java.util.Date(); 
+		return formater.format(dateDon);
+	}
 
 
 
