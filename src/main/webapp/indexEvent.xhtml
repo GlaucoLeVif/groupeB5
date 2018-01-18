@@ -8,7 +8,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 >
 
 	<h:head>
-		<title>Liste évenement</title>
+		<title>Liste évenements</title>
 		<link rel="stylesheet" href="style.css"/>
 		<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -18,27 +18,8 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 	<h:body>
 		<ui:include src="/navBar.xhtml"></ui:include>
         
-        <div class="gap-left gap-right">
-			<h1>Evenements</h1>
-	
-			<h:form enctype="multipart/form-data">
-		 		Titre : <h:inputText value="#{evenementController.titre}"></h:inputText>										<BR />
-		 		resumé : <h:inputText value="#{evenementController.resume}"></h:inputText>										<BR />
-		 		Lieu : <h:inputText value="#{evenementController.lieu}"></h:inputText>											<BR />
-		 		Objectif(€) : <h:inputText  value="#{evenementController.objectif}"></h:inputText>								<BR />
-		 		Récolte(€) : <h:inputText value="#{evenementController.recolte}"></h:inputText>									<BR />
-				Date de l'événement : <b:datepicker value="#{evenementController.dateEv}"></b:datepicker>						<BR />
-				Etat : <h:inputText value="#{evenementController.etat}"></h:inputText>											<BR />
-		 		Importer une image(pas encore fait) :	<h:inputFile value="#{evenementController.up.uploadedFile}" />			<BR />
-		 		
-				<BR /><BR /><BR />
-				
-				<h:commandButton value="Enregistrer l'événement !" action="#{evenementController.doAjouterEvenement()}"></h:commandButton>
-			</h:form>
-			
-			<BR /><BR /><BR />
-			
-			<h1>Listes</h1>
+        <div class="gap-left gap-right">		
+			<h1>Listes des évenemensts</h1>
 			<BR /><BR /><BR />
 			
 			

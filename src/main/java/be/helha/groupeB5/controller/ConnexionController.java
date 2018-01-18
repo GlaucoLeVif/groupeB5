@@ -21,7 +21,7 @@ public class ConnexionController {
 	private GestionConnexionEJB gestionConnexionEJB;
 	
 	private String login, mdp;
-	private static Membre membre;
+	private static Membre membre; 
 	private static String token="";
 	private static Key key= MacProvider.generateKey();
 	
@@ -49,6 +49,10 @@ public class ConnexionController {
 			return "index.xhtml?faces-redirect=true";
 		}
 		return "";
+	}
+	
+	public void refreshMembre() {
+		membre=gestionConnexionEJB.checkConnect(login, mdp).get(0);
 	}
 	
 	public void disconnect() {
