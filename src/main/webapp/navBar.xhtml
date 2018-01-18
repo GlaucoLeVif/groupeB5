@@ -22,6 +22,10 @@ xmlns:h="http://java.sun.com/jsf/html"
                 	<b:navLink value="Creer un évenement" href="createEvent.xhtml"></b:navLink>
                 	<b:navLink value="Gérer mes évènements" href="mesEvenements.xhtml"></b:navLink>
                 </b:dropMenu>
+                <b:dropMenu value="Gérer le site">
+                	<b:navLink value="Gérer les événements" href="gererEvenement.xhtml"></b:navLink>
+                	<b:navLink value="Gérer les membres" href="gererMembre.xhtml"></b:navLink>
+                </b:dropMenu>
             </b:navbarLinks>
             <b:navbarLinks pull="right">
                	<b:navLink pull="right" rendered="#{!connexionController.connecte}" value="Connexion" href="connexion.xhtml"></b:navLink>

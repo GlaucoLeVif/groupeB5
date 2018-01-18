@@ -99,11 +99,11 @@ public class EvenementController {
 		}
 		return mTmp.getListEvent().get(pos).getParts();
 	}
-	/*
+	
 	public List<Evenement> doAfficherEvenementEtat(int etat)
 	{
-		return gestionEvenementEJB.select //TODO
-	}*/
+		return gestionEvenementEJB.selectAllEtat(etat);
+	}
 	
 	public void doModifierEvenement() {
 		System.out.println(ConnexionController.getMembre().toString());
@@ -121,6 +121,26 @@ public class EvenementController {
 		//return gestionEvenementEJB.deleteEvenement(e);
 	}
 	
+	public void doModifierEvenementEtat(Evenement e,int etat)
+	{
+		List<Membre> listM = gestionMembreEJB.selectAll();
+		Membre mTmp = new Membre();
+		int pos = -1;
+		for(int i = 0; i<listM.size();i++)
+		{
+			pos = listM.get(i).getListEvent().indexOf(e);
+			if(pos >=0 )
+			{
+				mTmp=listM.get(i);
+				i=listM.size();
+			}
+		}
+		
+		mTmp.getListEvent().get(pos).setEtat(etat);
+		doModifierMembre(mTmp);
+	}
+	
+	
 	public void doAjouterParticipation() {
 		Participation tmpP = new Participation(nomDonateur, montant, dateDon);
 		List<Membre> listM = gestionMembreEJB.selectAll();
@@ -132,7 +152,6 @@ public class EvenementController {
 			if(pos >=0 )
 			{
 				mTmp=listM.get(i);
-				System.out.println("OULALALALALALALALALAALA");
 				i=listM.size();
 			}
 		}

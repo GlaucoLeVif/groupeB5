@@ -1,5 +1,6 @@
 package be.helha.groupeB5.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -43,7 +44,17 @@ public class MembreController {
 	}
 	
 	public List<Evenement> doAfficherMesEvenements(){
-		return gestionMembreEJB.displayMyEvenements(ConnexionController.getMembre());
+		List<Evenement> listTmpARemplir = new ArrayList<>();
+		List<Evenement> listTmp2 = gestionMembreEJB.displayMyEvenements(ConnexionController.getMembre());
+		for(int i=0;i<listTmp2.size();i++)
+		{
+			if(listTmp2.get(i).getEtat()==1)
+			{
+				listTmpARemplir.add(listTmp2.get(i));
+			}
+		}
+		
+		return listTmpARemplir;
 	}
 	
 	public String doDetails(Membre m)

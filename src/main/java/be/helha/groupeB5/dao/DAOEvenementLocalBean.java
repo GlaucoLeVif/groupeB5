@@ -50,7 +50,11 @@ public class DAOEvenementLocalBean {
 	
 	public List<Evenement> rechercherEvenementEtat( int etat)
 	{
-		return null; //TODO
+		String str = "SELECT e FROM Evenement e WHERE e.etat=:etat";
+		Query query = em.createQuery(str);
+		query.setParameter("etat", etat);
+		List<Evenement> listE = (List<Evenement>) query.getResultList();
+		return listE;
 	}
 	
 	public Evenement ajouterEvenement(Evenement e) {
