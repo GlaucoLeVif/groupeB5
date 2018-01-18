@@ -22,9 +22,10 @@ public class ConnexionController {
 	private GestionConnexionEJB gestionConnexionEJB;
 	
 	private String login, mdp;
-	private Membre m;
-	private String token;
-	private Key key;
+	private static Membre m;
+	private static String token="";
+	private static Key key= MacProvider.generateKey();
+	
 	private boolean isConnecte;
 	
 	private String boutonConnecte;
@@ -103,7 +104,7 @@ public class ConnexionController {
 		this.gestionConnexionEJB = gestionConnexionEJB;
 	}
 
-	public Membre getM() {
+	public static Membre getMembre() {
 		return m;
 	}
 
@@ -111,7 +112,7 @@ public class ConnexionController {
 		this.m = m;
 	}
 
-	public String getToken() {
+	public static String getToken() {
 		return token;
 	}
 
@@ -119,7 +120,7 @@ public class ConnexionController {
 		this.token = token;
 	}
 
-	public Key getKey() {
+	public static Key getKey() {
 		return key;
 	}
 
