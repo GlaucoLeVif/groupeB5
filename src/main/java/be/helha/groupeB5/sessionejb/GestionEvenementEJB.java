@@ -6,8 +6,11 @@ import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
+import be.helha.groupeB5.controller.ConnexionController;
 import be.helha.groupeB5.dao.DAOMembreLocalBean;
 import be.helha.groupeB5.entities.Evenement;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureException;
 
 @Stateless
 @LocalBean
@@ -19,7 +22,17 @@ public class GestionEvenementEJB implements IGestionEvenementEJBRemote{
 	
 	@Override	
 	public List<Evenement> selectAll() {
-		return dao.rechercherEvenement();
+		System.out.println("select all");
+		try {
+
+		    Jwts.parser().setSigningKey(ConnexionController.getKey()).parseClaimsJws(ConnexionController.getToken());
+		    return dao.rechercherEvenement();
+
+		} catch (SignatureException e) {
+			System.out.println("pas de token");
+		    return null;
+		}
+		
 	}
 
 	@Override

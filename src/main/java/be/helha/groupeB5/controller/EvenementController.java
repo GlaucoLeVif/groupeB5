@@ -23,12 +23,15 @@ import javax.servlet.http.Part;
 import com.sun.istack.logging.Logger;
 
 import be.helha.groupeB5.entities.Evenement;
+import be.helha.groupeB5.entities.Membre;
 import be.helha.groupeB5.entities.Image;
 import be.helha.groupeB5.entities.MailGestion;
-import be.helha.groupeB5.entities.Membre;
 import be.helha.groupeB5.entities.Participation;
+import be.helha.groupeB5.entities.MembreConnecte;
 import be.helha.groupeB5.entities.UploadPage;
 import be.helha.groupeB5.sessionejb.GestionEvenementEJB;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureException;
 
 @Named
 @RequestScoped
@@ -49,10 +52,20 @@ public class EvenementController {
 	private MailGestion mailG = new MailGestion();
 	
 	public EvenementController() {}
-
+	
 
 	public List<Evenement> doAfficherEvenement() {
-		return gestionEvenementEJB.selectAll();
+		System.out.println("doafficher");
+		try {
+
+		    Jwts.parser().setSigningKey(MembreConnecte.getInstance().getKey()).parseClaimsJws(MembreConnecte.getInstance().getToken());
+
+		    return gestionEvenementEJB.selectAll();
+
+		} catch (SignatureException e) {
+		    System.out.println("badToken");
+		    return null;
+		}
 	}
 	
 	public Membre doModifierEvenement() {
@@ -257,7 +270,6 @@ public class EvenementController {
 	{
 		mailG.sendMail();
 	}
-	
 	
 	
 	
