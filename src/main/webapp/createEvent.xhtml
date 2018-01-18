@@ -15,17 +15,22 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 		<ui:include src="/navBar.xhtml"></ui:include>
 	    
         <div class="gap-left gap-right">
-	        <h1>Création</h1>
-			<h:form inline="true">
+	        <h1>Création d'un événement</h1>
+			
+			<h:form inline="true" enctype="multipart/form-data">
 	  			<h:panelGrid columns="2">
-			 		<b:inputText label="Titre : " value="#{evenementController.titre}"></b:inputText>			<BR />
-			 		<b:inputText label="Resume : " value="#{evenementController.resume}"></b:inputText>			<BR />					
-			 		<b:inputText label="Objectif : " value="#{evenementController.objectif}"></b:inputText>		<BR />
-			 		<b:datepicker label="Date : " value="#{evenementController.dateEv}"></b:datepicker>			<BR /><BR />
-			 		<h:inputFile label="Image : " value="evenementController.file1" />	<BR /><BR /><BR />
-	  			</h:panelGrid>
 	  			
-				<h:commandButton value="Save" action="#{membreController.doAjouterMembre()}"></h:commandButton>
+			 		<b:inputText label="Titre " value="#{evenementController.titre}"></b:inputText>			<BR />
+			 		<b:inputText label="Resume " value="#{evenementController.resume}"></b:inputText>			<BR />		
+			 		<b:inputText label="Lieu" value="#{evenementController.lieu}"></b:inputText> <BR />
+			 		<b:inputText label="Objectif " value="#{evenementController.objectif}"></b:inputText>		<BR />
+			 		<b:datepicker label="Date " value="#{evenementController.dateEv}"></b:datepicker>			<BR /><BR />
+			 		<h:inputFile label="Image " value="evenementController.up.uploadedFile" />	<BR /><BR /><BR />
+	  		
+	  			</h:panelGrid>
+	  		
+	  			
+				<h:commandButton value="Save" action="#{evenementController.doAjouterEvenement()}"></h:commandButton>
 			</h:form>
         </div>
 	</h:body>
