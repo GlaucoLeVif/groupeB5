@@ -12,10 +12,25 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 	
 	<h:body>
 	<ui:include src="/navBar.xhtml"></ui:include>
-	<h:form>
-		<h:commandButton value="test" action="#{connexionController.test()}"></h:commandButton>
-	</h:form>
-	<h:outputLabel id="test" value="#{connexionController.connecte}"></h:outputLabel>
+	
+	<b:carousel id="tiovivo" style="width:800px" interval="2500" >
+  		<b:carouselItem >
+  			<img src="data:image/jpg;base64,#{evenementController.lastEvents.get(0).getImage(0)}" style="width: 800px; height: 600px"></img>
+  		</b:carouselItem>
+  		<b:carouselItem >
+  			<img src="data:image/jpg;base64,#{evenementController.lastEvents.get(1).getImage(0)}" style="width: 800px; height: 600px"></img>
+  		</b:carouselItem>
+  		<b:carouselItem >
+  			<img src="data:image/jpg;base64,#{evenementController.lastEvents.get(2).getImage(0)}" style="width: 800px; height: 600px"></img>
+  		</b:carouselItem>
+  		<b:carouselItem >
+  			<img src="data:image/jpg;base64,#{evenementController.lastEvents.get(3).getImage(0)}" style="width: 800px; height: 600px"></img>
+  		</b:carouselItem>
+  		<b:carouselItem >
+  			<img src="data:image/jpg;base64,#{evenementController.lastEvents.get(4).getImage(0)}" style="width: 800px; height: 600px"></img>
+  		</b:carouselItem>
+	</b:carousel>
+	
 	</h:body>
 	
 </html>

@@ -28,9 +28,7 @@ public class ConnexionController {
 	private boolean connecte;
 	
 	public void test() {
-		System.out.println("avant: " +connecte);
 		connecte=!connecte;
-		System.out.println("apres: " +connecte);
 	}
 
 	public String connect() {
@@ -103,10 +101,7 @@ public class ConnexionController {
 	}
 
 	public static String getToken() {
-		if(token==null) {
-			return token = "1";
-		}
-		return token;
+			return token;
 	}
 
 	public  void setToken(String token) {

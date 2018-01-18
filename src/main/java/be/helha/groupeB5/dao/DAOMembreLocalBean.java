@@ -35,21 +35,12 @@ public class DAOMembreLocalBean {
 	
 // Membre	
 	public List<Membre> rechercherMembre() {
-		if(!ConnexionController.getMembre().equals(null)) {
-			try {
-			    Jwts.parser().setSigningKey(ConnexionController.getKey()).parseClaimsJws(ConnexionController.getToken());
+			
 			    String str = "SELECT m FROM Membre m";
 				Query queryMembres = em.createQuery(str);
 				List<Membre> list = (List<Membre>) queryMembres.getResultList();
 				return list;
-				
-			} catch (SignatureException e) {
-				System.out.println("pas de token");
-			    return null;
-			}
-		}else {
-			return null;
-		}
+			
 	}
 	
 	public Membre ajouterMembre(Membre m) {

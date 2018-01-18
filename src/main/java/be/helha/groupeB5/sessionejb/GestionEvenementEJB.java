@@ -23,7 +23,13 @@ public class GestionEvenementEJB implements IGestionEvenementEJBRemote{
 	
 	@Override	
 	public List<Evenement> selectAll() {
-		return dao.rechercherEvenement();
+		/*try {
+		    Jwts.parser().setSigningKey(ConnexionController.getKey()).parseClaimsJws(ConnexionController.getToken());
+		*/    return dao.rechercherEvenement();/*
+		} catch (SignatureException e) {
+			System.out.println("pas de token");
+		    return null;
+		}*/
 	}
 
 	@Override

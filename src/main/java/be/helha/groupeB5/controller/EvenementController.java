@@ -44,7 +44,28 @@ public class EvenementController {
 	private Date dateEv;
 	private Evenement event = new Evenement();
 	private Set<Participation> parts = new HashSet<Participation>();
+	private List<Evenement> lastEvents = new ArrayList<Evenement>();
 	
+	public List<Evenement> getLastEvents() {
+		if(lastEvents.size()<5) {
+			List<Evenement> tempList = gestionEvenementEJB.selectAll();
+			for(int i = tempList.size()-1 ; i>tempList.size()-6;i--) {
+				if(i<0) {
+					return lastEvents;
+				}
+				lastEvents.add(tempList.get(i));
+			}
+			return lastEvents;
+		}
+		return lastEvents;
+	}
+
+
+	public void setLastEvents(List<Evenement> lastEvents) {
+		this.lastEvents = lastEvents;
+	}
+
+
 	private byte[] image1;
 	private File file1;
 	private UploadPage up = new UploadPage();
@@ -87,6 +108,7 @@ public class EvenementController {
 	{
 		return "index.xhtml?faces-redirect=true";
 	}
+	
 	
 	
 	public void aaa() {
