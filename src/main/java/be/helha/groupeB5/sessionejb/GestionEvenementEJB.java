@@ -1,6 +1,5 @@
 package be.helha.groupeB5.sessionejb;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -8,6 +7,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
 import be.helha.groupeB5.controller.ConnexionController;
+import be.helha.groupeB5.dao.DAOEvenementLocalBean;
 import be.helha.groupeB5.dao.DAOMembreLocalBean;
 import be.helha.groupeB5.entities.Evenement;
 import io.jsonwebtoken.Jwts;
@@ -18,7 +18,7 @@ import io.jsonwebtoken.SignatureException;
 public class GestionEvenementEJB implements IGestionEvenementEJBRemote{
 
 	@EJB
-	private DAOMembreLocalBean dao;//Jamais de NEW
+	private DAOEvenementLocalBean dao;//Jamais de NEW
 	
 	
 	@Override	

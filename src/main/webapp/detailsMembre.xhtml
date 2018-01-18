@@ -3,40 +3,46 @@
 xmlns:f="http://java.sun.com/jsf/core"
 xmlns:b="http://bootsfaces.net/ui"
 xmlns:h="http://java.sun.com/jsf/html"
-xmlns:c="http://java.sun.com/jsp/jstl/core"
-xmlns:ui="http://java.sun.com/jsf/facelets">
+xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 	<h:head>
 		<title>JSF WEB APP</title>
+		<link rel="stylesheet" href="style.css"/>
 	</h:head>
-	
+
 	<h:body>
-	<ui:include src="/navBar.xhtml"></ui:include>
+		<ui:include src="/navBar.xhtml"></ui:include>
 	
 		<h1>Détails de #{membreController.membre.login}</h1>
 		
 		<BR/><BR/><BR/>
-		
-		Id : #{membreController.membre.idMembre}				<BR/>
-		Login : #{membreController.membre.login}				<BR/>
-		MDP: #{membreController.membre.mdp}						<BR/>
-		Mail : #{membreController.membre.mail}					<BR/>
-		Prénom : #{membreController.membre.prenom}				<BR/>
-		Nom : #{membreController.membre.nom}					<BR/>
-		Rue : #{membreController.membre.rue}					<BR/>
-		Numéro rue : #{membreController.membre.numRue}			<BR/>
-		Ville : #{membreController.membre.ville}				<BR/>
-		Code postal : #{membreController.membre.cp}				<BR/>
-		Pays : #{membreController.membre.pays}					<BR/>
-		Nationalité : #{membreController.membre.nationalite}	<BR/>
-		Gsm : #{membreController.membre.numGSM}					<BR/>
 
-		<BR/><BR/><BR/>
-		
-		<h:form>
-			<h:commandButton value="Retour" action="#{membreController.doList()}"></h:commandButton>
-		</h:form>
-					
+        <div class="gap-left gap-right">
+	
+			<h1>Détails de #{membreController.membre.login}</h1>
+			
+			<BR/><BR/><BR/>
+			
+			Id : #{membreController.membre.idMembre}				<BR/>
+			Login : #{membreController.membre.login}				<BR/>
+			MDP: #{membreController.membre.mdp}						<BR/>
+			Mail : #{membreController.membre.mail}					<BR/>
+			Prénom : #{membreController.membre.prenom}				<BR/>
+			Nom : #{membreController.membre.nom}					<BR/>
+			Rue : #{membreController.membre.rue}					<BR/>
+			Numéro rue : #{membreController.membre.numRue}			<BR/>
+			Ville : #{membreController.membre.ville}				<BR/>
+			Code postal : #{membreController.membre.cp}				<BR/>
+			Pays : #{membreController.membre.pays}					<BR/>
+			Nationalité : #{membreController.membre.nationalite}	<BR/>
+			Gsm : #{membreController.membre.numGSM}					<BR/>
+	
+			<BR/><BR/><BR/>
+			
+			<h:form>
+				<h:commandButton value="Retour" action="#{membreController.doList()}"></h:commandButton>
+			</h:form>
+		</div>			
 	</h:body>
 	
 </html>

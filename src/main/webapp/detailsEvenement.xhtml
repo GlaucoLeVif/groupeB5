@@ -15,46 +15,64 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 	<h:body>
 	<ui:include src="/navBar.xhtml"></ui:include>
 	
-		<h1 class="text-center">Détails de #{evenementController.event.titre}</h1>					<BR/>
-		
-		<div class="pull-left gap-right">
-			<img src="data:image/jpg;base64,#{evenementController.event.getImage(0)}" width="400" class="pull-left gap-right img-thumbnail"></img>
-			objectif : #{evenementController.event.objectif}											<BR/>
-			recolte : #{evenementController.event.recolte}												<BR/>
-			date : #{evenementController.event.dateEv}													<BR/>
-			recolte : #{evenementController.event.recolte}												<BR/>
-		</div>
-		
-		<BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/>
-		
-		#{evenementController.event.resume}
-		
-		<BR/><BR/><BR/>
-		
-		<b:dataTable value = "#{evenementController.doAfficherParticipation()}" var = "part">
-		    
-		    <b:dataTableColumn>
-		      <f:facet name = "header">ID</f:facet>
-		      #{part.idP}
-		   </b:dataTableColumn>
-		    
-		    <b:dataTableColumn>
-		      <f:facet name = "header">Donateur</f:facet>
-		      #{part.nomDonateur}
-		   </b:dataTableColumn>
-		    
-		    <b:dataTableColumn>
-		      <f:facet name = "header">Montant</f:facet>
-		      #{part.montant}
-		   </b:dataTableColumn>
-		    
-		    <b:dataTableColumn>
-		      <f:facet name = "header">DateDon</f:facet>
-		      #{part.dateDon}
-		   </b:dataTableColumn>
+		<div class="gap-left gap-right">
+			<h1 class="text-center">Détails de #{evenementController.event.titre}</h1>						<BR/>
 			
-		</b:dataTable>
-		
+			<div class="pull-left gap-right">
+				<b:flyOutMenu width="50px img-thumbnail" style="padding: 30px;">
+					<img src="data:image/jpg;base64,#{evenementController.event.getImage(0)}" width="400" class="pull-left gap-right img-thumbnail"></img>
+					Objectif : #{evenementController.event.objectif}											<BR/>
+					Recolte : #{evenementController.event.recolte}												<BR/>
+					Date : #{evenementController.event.dateEv}													<BR/>
+					Recolte : #{evenementController.event.recolte}												<BR/>
+					Lieu : #{evenementController.event.lieu}													<BR/>
+				
+					<BR/><BR/><BR/><BR/>
+					
+					#{evenementController.event.resume}
+				</b:flyOutMenu>
+			</div>
+			
+			<div class="pull-right">
+				<b:flyOutMenu width="50px" style="padding: 30px;">
+					<h:form inline="true">
+			  			<h:panelGrid columns="2">
+					 		<b:inputText label="Nom donateur : " value="#{participationController.nomDonateur}"></b:inputText>		<BR />
+					 		<b:inputText label="Montant : " value="#{participationController.montant}"></b:inputText>				<BR />
+			  			</h:panelGrid>
+			  			
+						<b:commandButton value="Payer"></b:commandButton>	<BR /><BR /><BR /><BR />
+						<b:label value="Date du jour : ">#{participationController.afficherDateDuJour()}</b:label>
+					</h:form>
+				</b:flyOutMenu>
+			</div>
+			
+			<BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/><BR/>
+			
+			<b:dataTable value = "#{participationController.doAfficherParticipation()}" var = "part">
+			    
+			    <b:dataTableColumn>
+			      <f:facet name = "header">ID</f:facet>
+			      #{part.idP}
+			   </b:dataTableColumn>
+			    
+			    <b:dataTableColumn>
+			      <f:facet name = "header">Donateur</f:facet>
+			      #{part.nomDonateur}
+			   </b:dataTableColumn>
+			    
+			    <b:dataTableColumn>
+			      <f:facet name = "header">Montant</f:facet>
+			      #{part.montant}
+			   </b:dataTableColumn>
+			    
+			    <b:dataTableColumn>
+			      <f:facet name = "header">DateDon</f:facet>
+			      #{part.dateDon}
+			   </b:dataTableColumn>
+				
+			</b:dataTable>
+		</div>
 	</h:body>
 	
 </html>
