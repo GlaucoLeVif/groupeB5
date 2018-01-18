@@ -31,6 +31,7 @@ public class ConnexionController {
 	public String connect() {
 		List<Membre> m=gestionConnexionEJB.checkConnect(login, mdp);
 		if(!m.isEmpty()) {
+			System.out.println("connexion ok");
 			if(token==null) {
 				key = MacProvider.generateKey();
 			}
@@ -40,6 +41,7 @@ public class ConnexionController {
 			  .compact();
 			isConnecte=true;
 			membre = m.get(0);
+			System.out.println(isConnecte);
 			
 			return "index.xhtml";
 		}
@@ -91,19 +93,25 @@ public class ConnexionController {
 		return membre;
 	}
 
-	public static void setMembre(Membre membre) {
+	public  void setMembre(Membre membre) {
 		membre = membre;
 	}
 
 	public static String getToken() {
+		if(token==null) {
+			return token = "1";
+		}
 		return token;
 	}
 
-	public void setToken(String token) {
+	public  void setToken(String token) {
 		this.token = token;
 	}
 
 	public static Key getKey() {
+		if(key==null) {
+			return key = MacProvider.generateKey();
+		}
 		return key;
 	}
 

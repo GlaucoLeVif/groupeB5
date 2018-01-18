@@ -16,8 +16,11 @@ import com.mysql.jdbc.Blob;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
 
+import be.helha.groupeB5.controller.ConnexionController;
 import be.helha.groupeB5.entities.Evenement;
 import be.helha.groupeB5.entities.Membre;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureException;
 
 @Stateless
 @LocalBean
@@ -32,10 +35,21 @@ public class DAOMembreLocalBean {
 	
 // Membre	
 	public List<Membre> rechercherMembre() {
-		String str = "SELECT m FROM Membre m";
-		Query queryMembres = em.createQuery(str);
-		List<Membre> list = (List<Membre>) queryMembres.getResultList();
-		return list;
+		if(!ConnexionController.getMembre().equals(null)) {
+			try {
+			    Jwts.parser().setSigningKey(ConnexionController.getKey()).parseClaimsJws(ConnexionController.getToken());
+			    String str = "SELECT m FROM Membre m";
+				Query queryMembres = em.createQuery(str);
+				List<Membre> list = (List<Membre>) queryMembres.getResultList();
+				return list;
+				
+			} catch (SignatureException e) {
+				System.out.println("pas de token");
+			    return null;
+			}
+		}else {
+			return null;
+		}
 	}
 	
 	public Membre ajouterMembre(Membre m) {
