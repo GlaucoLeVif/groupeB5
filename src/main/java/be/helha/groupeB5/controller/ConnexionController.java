@@ -34,7 +34,6 @@ public class ConnexionController {
 	public String connect() {
 		List<Membre> m=gestionConnexionEJB.checkConnect(login, mdp);
 		if(!m.isEmpty()) {
-			System.out.println("connexion ok");
 			if(token==null) {
 				key = MacProvider.generateKey();
 			}
