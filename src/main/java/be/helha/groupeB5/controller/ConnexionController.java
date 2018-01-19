@@ -55,13 +55,14 @@ public class ConnexionController {
 		membre=gestionConnexionEJB.checkConnect(login, mdp).get(0);
 	}
 	
-	public void disconnect() {
+	public String disconnect() {
 		key=null;
 		token=null;
 		membre=null;
 		login=null;
 		mdp=null;
 		connecte=false;
+		return "index.xhtml";
 	}
 	
 	public String goIndex() {

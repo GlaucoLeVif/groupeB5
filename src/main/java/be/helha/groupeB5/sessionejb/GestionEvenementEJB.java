@@ -20,16 +20,9 @@ public class GestionEvenementEJB implements IGestionEvenementEJBRemote{
 	@EJB
 	private DAOEvenementLocalBean dao;//Jamais de NEW
 	
-	
 	@Override	
 	public List<Evenement> selectAll() {
-		/*try {
-		    Jwts.parser().setSigningKey(ConnexionController.getKey()).parseClaimsJws(ConnexionController.getToken());
-		*/    return dao.rechercherEvenement();/*
-		} catch (SignatureException e) {
-			System.out.println("pas de token");
-		    return null;
-		}*/
+		    return dao.rechercherEvenement();
 	}
 	
 	@Override
@@ -40,18 +33,32 @@ public class GestionEvenementEJB implements IGestionEvenementEJBRemote{
 
 	@Override
 	public Evenement addEvenement(Evenement e) {
-		System.out.println("stade2");
-		return dao.ajouterEvenement(e);
+		try {
+		    Jwts.parser().setSigningKey(ConnexionController.getKey())
+		    	.parseClaimsJws(ConnexionController.getToken());
+		    return dao.ajouterEvenement(e);
+		} catch (SignatureException er) {
+		    return null;
+		}
 	}
 
 	@Override
 	public Evenement UpdateEvenement(Evenement e) {
-		return dao.modifierEvenement(e);
+		try {
+		    Jwts.parser().setSigningKey(ConnexionController.getKey()).parseClaimsJws(ConnexionController.getToken());
+		    return dao.modifierEvenement(e);
+		} catch (SignatureException er) {
+		    return null;
+		}
 	}
 
 	@Override
 	public Evenement deleteEvenement(Evenement e) {
-		return dao.supprimerEvenement(e);
+		try {
+		    Jwts.parser().setSigningKey(ConnexionController.getKey()).parseClaimsJws(ConnexionController.getToken());
+		    return dao.supprimerEvenement(e);
+		} catch (SignatureException er) {
+		    return null;
+		}
 	}
-
 }

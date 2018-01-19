@@ -5,8 +5,19 @@ xmlns:b="http://bootsfaces.net/ui"
 xmlns:h="http://java.sun.com/jsf/html"
 xmlns:c="http://java.sun.com/jsp/jstl/core">
 
+<script type="text/javascript">
+	window.onload = function () { 
+		if(#{!connexionController.getConnecte()}){
+			window.location.href = "index.xhtml";
+		}
+		if(#{!connexionController.getMembre().getIsAdmin()}){
+			window.location.href = "index.xhtml";
+		}
+	}
+</script>
+
 	<h:head>
-		<title>JSF WEB APP</title>
+		<title>Gérer Evenements</title>
 		<link rel="stylesheet" href="style.css"/>
 	</h:head>
 

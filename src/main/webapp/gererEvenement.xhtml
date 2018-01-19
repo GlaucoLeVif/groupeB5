@@ -7,6 +7,17 @@ xmlns:jsf="http://xmlns.jcp.org/jsf"
 xmlns:ui="http://java.sun.com/jsf/facelets"
 >
 
+<script type="text/javascript">
+	window.onload = function () { 
+		if(#{!connexionController.getConnecte()}){
+			window.location.href = "index.xhtml";
+		}
+		if(#{!connexionController.getMembre().getIsAdmin()}){
+			window.location.href = "index.xhtml";
+		}
+	}
+</script>
+
 	<h:head>
 		<title>Liste évenements</title>
 		<link rel="stylesheet" href="style.css"/>

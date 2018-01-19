@@ -6,6 +6,15 @@ xmlns:f="http://java.sun.com/jsf/core"
 xmlns:h="http://java.sun.com/jsf/html"
 xmlns:ui="http://java.sun.com/jsf/facelets"
 >
+
+<script type="text/javascript">
+	window.onload = function () { 
+		if(#{connexionController.getConnecte()}){
+			window.location.href = "index.xhtml";
+		}
+	}
+</script>
+
 <h:head>
 <title>Inscription</title>
 		<link rel="stylesheet" href="style.css"/>

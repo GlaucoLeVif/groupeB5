@@ -13,23 +13,23 @@ xmlns:h="http://java.sun.com/jsf/html"
 	</script>
 	
 	<h:body>
-	<b:navBar brand="Project name" brandHref="index.xhtml" inverse="true">
+	<b:navBar brand="MSF" brandHref="index.xhtml" inverse="true">
             <b:navbarLinks>
                 <b:navLink value="Inscription" rendered="#{!connexionController.connecte}"  href="inscription.xhtml"></b:navLink>
                 <!-- b:navLink value="Liste membres" rendered="#{connexionController.getMembre().isAdmin}" href="listeMembre.xhtml"></b:navLink-->
                 <b:dropMenu value="Evenements">
                 	<b:navLink value="Liste Evenements" href="indexEvent.xhtml"></b:navLink>
-                	<b:navLink value="Creer un évenement" href="createEvent.xhtml"></b:navLink>
-                	<b:navLink value="Gérer mes évènements" href="mesEvenements.xhtml"></b:navLink>
+                	<b:navLink value="Creer un évenement" rendered="#{connexionController.connecte}" href="createEvent.xhtml"></b:navLink>
+                	<b:navLink value="Gérer mes évènements" rendered="#{connexionController.connecte}" href="mesEvenements.xhtml"></b:navLink>
                 </b:dropMenu>
-                <b:dropMenu value="Gérer le site">
+                <b:dropMenu value="Gérer le site" rendered="#{connexionController.connecte and connexionController.getMembre().isAdmin}">
                 	<b:navLink value="Gérer les événements" href="gererEvenement.xhtml"></b:navLink>
                 	<b:navLink value="Gérer les membres" href="gererMembre.xhtml"></b:navLink>
                 </b:dropMenu>
             </b:navbarLinks>
             <b:navbarLinks pull="right">
                	<b:navLink pull="right" rendered="#{!connexionController.connecte}" value="Connexion" href="connexion.xhtml"></b:navLink>
-               	<h:form><h:commandButton pull="right" rendered="#{connexionController.connecte}" action="#{connexionController.disconnect()}" value="Déconnexion" href="index.xhtml"></h:commandButton></h:form>
+               	<h:form><b:commandButton pull="right" rendered="#{connexionController.connecte}" action="#{connexionController.disconnect()}" value="Déconnexion"></b:commandButton></h:form>
   			</b:navbarLinks>
         </b:navBar>
 	</h:body>
