@@ -30,7 +30,6 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 				<b>Objectif : </b>		#{evenementController.event.objectif}									<BR/>
 				<b>Recolte : </b>		#{evenementController.event.recolte}												<BR/>
 				<b>Date : </b>		#{evenementController.event.dateEv}												<BR/>
-				<b>Recolte : </b>		#{evenementController.event.recolte}											<BR/>
 				<b>Lieu : </b>		#{evenementController.event.lieu}												<BR/><br/>
 			
 				#{evenementController.event.resume}
@@ -74,7 +73,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 			</div>
 			<BR/><BR/>
 			
-			<b:dataTable value = "#{evenementController.doAfficherParticipation()}" var = "part">
+<!--	<b:dataTable value = "#{evenementController.doAfficherParticipation()}" var = "part">
 			    
 			    <b:dataTableColumn>
 			      <f:facet name = "header">Donateur</f:facet>
@@ -91,7 +90,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 			      #{part.getDateDonFormat()}
 			   </b:dataTableColumn>
 				
-			</b:dataTable>
+			</b:dataTable>-->
 		</div>
 		
 </h:body>

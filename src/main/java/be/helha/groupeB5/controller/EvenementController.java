@@ -75,7 +75,7 @@ public class EvenementController {
 
 	public List<Evenement> getLastEvents() {
 		if(lastEvents.size()<5) {
-			List<Evenement> tempList = gestionEvenementEJB.selectAll();
+			List<Evenement> tempList = gestionEvenementEJB.selectAllEtat(1);
 			for(int i = tempList.size()-1 ; i>tempList.size()-6;i--) {
 				if(i<0) {
 					return lastEvents;
@@ -161,6 +161,7 @@ public class EvenementController {
 		
 		mTmp.getListEvent().get(pos).setEtat(etat);
 		doModifierMembre(mTmp);
+		lastEvents.clear();
 	}
 	
 	
@@ -180,7 +181,9 @@ public class EvenementController {
 		}
 		System.out.println(pos);
 		mTmp.getListEvent().get(pos).addPart(tmpP);
+		mTmp.getListEvent().get(pos).setRecolte(mTmp.getListEvent().get(pos).getRecolte()+montant);
 		doModifierMembre(mTmp);
+		
 		lastParts.clear();
 	}
 	
