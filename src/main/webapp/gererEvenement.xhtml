@@ -67,19 +67,16 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 			      <f:facet name = "header">DATE</f:facet>
 			      #{ev.dateEv}
 			   </b:dataTableColumn>
+			   
+			   <b:dataTableColumn orderable = "false">
+			      <f:facet name = "header">IMAGE</f:facet>
+			     <img src="data:image/jpg;base64,#{ev.getImage(0)}" width="75"></img>
+			   </b:dataTableColumn>
 		
 		  <b:dataTableColumn orderable = "false">
 					<f:facet name="header">VALIDER</f:facet>
 						<h:form>
 							<h:commandButton value="Valider" action="#{evenementController.doModifierEvenementEtat(ev,1)}"></h:commandButton>
-						</h:form>
-				</b:dataTableColumn>
-			   
-			  
-			  <b:dataTableColumn orderable = "false">
-					<f:facet name="header">DETAILS</f:facet>
-						<h:form>
-							<h:commandButton value="Accéder" action="#{evenementController.doDetails(ev)}"></h:commandButton>
 						</h:form>
 				</b:dataTableColumn>
 				

@@ -61,13 +61,13 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 			      #{ev.dateEv}
 			   </b:dataTableColumn>
 			   
-			   <b:dataTableColumn>
-			      <f:facet name = "header">IMAGE1</f:facet>
+			   <b:dataTableColumn orderable = "false">
+			      <f:facet name = "header">IMAGE</f:facet>
 			     <img src="data:image/jpg;base64,#{ev.getImage(0)}" width="75"></img>
 			   </b:dataTableColumn>
 			   
-			    <b:dataTableColumn>
-			      	<f:facet name = "header">Importer</f:facet>
+			    <b:dataTableColumn orderable = "false">
+			      	<f:facet name = "header">IMPORTER</f:facet>
 			      		<h:form enctype="multipart/form-data">
 			   			<h:inputFile label="Image" value="#{evenementController.up.uploadedFile}" />
 			   			<h:commandButton value="Envoyer" action="#{evenementController.doAjouterPhoto(ev)}"></h:commandButton>
@@ -75,14 +75,14 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 			   		</h:form>
 			   </b:dataTableColumn>
 			   
-			  <b:dataTableColumn>
+			  <b:dataTableColumn orderable = "false">
 				<f:facet name="header">DETAILS</f:facet>
 					<h:form>
 						<h:commandButton value="Accéder" action="#{evenementController.doDetails(ev)}"></h:commandButton>
 					</h:form>
 			  </b:dataTableColumn>
 				
-		   	  <b:dataTableColumn>
+		   	  <b:dataTableColumn orderable = "false">
 				<f:facet name="header">
 					<h:outputText value="DELETE"/>
 				</f:facet>

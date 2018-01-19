@@ -13,9 +13,9 @@ xmlns:ui="http://java.sun.com/jsf/facelets"
 	<h:body>
 		<ui:include src="/navBar.xhtml"></ui:include>
 	    <b:form>
-	       	<b:inputText label="Username : " value="#{connexionController.login}"></b:inputText>
-	       	<b:inputSecret label="Password : " value="#{connexionController.mdp}"></b:inputSecret>
-	  		<h:commandButton value="Connexion" action="#{connexionController.connect()}"></h:commandButton>
+	       	<b:inputText label="Login : " value="#{connexionController.login}"></b:inputText>
+	       	<b:inputSecret label="Mot de passe : " value="#{connexionController.mdp}"></b:inputSecret>
+	  		<h:commandButton value="Se connecter" action="#{connexionController.connect()}"></h:commandButton>
 	    </b:form>
 	</h:body>
 </html>
