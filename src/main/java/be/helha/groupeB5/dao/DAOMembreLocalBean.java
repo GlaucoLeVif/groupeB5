@@ -96,6 +96,7 @@ public class DAOMembreLocalBean {
 	}
 	
 	public List<Evenement> afficherMesEvenements(Membre m){
+		System.out.println(m.toString());
 		String str = "SELECT m.listEvent FROM Membre m where m.login =:login";
 		Query query = em.createQuery(str);
 		query.setParameter("login", m.getLogin());

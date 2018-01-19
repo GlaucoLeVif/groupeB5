@@ -36,7 +36,7 @@ public class GestionMembreEJB implements IGestionMembreEJBRemote{
 	public List<Evenement> displayMyEvenements(Membre m) {
 		
 		try {
-		    Jwts.parser().setSigningKey(ConnexionController.getKey()).parseClaimsJws(ConnexionController.getToken());
+			Jwts.parser().setSigningKey(ConnexionController.getKey()).parseClaimsJws(ConnexionController.getToken());
 		    return dao.afficherMesEvenements(m);
 		} catch (SignatureException er) {
 		    return null;

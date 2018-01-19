@@ -46,14 +46,17 @@ public class MembreController {
 	public List<Evenement> doAfficherMesEvenements(){
 		List<Evenement> listTmpARemplir = new ArrayList<>();
 		List<Evenement> listTmp2 = gestionMembreEJB.displayMyEvenements(ConnexionController.getMembre());
+		System.out.println(listTmp2.size());
 		for(int i=0;i<listTmp2.size();i++)
 		{
+			System.out.println("Je passe - 1 size "+listTmp2.size());
 			if(listTmp2.get(i).getEtat()==1)
 			{
+				System.out.println("Je passe - 2");
 				listTmpARemplir.add(listTmp2.get(i));
 			}
 		}
-		
+		System.out.println("Je passe - 3");
 		return listTmpARemplir;
 	}
 	
