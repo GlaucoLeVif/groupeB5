@@ -25,6 +25,7 @@ xmlns:h="http://java.sun.com/jsf/html"
                 <b:dropMenu value="Gérer le site" rendered="#{connexionController.connecte and connexionController.getMembre().isAdmin}">
                 	<b:navLink value="Gérer les événements" href="gererEvenement.xhtml"></b:navLink>
                 </b:dropMenu>
+            	<b:navLink value="A propos" href="about.xhtml"></b:navLink>
             </b:navbarLinks>
             <b:navbarLinks pull="right">
                	<b:navLink pull="right" rendered="#{!connexionController.connecte}" value="Connexion" href="connexion.xhtml"></b:navLink>
