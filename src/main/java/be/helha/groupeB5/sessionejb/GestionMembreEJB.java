@@ -23,13 +23,7 @@ public class GestionMembreEJB implements IGestionMembreEJBRemote{
 	
 	@Override	
 	public List<Membre> selectAll() {
-		try {
-		    Jwts.parser().setSigningKey(ConnexionController.getKey()).parseClaimsJws(ConnexionController.getToken());
-
 			return dao.rechercherMembre();
-		} catch (SignatureException er) {
-		    return null;
-		}
 	}
 
 	@Override
